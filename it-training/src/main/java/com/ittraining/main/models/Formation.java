@@ -1,22 +1,41 @@
 package com.ittraining.main.models;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "formations")
 public class Formation {
 
-	@Id 
-	@
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFormation;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "id_theme", referencedColumnName = "id_theme")
 	private String idTheme;
 	private double prix;
+	
+	@OneToOne(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "id_prerequis", referencedColumnName = "id_prerequis")
 	private Integer idPrerequis;
 	private String description;
 	private String programme;
+	
+	@OneToMany(cascade = {CascadeType.ALL})
+	@JoinColumn(name = "id_employe", referencedColumnName = "id_employe")
 	private Integer idEmploye;
 	private String intitule;
 
 	public Formation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Formation(String idTheme, double prix, Integer idPrerequis, String description, String programme,
