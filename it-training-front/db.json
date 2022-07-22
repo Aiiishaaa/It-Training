@@ -1,0 +1,33 @@
+{
+    "clients":[
+      {
+        "id_client":1,
+        "nom_client": "wick",
+        "prenom_client": "john",
+        "password_client": "wick",
+        "email_client": "wick@mail.com"
+      },
+      {
+        "id_client": 2,
+        "nom_client": "travolta",
+        "prenom_client": "john",
+        "password_client": "travolta",
+        "email_client": "john@mail.com"
+      }
+    ],
+    
+    "formations": [
+      {
+        "id": 1,
+        "idTheme": 20,
+        "prix": 270,
+        "idPrerequis": 15,
+        "description": "java",
+        "programme": "java programme",
+        "idEmploye": "1",
+        "intitule": "formation pour apprendre java"
+      }
+
+
+    ]
+  }

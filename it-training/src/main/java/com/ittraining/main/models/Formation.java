@@ -17,19 +17,19 @@ public class Formation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFormation;
-	
-	@OneToMany(cascade = {CascadeType.ALL})
+
+	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_theme", referencedColumnName = "id_theme")
 	private String idTheme;
 	private double prix;
-	
-	@OneToOne(cascade = {CascadeType.ALL})
+
+	@OneToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_prerequis", referencedColumnName = "id_prerequis")
 	private Integer idPrerequis;
 	private String description;
 	private String programme;
-	
-	@OneToMany(cascade = {CascadeType.ALL})
+
+	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_employe", referencedColumnName = "id_employe")
 	private Integer idEmploye;
 	private String intitule;
@@ -116,5 +116,4 @@ public class Formation {
 				+ idPrerequis + ", description=" + description + ", programme=" + programme + ", idEmploye=" + idEmploye
 				+ ", intitule=" + intitule + "]";
 	}
-
 }
