@@ -1,0 +1,85 @@
+*#
+/it-training/.iml
+/it-training/.ipr
+/it-training/.iws
+/it-training/.jar
+/it-training/.sw?
+
+/it-training/.DS_Store
+/it-training/.attach_pid*
+/it-training/.classpath
+/it-training/.factorypath
+/it-training/.gradle
+/it-training/.idea
+/it-training/.metadata
+/it-training/.project
+/it-training/.recommenders
+/it-training/.settings
+/it-training/.springBeans
+
+
+/it-training/code
+/it-training/MANIFEST.MF
+/it-training/_site/
+/it-training/activemq-data
+/it-training/bin
+/it-training/build
+/it-training/**/src/**/bin
+/it-training/**/src/**/build
+/it-training/build.log
+/it-training/dependency-reduced-pom.xml
+/it-training/dump.rdb
+/it-training/interpolated*.xml
+/it-training/lib/
+/it-training/manifest.yml
+/it-training/out
+/it-training/overridedb.*
+/it-training/target
+/it-training/.flattened-pom.xml
+/it-training/secrets.yml
+/it-training/.gradletasknamecache
+/it-training/.sts4-cache
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/it-training-front/dist
+/it-training-front/tmp
+/it-training-front/out-tsc
+/it-training-front/bazel-out
+
+# Node
+/it-training-front/node_modules
+/it-training-front/npm-debug.log
+/it-training-front/yarn-error.log
+
+# IDEs and editors
+/it-training-front/.idea/
+/it-training-front/.project
+/it-training-front/.classpath
+/it-training-front/.c9/
+/it-training-front/*.launch
+/it-training-front/.settings/
+/it-training-front/*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
