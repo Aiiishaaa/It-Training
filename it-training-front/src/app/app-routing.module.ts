@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormationComponent } from './composants/formation/formation.component';
 
 const routes: Routes = [
-  {path: 'formations', component: FormationComponent},
+  {path: 'formations/:id', component: FormationComponent},
 ];
 
 @NgModule({

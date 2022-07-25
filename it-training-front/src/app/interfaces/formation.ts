@@ -4,9 +4,10 @@ export interface Formation {
     idTheme?: number;
     prix?: number;
     idPrerequis?: number;
-    description?: string;
+    descriptionBreve?: string;
+    descriptionLongue?: string;
     programme?: string;
     idEmploye?: number;
-    intituleString?: string;
-    
+    intitule?: string;
+    nbHeures?: number;
 }

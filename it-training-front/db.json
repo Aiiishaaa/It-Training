@@ -20,14 +20,78 @@
       {
         "id": 1,
         "idTheme": 20,
-        "prix": 270,
+        "prix": 5390,
         "idPrerequis": 15,
-        "description": "java",
-        "programme": "java programme",
+        "descriptionBreve": "Découvrir le langage de programmation Java et disposer des bases nécessaires au développement d'applications Web Java dans des environnements éditeur (WebSphere, WebLogic) comme Open Source.",
+        "descriptionLongue": "Parce que les applications développées en Java sont très facilement portables sur différents systèmes d'exploitation tels que Windows, Mac OS, UNIX ou encore Linux, ce langage orienté Objet qui reprend en grande partie la syntaxe du C++ est toujours très prisé par les équipes de développement. Ce cursus métier vise à faire découvrir aux participants comment bien programmer en Java, et à les rendre autonomes pour développer des applications Web avec Angular, TypeScript et Bootstrap. A l'issue de ce parcours de 14 jours, les participants disposeront des compétences nécessaires prendre en charge des projets de développement d'applications web en Java.",
+        "programme": "Objectif : découvrir le langage de programmation Java et disposer des bases nécessaires au développement d'applications Web Java dans des environnements éditeur (WebSphere, WebLogic) comme Open Source. Présentation de l'écosystème java : composants techniques de java (JDK) et principales apis, les outils java : JavaDoc, jar et co. Panorama des principaux ide : Eclipse, Netbeans et Intellij. L'ide Eclipse. Les bases du langage : la syntaxe. Les concepts orientes-objet en java. Gestion des erreurs avec les exceptions. Bibliothèques standards (collection, date, entrées/sorties). Accès aux Systèmes de Gestion de Bases de Données avec JDBC. Fichiers de propriétés et l'api d'internationalisation (i18n). API pour les fichiers de logs. Améliorer la qualité d'une application grâce aux tests unitaires. Programmation fonctionnelle et lambda expressions. Introduction aux nouveautés java 9.",
         "idEmploye": "1",
-        "intitule": "formation pour apprendre java"
+        "intitule": "Développeur Java JEE",
+        "nbHeures": 98
+      },
+      {
+        "id": 2,
+        "idTheme": 30,
+        "prix": 8860,
+        "idPrerequis": 10,
+        "descriptionBreve": "Disposer des connaissances et compétences nécessaires pour identifier et collecter des données et s'assurer de leur qualité et de leur alignement sur les besoins et usages métiers de l'entreprise.",
+        "descriptionLongue": "Les entreprises collectent aujourd'hui de tels volumes d'informations que leur exploitation avec des méthodes traditionnelles est devenue impossible. Pourtant, ces informations sont des mines d'or ! Mais encore faut-il savoir les traiter, les analyser et en tirer la substantifique moelle. C'est précisément la mission qui incombe au Data Scientist qui en imaginant de nouveaux modèles et en utilisant de nouveaux outils va donner du sens aux données et en extraire de la valeur pour aider l'entreprise à prendre des décisions. A la fois spécialiste des données, des chiffres, des statistiques, des outils informatiques et grand connaisseur du secteur pour lequel il analyse des données, le Data Scientist est aussi un créatif qui doit savoir utiliser les outils de restitution de données pour restituer de façon claire et convaincante le résultat de ses analyses.",
+        "programme": "Objectif : Disposer des connaissances et compétences nécessaires pour identifier et collecter des données et s'assurer de leur qualité et de leur alignement sur les besoins et usages métiers de l'entreprise. Les nouvelles frontières du Big Data (introduction) : immersion, l'approche des 4 Vs, cas d'usages du Big Data, technologies, architecture, master-less vs master-slaves, stockage, Machine Learning, Data Scientist et Big Data, compétences, la vision du Gartner, valeur ajoutée du Big Data. La collecte des données : typologie des sources, les données non structurées, typologie 3V des sources, les données ouvertes (Open Data), nouveau paradigme de l'ETL à l'ELT, le concept du Data Lake, les API de réseaux sociaux. Le calcul massivement parallèle : genèse et étapes clés, Hadoop, HDFS, MapReduce, Apache PIG et Apache HIVE, comparatif des 3 approches, limitations de MapReduce, moteur d'exécution Apache TEZ, la rupture Apache SPARK, Hive in Memory (LLAP), Big Deep Learning. Les nouvelles formes de stockage : enjeux, le 'théorème' CAP, nouveaux standards : ACID => BASE, panorama des bases de données NoSQL, bases de données Clé-Valeur, bases de données Document, bases de données colonnes, bases de données Graphes. Le Big Data Analytics (fondamentaux) : analyse de cas concrets, que peuvent apprendre les machines ? , les différentes expériences (E), l'apprentissage, choisir un algorithme d'apprentissage machine, anatomie d'un modèle d'apprentissage automatique, les librairies de machine learning standards et Deep Learning, les plates-formes de Data Science. Le Big Data Analytics (écosystème SPARK) : les différents modes de travail, les 3 systèmes de gestion de cluster, modes d'écriture des commandes Spark, machine learning avec Spark , travail sur les variables prédictives, la classification et la régression. Traitement en flux du Big Data (​streaming​ ) : architectures types de traitement de Streams Big Data, Apache NIFI, Apache KAFKA, articulation NIFI et KAFKA, Apache STORM, articulation KAFKA et STORM, comparatif STORM/SPARK. Déploiement d'un projet Big Data : Cloud Computing , 5 caractéristiques essentielles, 3 modèles de services, modes (SaaS , PaaS, IaaS), Cloud Privé virtuel (VPC), focus AWS, GCP et Azure. Hadoop écosystème et distributions : écosystème, fonctions coeurs, HDFS, Map Reduce, infrastructure YARN, distributions Hadoop, focus Cloudera, Focus Hortonworks. Architecture de traitement Big Data : traitement de données par lots, traitement de données en flux, modèles d'architecture de traitement de données Big Data, l'heure du choix. La gouvernance des données Big Data : outils de gouvernance Big Data, les 3 piliers, le management de la qualité des données, le management des métadonnées Big Data, management de la sécurité, de la conformité et la confidentialité.",
+        "idEmploye": "3",
+        "intitule": "Data Scientist",
+        "nbHeures": 126
+      },
+      {
+        "id": 3,
+        "idTheme": 15,
+        "prix": 11320,
+        "idPrerequis": 10,
+        "descriptionBreve": "Découvrir les techniques de base du hacking et comprendre comment les mécanismes et outils de sécurité peuvent constituer un premier rempart.",
+        "descriptionLongue": "Il ne se passe pas une semaine sans que les médias n'évoquent des actes de piratage touchant de grandes entreprises, des acteurs de la nouvelle économie ou ... des états. Vol d'informations stratégiques, de fichiers clients, détournements de fonds bancaires, neutralisation de serveurs web... Et bien sûr, il est facile de comprendre qu'au-delà du préjudice financier, il y a toujours un important préjudice d'image. Il n'est donc pas surprenant que de nombreuses entreprises cherchent à se prémunir de ce type de risques. Pour autant, elles peinent souvent à trouver les profils capables de sécuriser efficacement leur SI et de mettre en échec les tentatives d'intrusion des (hackers). A l'issue de ce cursus de 23 jours, les participants disposeront précisément des connaissances et compétences nécessaires à l'atteinte de ces objectifs.",
+        "programme": "Objectif : découvrir les techniques de base du hacking et comprendre comment les mécanismes et outils de sécurité peuvent constituer un premier rempart. Les fondamentaux de la sécurité des réseaux : prise d'informations à distance sur des réseaux d'entreprise et des systèmes distants, consultation d'informations publiques, localisation un système cible, énumération des services actifs. Les attaques à distance : intrusion à distance des postes clients par exploitation des vulnérabilités sur les services distants, et prise de contrôle des postes utilisateurs par troyen, authentification par brute force, recherche et exploitation de vulnérabilités sur un système cible, prise de contrôle à distance. Les attaques systèmes : outrepasser l'authentification et/ou surveiller l'utilisateur suite à une intrusion, attaque du Bios, cracking de mot de passe et espionnage du système. Sécuriser le système : les outils de base permettant d'assurer le minimum de sécurité à un S.I., la cryptographie, le chiffrement des données, la détection d'activité anormale, le rôle de la base de registre, le firewalling, l'anonymat.",
+        "idEmploye": "3",
+        "intitule": "Expert en cybersécurité",
+        "nbHeures": 161
+      },
+      {
+        "id": 4,
+        "idTheme": 3,
+        "prix": 6970,
+        "idPrerequis": 10,
+        "descriptionBreve": "Acquérir la connaissance des commandes fondamentales des systèmes d'exploitation Linux et développer un premier niveau d'autonomie en vue de la prise en main d'un système.",
+        "descriptionLongue": "Il ne se passe pas une semaine sans que les médias n'évoquent des actes de piratage touchant de grandes entreprises, des acteurs de la nouvelle économie ou ... des états. Vol d'informations stratégiques, de fichiers clients, détournements de fonds bancaires, neutralisation de serveurs web... Et bien sûr, il est facile de comprendre qu'au-delà du préjudice financier, il y a toujours un important préjudice d'image. Il n'est donc pas surprenant que de nombreuses entreprises cherchent à se prémunir de ce type de risques. Pour autant, elles peinent souvent à trouver les profils capables de sécuriser efficacement leur SI et de mettre en échec les tentatives d'intrusion des (hackers). A l'issue de ce cursus de 23 jours, les participants disposeront précisément des connaissances et compétences nécessaires à l'atteinte de ces objectifs.",
+        "programme": "Objectif : acquérir la connaissance des commandes fondamentales des systèmes d'exploitation Linux et développer un premier niveau d'autonomie en vue de la prise en main d'un système. Introduction. Une session : démarrage, commandes et documentation. Les fichiers et les répertoires : arborescence, chemins, commandes de gestion de fichiers et de répertoires. Le Shell : présentation, réalisation d'un script élémentaire. Les droits : gestion des droits et des groupes. L'impression : principes et commandes. Les filtres : présentation, commandes grep, cut, sed, sort, more et pg. La sauvegarde : commandes tar et cpio. Les outils de communication : commandes write, talk et mail. Les liens : commandes, liens symboliques. La gestion des processus : commandes kill, ps, gestion des travaux. L'éditeur vi : commandes, modes et paramétrage de vi. Unix et les réseaux : comprendre TCP/IP, connexion à distance, transfert de fichiers.",
+        "idEmploye": "3",
+        "intitule": "Administrateur Linux",
+        "nbHeures": 119
       }
-
-
+    ],
+    "domaines": [
+      {
+        "idDomaine": 1,
+        "nomDomaine": "Informatique"
+      }
+    ],
+    "themes": [
+      {
+        "idTheme": 3,
+        "nomTheme": "Linux, Unix, Mac",
+        "idDomaine": 1
+      },
+      {
+        "idTheme": 15,
+        "nomTheme": "Cybersécurité",
+        "idDomaine": 1
+      },
+      {
+        "idTheme": 20,
+        "nomTheme": "Développement",
+        "idDomaine": 1
+      },
+      {
+        "idTheme": 30,
+        "nomTheme": "Big Data, Data Science et IA",
+        "idDomaine": 1
+      }
     ]
   }
