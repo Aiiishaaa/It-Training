@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormationComponent } from './composants/formation/formation.component';
+import { CatalogueComponent } from './composants/catalogue/catalogue.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormationComponent,
+    CatalogueComponent,
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/assets/css/animate.css",
               "src/assets/css/owl.carousel.min.css",
@@ -34,6 +35,7 @@
               "src/assets/css/style.css"
             ],
             "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/jquery.min.js",
               "src/assets/js/jquery-migrate-3.0.1.min.js",
               "src/assets/js/popper.min.js",
