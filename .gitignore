@@ -1,0 +1,38 @@
+*#
+.metadata
+
+# Node
+/it-training-front/node_modules
+/it-training-front/npm-debug.log
+/it-training-front/yarn-error.log
+
+# IDEs and editors
+/it-training-front/.idea/
+/it-training-front/.project
+/it-training-front/.classpath
+/it-training-front/.c9/
+/it-training-front/*.launch
+/it-training-front/.settings/
+/it-training-front/*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db
+

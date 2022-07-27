@@ -4,9 +4,9 @@ import { CatalogueComponent } from './composants/catalogue/catalogue.component';
 import { FormationComponent } from './composants/formation/formation.component';
 
 const routes: Routes = [
-  {path: 'formations', component: FormationComponent},
   {path: 'catalogue', component: CatalogueComponent},
-
+  {path: 'formations', component: FormationComponent},
+  {path: 'formations/:id', component: FormationComponent},
 ];
 
 @NgModule({
