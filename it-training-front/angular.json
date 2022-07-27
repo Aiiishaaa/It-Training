@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "src/assets/css/animate.css",
               "src/assets/css/owl.carousel.min.css",
@@ -32,10 +33,10 @@
               "src/assets/css/jquery.timepicker.css",
               "src/assets/css/flaticon.css",
               "src/assets/css/style.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/assets/js/jquery.min.js",
               "src/assets/js/jquery-migrate-3.0.1.min.js",
               "src/assets/js/popper.min.js",
