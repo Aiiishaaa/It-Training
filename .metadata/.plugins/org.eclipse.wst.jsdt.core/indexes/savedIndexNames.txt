@@ -1,7 +1,0 @@
-INDEX VERSION 1.4+C:\Users\ib\eclipse-workspace\filrouge\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2570975625.index
-3499301796.index
-2082156741.index
-2794425287.index
-3874895346.index
-1427205295.index

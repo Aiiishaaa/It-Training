@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,13 +20,16 @@ public class Session {
 	private Integer idSession;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
-	@OneToMany(cascade = { CascadeType.ALL })
+	
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_formation", referencedColumnName = "id_formation")
 	private Integer idFormation;
-	@OneToMany(cascade = { CascadeType.ALL })
+	
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_formateur", referencedColumnName = "id_formateur")
 	private Integer idFormateur;
-	@OneToMany(cascade = { CascadeType.ALL })
+	
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
 	private Integer idAdresse;
 	

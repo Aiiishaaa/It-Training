@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,7 +18,7 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFormation;
 
-	@OneToMany(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_theme", referencedColumnName = "id_theme")
 	private String idTheme;
 	private double prix;
@@ -26,25 +26,29 @@ public class Formation {
 	@OneToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_prerequis", referencedColumnName = "id_prerequis")
 	private Integer idPrerequis;
-	private String description;
+	private String descriptionBreve;
+	private String descriptionLongue;
 	private String programme;
 
-	@OneToMany(cascade = { CascadeType.ALL })
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_employe", referencedColumnName = "id_employe")
-	private Integer idEmploye;
+	private Employe employe;
+	
 	private String intitule;
+	private int nbHeures;
 
 	public Formation() {
 		super();
 	}
 
-	public Formation(String idTheme, double prix, Integer idPrerequis, String description, String programme,
+	public Formation(String idTheme, double prix, Integer idPrerequis, String descriptionBreve, String descriptionLongue, String programme,
 			Integer idEmploye, String intitule) {
 		super();
 		this.idTheme = idTheme;
 		this.prix = prix;
 		this.idPrerequis = idPrerequis;
-		this.description = description;
+		this.descriptionBreve = descriptionBreve;
+		this.descriptionLongue = descriptionLongue;
 		this.programme = programme;
 		this.idEmploye = idEmploye;
 		this.intitule = intitule;
@@ -78,12 +82,20 @@ public class Formation {
 		this.idPrerequis = idPrerequis;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescriptionBreve() {
+		return descriptionBreve;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescriptionBreve(String descriptionBreve) {
+		this.descriptionBreve = descriptionBreve;
+	}
+	
+	public String getDescriptionLongue() {
+		return descriptionLongue;
+	}
+
+	public void setDescriptionLongue(String descriptionLongue) {
+		this.descriptionLongue = descriptionLongue;
 	}
 
 	public String getProgramme() {
@@ -110,10 +122,18 @@ public class Formation {
 		this.intitule = intitule;
 	}
 
+	public int getNbHeures() {
+		return nbHeures;
+	}
+
+	public void setNbHeures(int nbHeures) {
+		this.nbHeures = nbHeures;
+	}
+
 	@Override
 	public String toString() {
 		return "Formation [idFormation=" + idFormation + ", idTheme=" + idTheme + ", prix=" + prix + ", idPrerequis="
-				+ idPrerequis + ", description=" + description + ", programme=" + programme + ", idEmploye=" + idEmploye
-				+ ", intitule=" + intitule + "]";
+				+ idPrerequis + ", descriptionBreve=" + descriptionBreve + ", descriptionLongue=" + descriptionLongue + ", programme=" + programme + ", idEmploye=" + idEmploye
+				+ ", intitule=" + intitule +", nbHeures=" + nbHeures + "]";
 	}
 }

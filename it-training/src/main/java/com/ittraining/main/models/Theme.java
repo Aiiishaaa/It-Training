@@ -1,5 +1,14 @@
 package com.ittraining.main.models;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "themes")
 public class Theme {
@@ -8,7 +17,8 @@ public class Theme {
 
 	private Integer idTheme;
 	private String nomTheme;
-	@OneToMany(cascade = { CascadeType.ALL })
+	
+	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_domaine", referencedColumnName = "id_domaine")
 	private Integer idDomaine;
 
