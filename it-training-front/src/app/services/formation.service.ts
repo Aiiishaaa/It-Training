@@ -7,7 +7,7 @@ import { Formation } from '../interfaces/formation';
 })
 export class FormationService {
 
-  private url: string = "http://localhost:8080/formations";
+  private url: string = "http://localhost:4200/formations";
 
   constructor(private http: HttpClient) { }
 
