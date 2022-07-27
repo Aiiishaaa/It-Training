@@ -8,7 +8,7 @@ import com.ittraining.main.models.Client;
 public interface IClientService {
 	List<Client> findAll();
 	Optional<Client> findById(Integer idClient);
-	List<Client> findAllBySession(Integer idSession);
+	List<Client> findAllBySessionId(Integer idSession);
 	Client add(Client client);
 	Client update(Client Client);
 	void removeById(Integer id);
