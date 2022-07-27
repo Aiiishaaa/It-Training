@@ -7,8 +7,8 @@ import com.ittraining.main.models.Formation;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface FormationRepository extends JpaRepository<Formation, Integer> {
-	List<Formation> findAllByTheme(Integer idTheme);
-	List<Formation> findAllByDomaine(Integer idDomaine);
-	List<Formation> findAllByEmploye(Integer idEmploye);
+	List<Formation> findAllByThemeId(Integer idTheme);
+	List<Formation> findAllByDomaineId(Integer idDomaine);
+	List<Formation> findAllByEmployeId(Integer idEmploye);
 	
 }
