@@ -14,7 +14,7 @@ public class ClientService implements IClientService {
 
 	@Autowired
 	private ClientRepository clientRepository;
-	
+
 	@Override
 	public List<Client> findAll() {
 		return clientRepository.findAll();
@@ -26,24 +26,24 @@ public class ClientService implements IClientService {
 	}
 
 	@Override
-	public Client add(Client object) {
-		return clientRepository.save(object);
+	public Client add(Client client) {
+		return clientRepository.save(client);
 	}
 
 	@Override
-	public Client update(Client object) {
-		return clientRepository.save(object);
+	public Client update(Client client) {
+		return clientRepository.save(client);
 	}
 
 	@Override
 	public void removeById(Integer id) {
 		clientRepository.deleteById(id);
-		
+
 	}
 
 	@Override
-	public List<Client> findAllBySession(Integer idSession) {
-		return clientRepository.findAllBySession(idSession);
+	public List<Client> findAllBySessionId(Integer idSession) {
+		return clientRepository.findAllBySessionId(idSession);
 	}
 
 }
