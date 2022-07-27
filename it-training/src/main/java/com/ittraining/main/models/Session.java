@@ -20,26 +20,24 @@ public class Session {
 	private Integer idSession;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
-	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_formation", referencedColumnName = "id_formation")
+
+	@ManyToOne
+	@JoinColumn(name = "id_formation")
 	private Formation formation;
-	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_formateur", referencedColumnName = "id_formateur")
+
+	@ManyToOne
+	@JoinColumn(name = "id_formateur")
 	private Formateur formateur;
-	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
+
+	@ManyToOne
+	@JoinColumn(name = "id_adresse")
 	private Adresse adresse;
-	
+
 	public Session() {
 		super();
-		//TODO Auto-generated constructor stub
 	}
 
-	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur,
-			Adresse adresse) {
+	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur, Adresse adresse) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
@@ -98,6 +96,4 @@ public class Session {
 				+ formation + ", formateur=" + formateur + ", adresse=" + adresse + "]";
 	}
 
-	
-	
 }

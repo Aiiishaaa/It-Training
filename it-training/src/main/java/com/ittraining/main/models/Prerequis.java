@@ -4,7 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "prerequis")
@@ -15,23 +19,25 @@ public class Prerequis {
 	private Integer idPrerequis;
 	private String qcmPrerequis;
 	private boolean validationPrerequis;
-	
+
+	@OneToOne
+	@JoinColumn(name = "id_formation")
+	@JsonIgnore
+	private Formation formation;
+
 	public Prerequis() {
 		super();
 	}
 
-	public Prerequis(String qcmPrerequis, boolean validationPrerequis) {
+	public Prerequis(String qcmPrerequis, boolean validationPrerequis, Formation formation) {
 		super();
 		this.qcmPrerequis = qcmPrerequis;
 		this.validationPrerequis = validationPrerequis;
+		this.formation = formation;
 	}
 
 	public Integer getIdPrerequis() {
 		return idPrerequis;
-	}
-
-	public void setIdPrerequis(Integer idPrerequis) {
-		this.idPrerequis = idPrerequis;
 	}
 
 	public String getQcmPrerequis() {
@@ -50,10 +56,18 @@ public class Prerequis {
 		this.validationPrerequis = validationPrerequis;
 	}
 
+	public Formation getFormation() {
+		return formation;
+	}
+
+	public void setFormation(Formation formation) {
+		this.formation = formation;
+	}
+
 	@Override
 	public String toString() {
 		return "Prerequis [idPrerequis=" + idPrerequis + ", qcmPrerequis=" + qcmPrerequis + ", validationPrerequis="
-				+ validationPrerequis + "]";
+				+ validationPrerequis + ", formation=" + formation + "]";
 	}
 
 }

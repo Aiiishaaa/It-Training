@@ -18,22 +18,22 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idFormation;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_theme", referencedColumnName = "id_theme")
+	@ManyToOne
+	@JoinColumn(name = "id_theme")
 	private Theme theme;
 	private double prix;
 
-	@OneToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_prerequis", referencedColumnName = "id_prerequis")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_prerequis")
 	private Prerequis prerequis;
 	private String descriptionBreve;
 	private String descriptionLongue;
 	private String programme;
 
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_employe", referencedColumnName = "id_employe")
+	@ManyToOne
+	@JoinColumn(name = "id_employe")
 	private Employe employe;
-	
+
 	private String intitule;
 	private int nbHeures;
 
@@ -41,8 +41,8 @@ public class Formation {
 		super();
 	}
 
-	public Formation(Theme theme, double prix, Prerequis prerequis, String descriptionBreve,
-			String descriptionLongue, String programme, Employe employe, String intitule, int nbHeures) {
+	public Formation(Theme theme, double prix, Prerequis prerequis, String descriptionBreve, String descriptionLongue,
+			String programme, Employe employe, String intitule, int nbHeures) {
 		super();
 		this.theme = theme;
 		this.prix = prix;
@@ -139,5 +139,4 @@ public class Formation {
 				+ nbHeures + "]";
 	}
 
-	
 }

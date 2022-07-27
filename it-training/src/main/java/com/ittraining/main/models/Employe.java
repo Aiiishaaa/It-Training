@@ -1,10 +1,10 @@
 package com.ittraining.main.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,9 +25,9 @@ public class Employe {
 	private String passwordEmploye;
 	private String emailEmploye;
 
-	@ManyToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
-	@JoinColumn(name = "id_role", referencedColumnName = "id_role")
-	private List<Role> roles;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_role")
+	private List<Role> roles = new ArrayList<Role>();
 
 	public Employe(String nomEmploye, String prenomEmploye, String passwordEmploye, String emailEmploye,
 			List<Role> roles) {

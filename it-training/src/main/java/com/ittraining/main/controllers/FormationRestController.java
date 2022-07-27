@@ -6,6 +6,7 @@ import java.util.Optional;
 import com.ittraining.main.dao.ThemeRepository;
 import com.ittraining.main.models.Formation;
 import com.ittraining.main.services.IFormationService;
+import com.ittraining.main.services.IThemeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,8 +27,8 @@ public class FormationRestController {
 	@Autowired
 	private IFormationService formationService;
 	
-	@Autowired
-	
+//	@Autowired
+//	private IThemeService themeService;
 	
 	@GetMapping(value = "/formations")
 	public ResponseEntity<List<Formation>> recupererFormations() {
@@ -70,7 +71,7 @@ public class FormationRestController {
 	
 	@GetMapping(value = "/themes/{idTheme}/formations")
 	public ResponseEntity<List<Formation>> recupererFormationsParTheme(@PathVariable Integer idTheme) {
-		return themeRepository
+		
 		return new ResponseEntity<List<Formation>>(formationService.findAllByTheme(idTheme), HttpStatus.OK);
 	}
 	

@@ -2,6 +2,7 @@ package com.ittraining.main.models;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,9 +18,9 @@ public class Theme {
 
 	private Integer idTheme;
 	private String nomTheme;
-	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_domaine", referencedColumnName = "id_domaine")
+
+	@ManyToOne
+	@JoinColumn(name = "id_domaine")
 	private Domaine domaine;
 
 	public Theme() {
@@ -56,7 +57,5 @@ public class Theme {
 	public String toString() {
 		return "Theme [idTheme=" + idTheme + ", nomTheme=" + nomTheme + ", domaine=" + domaine + "]";
 	}
-
-	
 
 }

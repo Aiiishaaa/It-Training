@@ -1,6 +1,5 @@
 package com.ittraining.main.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "inscription")
 public class Inscription {
@@ -16,18 +17,19 @@ public class Inscription {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idInscription;
-	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_client", referencedColumnName = "id_client")
+
+	@ManyToOne
+	@JoinColumn(name = "id_client")
+	@JsonIgnore
 	private Client client;
-	
-	@ManyToOne(cascade = { CascadeType.ALL })
-	@JoinColumn(name = "id_session", referencedColumnName = "id_session")
+
+	@ManyToOne
+	@JoinColumn(name = "id_session")
+	@JsonIgnore
 	private Session session;
 
 	public Inscription() {
 		super();
-		//TODO Auto-generated constructor stub
 	}
 
 	public Inscription(Client client, Session session) {
@@ -61,5 +63,4 @@ public class Inscription {
 		return "Inscription [idInscription=" + idInscription + ", client=" + client + ", session=" + session + "]";
 	}
 
-	
 }
