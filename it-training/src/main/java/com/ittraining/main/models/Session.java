@@ -23,29 +23,29 @@ public class Session {
 	
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_formation", referencedColumnName = "id_formation")
-	private Integer idFormation;
+	private Formation formation;
 	
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_formateur", referencedColumnName = "id_formateur")
-	private Integer idFormateur;
+	private Formateur formateur;
 	
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_adresse", referencedColumnName = "id_adresse")
-	private Integer idAdresse;
+	private Adresse adresse;
 	
 	public Session() {
 		super();
 		//TODO Auto-generated constructor stub
 	}
 
-	public Session(LocalDate dateDebut, LocalDate dateFin, Integer idFormation, Integer idFormateur,
-			Integer idAdresse) {
+	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur,
+			Adresse adresse) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.idFormation = idFormation;
-		this.idFormateur = idFormateur;
-		this.idAdresse = idAdresse;
+		this.formation = formation;
+		this.formateur = formateur;
+		this.adresse = adresse;
 	}
 
 	public Integer getIdSession() {
@@ -68,35 +68,36 @@ public class Session {
 		this.dateFin = dateFin;
 	}
 
-	public Integer getIdFormation() {
-		return idFormation;
+	public Formation getFormation() {
+		return formation;
 	}
 
-	public void setIdFormation(Integer idFormation) {
-		this.idFormation = idFormation;
+	public void setFormation(Formation formation) {
+		this.formation = formation;
 	}
 
-	public Integer getIdFormateur() {
-		return idFormateur;
+	public Formateur getFormateur() {
+		return formateur;
 	}
 
-	public void setIdFormateur(Integer idFormateur) {
-		this.idFormateur = idFormateur;
+	public void setFormateur(Formateur formateur) {
+		this.formateur = formateur;
 	}
 
-	public Integer getIdAdresse() {
-		return idAdresse;
+	public Adresse getAdresse() {
+		return adresse;
 	}
 
-	public void setIdAdresse(Integer idAdresse) {
-		this.idAdresse = idAdresse;
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
 	}
 
 	@Override
 	public String toString() {
-		return "Session [idSession=" + idSession + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin
-				+ ", idFormation=" + idFormation + ", idFormateur=" + idFormateur + ", idAdresse=" + idAdresse + "]";
+		return "Session [idSession=" + idSession + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", formation="
+				+ formation + ", formateur=" + formateur + ", adresse=" + adresse + "]";
 	}
+
 	
 	
 }

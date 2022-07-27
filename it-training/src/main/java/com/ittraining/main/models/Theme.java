@@ -20,16 +20,16 @@ public class Theme {
 	
 	@ManyToOne(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "id_domaine", referencedColumnName = "id_domaine")
-	private Integer idDomaine;
+	private Domaine domaine;
 
 	public Theme() {
 		super();
 	}
 
-	public Theme(String nomTheme, Integer idDomaine) {
+	public Theme(String nomTheme, Domaine domaine) {
 		super();
 		this.nomTheme = nomTheme;
-		this.idDomaine = idDomaine;
+		this.domaine = domaine;
 	}
 
 	public Integer getIdTheme() {
@@ -44,17 +44,19 @@ public class Theme {
 		this.nomTheme = nomTheme;
 	}
 
-	public Integer getIdDomaine() {
-		return idDomaine;
+	public Domaine getDomaine() {
+		return domaine;
 	}
 
-	public void setIdDomaine(Integer idDomaine) {
-		this.idDomaine = idDomaine;
+	public void setDomaine(Domaine domaine) {
+		this.domaine = domaine;
 	}
 
 	@Override
 	public String toString() {
-		return "Theme [idTheme=" + idTheme + ", nomTheme=" + nomTheme + ", idDomaine=" + idDomaine + "]";
+		return "Theme [idTheme=" + idTheme + ", nomTheme=" + nomTheme + ", domaine=" + domaine + "]";
 	}
+
+	
 
 }

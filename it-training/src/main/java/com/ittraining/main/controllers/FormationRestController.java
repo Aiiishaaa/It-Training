@@ -3,6 +3,7 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import com.ittraining.main.dao.ThemeRepository;
 import com.ittraining.main.models.Formation;
 import com.ittraining.main.services.IFormationService;
 
@@ -25,6 +26,9 @@ public class FormationRestController {
 	@Autowired
 	private IFormationService formationService;
 	
+	@Autowired
+	
+	
 	@GetMapping(value = "/formations")
 	public ResponseEntity<List<Formation>> recupererFormations() {
 		return new ResponseEntity<List<Formation>>(formationService.findAll(), HttpStatus.OK);
@@ -46,9 +50,9 @@ public class FormationRestController {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec id : " + idFormation));
 		formationACorriger.setDescriptionBreve(formation.getDescriptionBreve());
 		formationACorriger.setDescriptionLongue(formation.getDescriptionLongue());
-		formationACorriger.setIdEmploye(formation.getIdEmploye());
-		formationACorriger.setIdPrerequis(formation.getIdPrerequis());
-		formationACorriger.setIdTheme(formation.getIdTheme());
+		formationACorriger.setEmploye(formation.getEmploye());
+		formationACorriger.setPrerequis(formation.getPrerequis());
+		formationACorriger.setTheme(formation.getTheme());
 		formationACorriger.setIntitule(formation.getIntitule());
 		formationACorriger.setPrix(formation.getPrix());
 		formationACorriger.setProgramme(formation.getProgramme());
@@ -66,6 +70,7 @@ public class FormationRestController {
 	
 	@GetMapping(value = "/themes/{idTheme}/formations")
 	public ResponseEntity<List<Formation>> recupererFormationsParTheme(@PathVariable Integer idTheme) {
+		return themeRepository
 		return new ResponseEntity<List<Formation>>(formationService.findAllByTheme(idTheme), HttpStatus.OK);
 	}
 	
