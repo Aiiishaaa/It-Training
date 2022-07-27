@@ -13,22 +13,12 @@ import com.ittraining.main.models.Formation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service(value = "formationService")
 public class FormationService implements IFormationService {
-	
+
 	@Autowired
 	private FormationRepository formationRepository;
-	
-//	@Autowired
-//	private ThemeRepository themeRepository;
-//
-//	@Autowired
-//	private DomaineRepository domaineRepository;
-//	
-//	@Autowired
-//	private EmployeRepository employeRepository;
-	
+
 	@Override
 	public List<Formation> findAll() {
 		return formationRepository.findAll();
@@ -52,23 +42,21 @@ public class FormationService implements IFormationService {
 	@Override
 	public void removeById(Integer id) {
 		formationRepository.deleteById(id);
-		
 	}
 
 	@Override
-	public List<Formation> findAllByTheme(Integer idTheme) {
-		return formationRepository.findAllByTheme(idTheme);
+	public List<Formation> findAllByThemeId(Integer idTheme) {
+		return formationRepository.findAllByThemeId(idTheme);
 	}
 
 	@Override
-	public List<Formation> findAllByDomaine(Integer idDomaine) {
-		return formationRepository.findAllByDomaine(idDomaine);
+	public List<Formation> findAllByDomaineId(Integer idDomaine) {
+		return formationRepository.findAllByDomaineId(idDomaine);
 	}
 
 	@Override
-	public List<Formation> findAllByEmploye(Integer idEmploye) {
-		return formationRepository.findAllByEmploye(idEmploye);
+	public List<Formation> findAllByEmployeId(Integer idEmploye) {
+		return formationRepository.findAllByEmployeId(idEmploye);
 	}
 
-	
 }
