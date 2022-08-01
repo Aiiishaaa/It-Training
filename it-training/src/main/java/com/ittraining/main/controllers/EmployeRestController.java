@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -41,36 +42,36 @@ public class EmployeRestController {
 		return new ResponseEntity<Optional<Employe>>(employeService.findById(idEmploye), HttpStatus.OK);
 	}
 	
-//	@GetMapping(value = "/roles/{idRole}/employes")
-//	public ResponseEntity<List<Employe>> recupererEmployeParRole(@PathVariable Integer idRole) {
-//		roleService.findById(idRole).orElseThrow(
-//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Rôle non trouvé avec Id " + idRole));
-//		List<Employe> employesParRole = employeService.findAllByRoleId(idRole);
-//		return new ResponseEntity<>(employesParRole, HttpStatus.OK);
-//	}
-//	
-//	@PostMapping(value = "/employes")
-//	public ResponseEntity<Employe> ajouterEmploye(Employe employe) {
-//		return new ResponseEntity<Employe>(employeService.add(employe), HttpStatus.OK);
-//	}
-//	
-//	@PutMapping(value = "/employes/{id}")
-//	public ResponseEntity<Employe> modifierEmploye(@PathVariable Integer idEmploye, Employe employe) {
-//		Employe employeACorriger = employeService.findById(idEmploye).orElseThrow(
-//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employe non trouvé avec Id " + idEmploye));
-//		employeACorriger.setEmailEmploye(employe.getEmailEmploye());
-//		employeACorriger.setRoles(employeACorriger.getRoles());
-//		employeACorriger.setNomEmploye(employe.getNomEmploye());
-//		employeACorriger.setPasswordEmploye(employe.getPasswordEmploye());
-//		employeACorriger.setPrenomEmploye(employe.getPrenomEmploye());
-//		return new ResponseEntity<Employe>(employeService.update(employeACorriger), HttpStatus.OK);
-//	}
-//	
-//	@DeleteMapping(value = "/employes/{id}")
-//	public ResponseEntity<?> supprimerEmploye(@PathVariable Integer idEmploye) {
-//		Employe employeASupprimer = employeService.findById(idEmploye).orElseThrow(
-//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//		employeService.removeById(employeASupprimer.getIdEmploye());
-//		return new ResponseEntity<>("L'employé a bien été supprimé.", HttpStatus.OK);
-//	}
+	@GetMapping(value = "/roles/{idRole}/employes")
+	public ResponseEntity<List<Employe>> recupererEmployeParRole(@PathVariable Integer idRole) {
+		roleService.findById(idRole).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Rôle non trouvé avec Id " + idRole));
+		List<Employe> employesParRole = employeService.findAllByRolesId(idRole);
+		return new ResponseEntity<>(employesParRole, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/employes")
+	public ResponseEntity<Employe> ajouterEmploye(@RequestBody Employe employe) {
+		return new ResponseEntity<Employe>(employeService.add(employe), HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/employes/{id}")
+	public ResponseEntity<Employe> modifierEmploye(@PathVariable Integer idEmploye, @RequestBody Employe employe) {
+		Employe employeACorriger = employeService.findById(idEmploye).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employe non trouvé avec Id " + idEmploye));
+		employeACorriger.setEmailEmploye(employe.getEmailEmploye());
+		employeACorriger.setRoles(employeACorriger.getRoles());
+		employeACorriger.setNomEmploye(employe.getNomEmploye());
+		employeACorriger.setPasswordEmploye(employe.getPasswordEmploye());
+		employeACorriger.setPrenomEmploye(employe.getPrenomEmploye());
+		return new ResponseEntity<Employe>(employeService.update(employeACorriger), HttpStatus.OK);
+	}
+	
+	@DeleteMapping(value = "/employes/{id}")
+	public ResponseEntity<?> supprimerEmploye(@PathVariable Integer idEmploye) {
+		Employe employeASupprimer = employeService.findById(idEmploye).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		employeService.removeById(employeASupprimer.getId());
+		return new ResponseEntity<>("L'employé a bien été supprimé.", HttpStatus.OK);
+	}
 }
