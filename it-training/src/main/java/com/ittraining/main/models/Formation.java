@@ -34,6 +34,7 @@ public class Formation {
 	private double prix;
 
 	@OneToMany
+	@JoinColumn(name = "id_session")
 	private List<Session> sessions = new ArrayList<Session>();
 
 	@OneToOne(cascade = CascadeType.ALL)

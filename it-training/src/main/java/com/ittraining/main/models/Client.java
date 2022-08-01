@@ -9,8 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 @Entity
@@ -27,7 +25,6 @@ public class Client {
 	private String emailClient;
 
 	@OneToMany(mappedBy = "clients")
-	@JsonIgnore
 	private List<Session> sessions = new ArrayList<Session>();
 
 	public Client() {

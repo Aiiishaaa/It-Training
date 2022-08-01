@@ -3,8 +3,8 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.ittraining.main.dao.AdresseRepository;
 import com.ittraining.main.models.Adresse;
+import com.ittraining.main.services.IAdresseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -23,47 +24,48 @@ import org.springframework.web.server.ResponseStatusException;
 public class AdresseRestController {
 
 	@Autowired
-	private AdresseRepository adresseRepository;
-	
+	private IAdresseService adresseService;
+
 	@GetMapping(value = "/adresses")
-	public ResponseEntity<List<Adresse>> findAll() {
-		return new ResponseEntity<List<Adresse>>(adresseRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Adresse>> recupererAdresses() {
+		return new ResponseEntity<List<Adresse>>(adresseService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/adresses/{id}")
-	public ResponseEntity<Optional<Adresse>> findById(@PathVariable Integer idAdresse) {
-		return new ResponseEntity<Optional<Adresse>>(adresseRepository.findById(idAdresse), HttpStatus.OK);
+	public ResponseEntity<Optional<Adresse>> recupererAdresseParId(@PathVariable("id") Integer idAdresse) {
+		return new ResponseEntity<Optional<Adresse>>(adresseService.findById(idAdresse), HttpStatus.OK);
 	}
-	
+
 	@PostMapping(value = "/adresses")
-	public ResponseEntity<Adresse> ajouterTheme(Adresse adresse) {
-		return new ResponseEntity<Adresse>(adresseRepository.save(adresse), HttpStatus.OK);
+	public ResponseEntity<Adresse> ajouterAdresse(@RequestBody Adresse adresse) {
+		return new ResponseEntity<Adresse>(adresseService.add(adresse), HttpStatus.OK);
 	}
-	
+
 	@PutMapping(value = "/adresses/{id}")
-	public ResponseEntity<Adresse> update(@PathVariable Integer idAdresse, Adresse adresse) {
-		Adresse adresseToUpdate = adresseRepository.findById(idAdresse).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+	public ResponseEntity<Adresse> modifierAdresse(@PathVariable("id") Integer idAdresse, @RequestBody Adresse adresse) {
+		Adresse adresseToUpdate = adresseService.findById(idAdresse).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Adresse non trouvée avec id" + idAdresse));
 		adresseToUpdate.setNoAdresse(adresse.getNoAdresse());
 		adresseToUpdate.setRue(adresse.getRue());
 		adresseToUpdate.setCodePostal(adresse.getCodePostal());
 		adresseToUpdate.setVille(adresse.getVille());
-		return new ResponseEntity<Adresse>(adresseRepository.save(adresseToUpdate), HttpStatus.OK);
+		adresseToUpdate.setSessions(adresse.getSessions());
+		return new ResponseEntity<Adresse>(adresseService.update(adresseToUpdate), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping(value = "/adresses/{id}")
-	public ResponseEntity<?> removeById(@PathVariable Integer id) {
-		Adresse adresseToRemove = adresseRepository.findById(id).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		adresseRepository.deleteById(adresseToRemove.getId());
+	public ResponseEntity<?> supprimerAdresseParId(@PathVariable("id") Integer id) {
+		Adresse adresseToRemove = adresseService.findById(id).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Adresse non trouvée avec id" + id));
+		adresseService.removeById(adresseToRemove.getId());
 		return new ResponseEntity<>("L'adresse a bien été supprimé.", HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/sessions/{id}/adresse")
 	public ResponseEntity<Adresse> findOneBySessionsId(@PathVariable("id") Integer id) {
-		adresseRepository.findById(id).orElseThrow(
+		adresseService.findById(id).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Person not found with id : " + id));
-		Adresse adresse = adresseRepository.findOneBySessionsId(id);
+		Adresse adresse = adresseService.findOneBySessionsId(id);
 		return new ResponseEntity<Adresse>(adresse, HttpStatus.OK);
 	}
 }

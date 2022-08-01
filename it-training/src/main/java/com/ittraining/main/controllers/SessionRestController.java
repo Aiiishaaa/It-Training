@@ -41,12 +41,12 @@ public class SessionRestController {
 	}
 	
 	@GetMapping(value = "/session/{id}")
-	public ResponseEntity<Optional<Session>> recupererSessionParId(@PathVariable Integer idSession) {
+	public ResponseEntity<Optional<Session>> recupererSessionParId(@PathVariable("id") Integer idSession) {
 		return new ResponseEntity<Optional<Session>> (sessionService.findById(idSession), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/formations/{id}/sessions")
-	public ResponseEntity<List<Session>> recupererSessionsParFormation(@PathVariable Integer idFormation) {
+	public ResponseEntity<List<Session>> recupererSessionsParFormation(@PathVariable("id") Integer idFormation) {
 		formationService.findById(idFormation).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec Id " + idFormation));
 		List<Session> sessionsParFormation = sessionService.findAllByFormationId(idFormation);
@@ -54,7 +54,7 @@ public class SessionRestController {
 	}
 	
 	@GetMapping(value = "/clients/{id}/sessions")
-	public ResponseEntity<List<Session>> recupererSessionsParClient(@PathVariable Integer idClient) {
+	public ResponseEntity<List<Session>> recupererSessionsParClient(@PathVariable("id") Integer idClient) {
 		clientService.findById(idClient).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client non trouvé avec Id " + idClient));
 		List<Session> sessionsParClient = sessionService.findAllByClientsId(idClient);
@@ -67,7 +67,7 @@ public class SessionRestController {
 	}
 	
 	@PutMapping(value = "/session/{id}")
-	public ResponseEntity<Session> modifierSession(@PathVariable Integer idSession, @RequestBody Session session) {
+	public ResponseEntity<Session> modifierSession(@PathVariable("id") Integer idSession, @RequestBody Session session) {
 		Session sessionACorriger = sessionService.findById(idSession).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		sessionACorriger.setAdresse(session.getAdresse());
@@ -80,7 +80,7 @@ public class SessionRestController {
 	}
 	
 	@DeleteMapping(value = "/sessions/{id}")
-	public ResponseEntity<?> supprimerSession(@PathVariable Integer idSession) {
+	public ResponseEntity<?> supprimerSession(@PathVariable("id") Integer idSession) {
 		Session sessionASupprimer = sessionService.findById(idSession).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Session non trouvée avec Id " + idSession));
 		sessionService.removeById(sessionASupprimer.getId());

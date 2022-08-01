@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -22,7 +23,7 @@ public class Role {
 	private String designationRole;
 
 	@ManyToMany
-	@JsonIgnore
+	@JoinColumn(name = "id_employe")
 	private List<Employe> employes = new ArrayList<Employe>();
 
 	public Role() {
