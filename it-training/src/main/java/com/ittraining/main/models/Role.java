@@ -29,9 +29,8 @@ public class Role {
 		super();
 	}
 
-	public Role(Integer id, String designationRole, List<Employe> employes) {
+	public Role(String designationRole, List<Employe> employes) {
 		super();
-		this.id = id;
 		this.designationRole = designationRole;
 		this.employes = employes;
 	}

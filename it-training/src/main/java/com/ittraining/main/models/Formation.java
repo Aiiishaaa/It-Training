@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+
 @Entity
 @Table(name = "formations")
 public class Formation {
@@ -38,7 +40,9 @@ public class Formation {
 	@JoinColumn(name = "id_prerequis")
 	private Prerequis prerequis;
 	private String descriptionBreve;
+	@Type(type = "text")
 	private String descriptionLongue;
+	@Type(type = "text")
 	private String programme;
 
 	@ManyToOne
