@@ -1,5 +1,8 @@
 package com.ittraining.main.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,13 +25,13 @@ public class Role {
 	@ManyToMany
 	@JoinColumn(name = "id_employe")
 	@JsonIgnore
-	private Employe employe;
+	private List<Employe> employe = new ArrayList<Employe>();
 
 	public Role() {
 		super();
 	}
 
-	public Role(String designationRole, Employe employe) {
+	public Role(String designationRole, List<Employe> employe) {
 		super();
 		this.designationRole = designationRole;
 		this.employe = employe;
@@ -36,6 +39,10 @@ public class Role {
 
 	public Integer getIdRole() {
 		return idRole;
+	}
+
+	public void setIdRole(Integer idRole) {
+		this.idRole = idRole;
 	}
 
 	public String getDesignationRole() {
@@ -46,11 +53,11 @@ public class Role {
 		this.designationRole = designationRole;
 	}
 
-	public Employe getEmploye() {
+	public List<Employe> getEmploye() {
 		return employe;
 	}
 
-	public void setEmploye(Employe employe) {
+	public void setEmploye(List<Employe> employe) {
 		this.employe = employe;
 	}
 
