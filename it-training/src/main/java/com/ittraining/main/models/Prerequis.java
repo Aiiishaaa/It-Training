@@ -48,6 +48,7 @@ public class Prerequis {
 		this.qcmPrerequis = qcmPrerequis;
 	}
 
+	
 	public boolean isValidationPrerequis() {
 		return validationPrerequis;
 	}

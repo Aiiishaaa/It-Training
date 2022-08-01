@@ -26,18 +26,19 @@ public class ThemeService implements IThemeService {
 	}
 
 	@Override
-	public Theme add(Theme object) {
-		return themeRepository.save(object);
+	public Theme add(Theme theme) {
+		return themeRepository.save(theme);
 	}
 
 	@Override
-	public Theme update(Theme object) {
-		return themeRepository.save(object);
+	public Theme update(Theme theme) {
+		return themeRepository.save(theme);
 	}
 
 	@Override
 	public void removeById(Integer id) {
 		themeRepository.deleteById(id);
-
 	}
+	
+	
 }

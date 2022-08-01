@@ -3,12 +3,8 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.ittraining.main.dao.ThemeRepository;
 import com.ittraining.main.models.Formateur;
-import com.ittraining.main.models.Formation;
-import com.ittraining.main.services.FormateurService;
 import com.ittraining.main.services.IFormateurService;
-import com.ittraining.main.services.IThemeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,4 +41,23 @@ public class FormateurRestController {
 		return new ResponseEntity<Formateur>(formateurService.add(formateur), HttpStatus.OK);
 	}
 	
+	@PutMapping(value = "/formateurs/{id}")
+	public ResponseEntity<Formateur> modifierFormateur(@PathVariable Integer idFormateur, Formateur formateur) {
+	 Formateur formateurACorriger = formateurService.findById(idFormateur).orElseThrow(
+	 			() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+	 	formateurACorriger.setNomFormateur(formateur.getNomFormateur());
+	 	formateurACorriger.setPrenomFormateur(formateur.getPrenomFormateur());
+	 	formateurACorriger.setEmailFormateur(formateur.getEmailFormateur());
+	 	formateurACorriger.setPasswordFormateur(formateur.getPasswordFormateur());
+	 	formateurACorriger.setSessions(formateur.getSessions());
+	 	return new ResponseEntity<Formateur> (formateurService.add(formateurACorriger), HttpStatus.OK);
+	 }
+	
+	@DeleteMapping(value = "/formateurs/{id}")
+	public ResponseEntity<?> supprimerFormateur(@PathVariable Integer idFormateur) {
+		Formateur formateurASupprimer= formateurService.findById(idFormateur).orElseThrow(		
+				 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		formateurService.removeById(formateurASupprimer.getId());
+		return new ResponseEntity<> ("Le formateur a bien été supprimé.", HttpStatus.OK);
+	}
 }
