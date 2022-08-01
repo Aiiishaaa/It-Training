@@ -23,7 +23,7 @@
     background: -o-linear-gradient(45deg, rgba(32, 124, 229, 0) 0%, rgba(146, 95, 206, 0) 55%, #f048bb 100%);
     background: -ms-linear-gradient(45deg, rgba(32, 124, 229, 0) 0%, rgba(146, 95, 206, 0) 55%, #f048bb 100%);
     background: linear-gradient(45deg, rgba(32, 124, 229, 0) 0%, rgba(146, 95, 206, 0) 55%, #f048bb 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#207ce5', endColorstr='#f048bb', GradientType=1);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#207ce5', endColorstr='#f048bb', GradientType=1);
 }
 
 .hero-wrap.hero-wrap-2 {
@@ -46,7 +46,7 @@
     background: -webkit-linear-gradient(315deg, #ce4be8 0%, #207ce5 100%);
     background: -o-linear-gradient(315deg, #ce4be8 0%, #207ce5 100%);
     background: linear-gradient(135deg, #ce4be8 0%, #207ce5 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce4be8', endColorstr='#207ce5', GradientType=1);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ce4be8', endColorstr='#207ce5', GradientType=1);
 }
 
 .hero-wrap.hero-wrap-2 .slider-text {
@@ -552,7 +552,6 @@
     .aside-stretch {
         background: transparent;
     }
-
     .aside-stretch:after {
         background: transparent;
         display: none;
