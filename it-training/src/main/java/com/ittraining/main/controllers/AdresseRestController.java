@@ -51,11 +51,19 @@ public class AdresseRestController {
 		return new ResponseEntity<Adresse>(adresseRepository.save(adresseToUpdate), HttpStatus.OK);
 	}
 	
-//	@DeleteMapping(value = "/adresses/{id}")
-//	public ResponseEntity<?> removeById(@PathVariable Integer idAdresse) {
-////		Adresse adresseToRemove = adresseRepository.findById(idAdresse).orElseThrow(
-////				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-////		adresseRepository.deleteById(adresseToRemove.getIdAdresse());
-//		return new ResponseEntity<>("L'adresse a bien été supprimé.", HttpStatus.OK);
-//	}
+	@DeleteMapping(value = "/adresses/{id}")
+	public ResponseEntity<?> removeById(@PathVariable Integer id) {
+		Adresse adresseToRemove = adresseRepository.findById(id).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		adresseRepository.deleteById(adresseToRemove.getId());
+		return new ResponseEntity<>("L'adresse a bien été supprimé.", HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/sessions/{id}/adresse")
+	public ResponseEntity<Adresse> findOneBySessionsId(@PathVariable("id") Integer id) {
+		adresseRepository.findById(id).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Person not found with id : " + id));
+		Adresse adresse = adresseRepository.findOneBySessionsId(id);
+		return new ResponseEntity<Adresse>(adresse, HttpStatus.OK);
+	}
 }
