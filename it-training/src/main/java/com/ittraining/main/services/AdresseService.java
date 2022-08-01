@@ -17,40 +17,32 @@ public class AdresseService implements IAdresseService {
 
 	@Override
 	public List<Adresse> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return adresseRepository.findAll();
 	}
 
 	@Override
-	public Optional<Adresse> findById(Integer idAdresse) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+	public Optional<Adresse> findById(Integer id) {
+		return adresseRepository.findById(id);
 	}
 
 	@Override
-	public Adresse add(Adresse role) {
-		// TODO Auto-generated method stub
-		return null;
+	public Adresse add(Adresse adresse) {
+		return adresseRepository.save(adresse);
 	}
 
 	@Override
-	public Adresse update(Adresse role) {
-		// TODO Auto-generated method stub
-		return null;
+	public Adresse update(Adresse adresse) {
+		return adresseRepository.save(adresse);
 	}
 
 	@Override
 	public void removeById(Integer id) {
-		// TODO Auto-generated method stub
-		
+		adresseRepository.deleteById(id);
 	}
 
 	@Override
-	public Adresse findOneBySessionsId(Integer idSession) {
-		// TODO Auto-generated method stub
-		return null;
+	public Adresse findOneBySessionsId(Integer id) {
+		return adresseRepository.findOneBySessionsId(id);
 	}
-	
-	
 
 }

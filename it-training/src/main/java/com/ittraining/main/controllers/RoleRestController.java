@@ -47,13 +47,21 @@ public class RoleRestController {
 		roleToUpdate.setDesignationRole(role.getDesignationRole());
 		return new ResponseEntity<Role>(roleRepository.save(roleToUpdate), HttpStatus.OK);
 	}
-//	
-//	@DeleteMapping(value = "/roles/{id}")
-//	public ResponseEntity<?> removeById(@PathVariable Integer idRole) {
-//		Role roleToRemove = roleRepository.findById(idRole).orElseThrow(
-//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//		roleRepository.deleteById(roleToRemove.getIdRole());
-//		return new ResponseEntity<>("Le role a bien été supprimé.", HttpStatus.OK);
-//	}
+	
+	@DeleteMapping(value = "/roles/{id}")
+	public ResponseEntity<?> removeById(@PathVariable Integer idRole) {
+		Role roleToRemove = roleRepository.findById(idRole).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		roleRepository.deleteById(roleToRemove.getId());
+		return new ResponseEntity<>("Le role a bien été supprimé.", HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/employes/{id}/roles")
+	public ResponseEntity<List<Role>> findAllByEmployesId(@PathVariable("id") Integer id) {
+		roleRepository.findById(id).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Person not found with id : " + id));
+		List<Role> roles = roleRepository.findAllByEmployesId(id);
+		return new ResponseEntity<>(roles, HttpStatus.OK);
+	}
 	
 }
