@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.ittraining.main.models.Client;
 import com.ittraining.main.services.IClientService;
+import com.ittraining.main.services.ISessionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,9 @@ public class ClientRestController {
 	@Autowired
 	private IClientService clientService;
 	
+	@Autowired
+	private ISessionService sessionService;
+	
 	@GetMapping(value = "/clients")
 	public ResponseEntity<List<Client>> recupererClients() {
 		return new ResponseEntity<List<Client>> (clientService.findAll(), HttpStatus.OK);
@@ -37,7 +41,10 @@ public class ClientRestController {
 
 	@GetMapping(value = "/sessions/{id}/clients")
 	public ResponseEntity<List<Client>> recupererClientParSession(@PathVariable Integer idSession) {
-		return new ResponseEntity<List<Client>> (clientService.findAllBySession(idSession), HttpStatus.OK);
+		sessionService.findById(idSession).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Session non trouvée avec Id " + idSession));
+		List<Client> clientsParSession = clientService.findAllBySessionId(idSession);
+		return new ResponseEntity<> (clientsParSession, HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/clients")

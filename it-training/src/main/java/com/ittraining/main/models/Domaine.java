@@ -24,7 +24,7 @@ public class Domaine {
 	private String nomDomaine;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_theme")
+//	@JoinColumn(name = "id_theme")
 	@JsonIgnore
 	private List<Theme> themes = new ArrayList<Theme>();
 

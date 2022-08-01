@@ -25,7 +25,7 @@ public class Adresse {
 	private String ville;
 
 	@OneToMany
-	@JoinColumn(name = "id_session")
+//	@JoinColumn(name = "id_session")
 	@JsonIgnore
 	private List<Session> sessions = new ArrayList<Session>();
 

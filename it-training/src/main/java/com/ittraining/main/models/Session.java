@@ -1,6 +1,8 @@
 package com.ittraining.main.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -17,7 +21,7 @@ public class Session {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idSession;
+	private Integer id;
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 
@@ -32,22 +36,29 @@ public class Session {
 	@ManyToOne
 	@JoinColumn(name = "id_adresse")
 	private Adresse adresse;
+	
+	@ManyToMany
+	@JoinTable(name = "sessions_clients", joinColumns = { @JoinColumn(name = "id_session") }, inverseJoinColumns = { @JoinColumn(name = "id_client") })
+	private List<Client> clients = new ArrayList<Client>();
 
 	public Session() {
 		super();
 	}
 
-	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur, Adresse adresse) {
+	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur,
+			Adresse adresse, List<Client> clients) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.formation = formation;
 		this.formateur = formateur;
 		this.adresse = adresse;
+		this.clients = clients;
 	}
 
-	public Integer getIdSession() {
-		return idSession;
+
+	public Integer getId() {
+		return id;
 	}
 
 	public LocalDate getDateDebut() {
@@ -90,10 +101,21 @@ public class Session {
 		this.adresse = adresse;
 	}
 
-	@Override
-	public String toString() {
-		return "Session [idSession=" + idSession + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", formation="
-				+ formation + ", formateur=" + formateur + ", adresse=" + adresse + "]";
+	public List<Client> getClients() {
+		return clients;
 	}
 
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
+	@Override
+	public String toString() {
+		return "Session [idSession=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", formation="
+				+ formation + ", formateur=" + formateur + ", adresse=" + adresse + ", clients=" + clients + "]";
+	}
+
+	
+
+	
 }

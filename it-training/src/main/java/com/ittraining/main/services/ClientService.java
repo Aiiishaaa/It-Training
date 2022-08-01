@@ -43,7 +43,7 @@ public class ClientService implements IClientService {
 
 	@Override
 	public List<Client> findAllBySessionId(Integer idSession) {
-		return clientRepository.findAllBySessionId(idSession);
+		return clientRepository.findAllBySessionsId(idSession);
 	}
 
 }

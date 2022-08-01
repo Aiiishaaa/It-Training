@@ -7,5 +7,5 @@ import com.ittraining.main.models.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClientRepository extends JpaRepository<Client, Integer> {
-	public List<Client> findAllBySessionId(Integer idSession);
+	public List<Client> findAllBySessionsId(Integer idSession);
 }

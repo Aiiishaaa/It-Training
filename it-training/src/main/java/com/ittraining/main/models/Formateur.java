@@ -28,7 +28,7 @@ public class Formateur {
 	private String passwordFormateur;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_session")
+//	@JoinColumn(name = "id_session")
 	@JsonIgnore
 	private List<Session> sessions = new ArrayList<Session>();
 
