@@ -51,11 +51,11 @@ public class AdresseRestController {
 		return new ResponseEntity<Adresse>(adresseRepository.save(adresseToUpdate), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/adresses/{id}")
-	public ResponseEntity<?> removeById(@PathVariable Integer idAdresse) {
-		Adresse adresseToRemove = adresseRepository.findById(idAdresse).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		adresseRepository.deleteById(adresseToRemove.getIdAdresse());
-		return new ResponseEntity<>("L'adresse a bien été supprimé.", HttpStatus.OK);
-	}
+//	@DeleteMapping(value = "/adresses/{id}")
+//	public ResponseEntity<?> removeById(@PathVariable Integer idAdresse) {
+////		Adresse adresseToRemove = adresseRepository.findById(idAdresse).orElseThrow(
+////				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+////		adresseRepository.deleteById(adresseToRemove.getIdAdresse());
+//		return new ResponseEntity<>("L'adresse a bien été supprimé.", HttpStatus.OK);
+//	}
 }

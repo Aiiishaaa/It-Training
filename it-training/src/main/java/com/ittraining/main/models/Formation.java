@@ -1,5 +1,8 @@
 package com.ittraining.main.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -16,12 +20,19 @@ public class Formation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idFormation;
+	private Integer id;
+
+	@ManyToOne
+	@JoinColumn(name = "id_domaine")
+	private Domaine domaine;
 
 	@ManyToOne
 	@JoinColumn(name = "id_theme")
 	private Theme theme;
 	private double prix;
+
+	@OneToMany
+	private List<Session> sessions = new ArrayList<Session>();
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_prerequis")
@@ -41,11 +52,14 @@ public class Formation {
 		super();
 	}
 
-	public Formation(Theme theme, double prix, Prerequis prerequis, String descriptionBreve, String descriptionLongue,
-			String programme, Employe employe, String intitule, int nbHeures) {
+	public Formation(Domaine domaine, Theme theme, double prix, List<Session> sessions, Prerequis prerequis,
+			String descriptionBreve, String descriptionLongue, String programme, Employe employe, String intitule,
+			int nbHeures) {
 		super();
+		this.domaine = domaine;
 		this.theme = theme;
 		this.prix = prix;
+		this.sessions = sessions;
 		this.prerequis = prerequis;
 		this.descriptionBreve = descriptionBreve;
 		this.descriptionLongue = descriptionLongue;
@@ -55,8 +69,16 @@ public class Formation {
 		this.nbHeures = nbHeures;
 	}
 
-	public Integer getIdFormation() {
-		return idFormation;
+	public Integer getId() {
+		return id;
+	}
+
+	public Domaine getDomaine() {
+		return domaine;
+	}
+
+	public void setDomaine(Domaine domaine) {
+		this.domaine = domaine;
 	}
 
 	public Theme getTheme() {
@@ -131,12 +153,20 @@ public class Formation {
 		this.nbHeures = nbHeures;
 	}
 
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
+
 	@Override
 	public String toString() {
-		return "Formation [idFormation=" + idFormation + ", theme=" + theme + ", prix=" + prix + ", prerequis="
-				+ prerequis + ", descriptionBreve=" + descriptionBreve + ", descriptionLongue=" + descriptionLongue
-				+ ", programme=" + programme + ", employe=" + employe + ", intitule=" + intitule + ", nbHeures="
-				+ nbHeures + "]";
+		return "Formation [id=" + id + ", domaine=" + domaine + ", theme=" + theme + ", prix=" + prix + ", sessions="
+				+ sessions + ", prerequis=" + prerequis + ", descriptionBreve=" + descriptionBreve
+				+ ", descriptionLongue=" + descriptionLongue + ", programme=" + programme + ", employe=" + employe
+				+ ", intitule=" + intitule + ", nbHeures=" + nbHeures + "]";
 	}
 
 }

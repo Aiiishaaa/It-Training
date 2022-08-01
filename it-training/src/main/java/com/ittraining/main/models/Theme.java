@@ -14,8 +14,7 @@ import javax.persistence.Table;
 public class Theme {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	private Integer idTheme;
+	private Integer id;
 	private String nomTheme;
 
 	@ManyToOne
@@ -32,8 +31,8 @@ public class Theme {
 		this.domaine = domaine;
 	}
 
-	public Integer getIdTheme() {
-		return idTheme;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomTheme() {
@@ -54,7 +53,7 @@ public class Theme {
 
 	@Override
 	public String toString() {
-		return "Theme [idTheme=" + idTheme + ", nomTheme=" + nomTheme + ", domaine=" + domaine + "]";
+		return "Theme [idTheme=" + id + ", nomTheme=" + nomTheme + ", domaine=" + domaine + "]";
 	}
 
 }

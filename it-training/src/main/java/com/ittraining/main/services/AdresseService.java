@@ -46,7 +46,7 @@ public class AdresseService implements IAdresseService {
 	}
 
 	@Override
-	public Adresse findOneBySessionId(Integer idSession) {
+	public Adresse findOneBySessionsId(Integer idSession) {
 		// TODO Auto-generated method stub
 		return null;
 	}

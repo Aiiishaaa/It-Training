@@ -13,5 +13,5 @@ public interface IAdresseService {
 	Adresse update(Adresse role);
 	void removeById(Integer id);
 	
-	Adresse findOneBySessionId(Integer idSession);
+	Adresse findOneBySessionsId(Integer idSession);
 }

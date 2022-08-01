@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,33 +20,32 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	private Integer idClient;
+	private Integer id;
 	private String nomClient;
 	private String prenomClient;
 	private String passwordClient;
 	private String emailClient;
 
-	@OneToMany
-	@JoinColumn(name = "id_inscription")
+	@OneToMany(mappedBy = "clients")
 	@JsonIgnore
-	private List<Inscription> inscriptions = new ArrayList<Inscription>();
+	private List<Session> sessions = new ArrayList<Session>();
 
 	public Client() {
 		super();
 	}
 
 	public Client(String nomClient, String prenomClient, String passwordClient, String emailClient,
-			List<Inscription> inscriptions) {
+			List<Session> sessions) {
 		super();
 		this.nomClient = nomClient;
 		this.prenomClient = prenomClient;
 		this.passwordClient = passwordClient;
 		this.emailClient = emailClient;
-		this.inscriptions = inscriptions;
+		this.sessions = sessions;
 	}
 
-	public Integer getIdClient() {
-		return idClient;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomClient() {
@@ -82,19 +80,19 @@ public class Client {
 		this.emailClient = emailClient;
 	}
 
-	public List<Inscription> getInscriptions() {
-		return inscriptions;
+	public List<Session> getSessions() {
+		return sessions;
 	}
 
-	public void setInscriptions(List<Inscription> inscriptions) {
-		this.inscriptions = inscriptions;
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
 	}
 
 	@Override
 	public String toString() {
-		return "Client [idClient=" + idClient + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient
-				+ ", passwordClient=" + passwordClient + ", emailClient=" + emailClient + ", inscriptions="
-				+ inscriptions + "]";
+		return "Client [idClient=" + id + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient
+				+ ", passwordClient=" + passwordClient + ", emailClient=" + emailClient + ", sessions=" + sessions
+				+ "]";
 	}
 
 }

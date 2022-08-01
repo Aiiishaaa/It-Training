@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
@@ -19,30 +18,26 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idRole;
+	private Integer id;
 	private String designationRole;
 
 	@ManyToMany
-	@JoinColumn(name = "id_employe")
 	@JsonIgnore
-	private List<Employe> employe = new ArrayList<Employe>();
+	private List<Employe> employes = new ArrayList<Employe>();
 
 	public Role() {
 		super();
 	}
 
-	public Role(String designationRole, List<Employe> employe) {
+	public Role(Integer id, String designationRole, List<Employe> employes) {
 		super();
+		this.id = id;
 		this.designationRole = designationRole;
-		this.employe = employe;
+		this.employes = employes;
 	}
 
-	public Integer getIdRole() {
-		return idRole;
-	}
-
-	public void setIdRole(Integer idRole) {
-		this.idRole = idRole;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getDesignationRole() {
@@ -53,17 +48,17 @@ public class Role {
 		this.designationRole = designationRole;
 	}
 
-	public List<Employe> getEmploye() {
-		return employe;
+	public List<Employe> getEmployes() {
+		return employes;
 	}
 
-	public void setEmploye(List<Employe> employe) {
-		this.employe = employe;
+	public void setEmployes(List<Employe> employes) {
+		this.employes = employes;
 	}
 
 	@Override
 	public String toString() {
-		return "Role [idRole=" + idRole + ", designationRole=" + designationRole + ", employe=" + employe + "]";
+		return "Role [id=" + id + ", designationRole=" + designationRole + ", employes=" + employes + "]";
 	}
 
 }

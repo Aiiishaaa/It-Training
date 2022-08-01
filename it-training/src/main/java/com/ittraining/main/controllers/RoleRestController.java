@@ -47,13 +47,13 @@ public class RoleRestController {
 		roleToUpdate.setDesignationRole(role.getDesignationRole());
 		return new ResponseEntity<Role>(roleRepository.save(roleToUpdate), HttpStatus.OK);
 	}
-	
-	@DeleteMapping(value = "/roles/{id}")
-	public ResponseEntity<?> removeById(@PathVariable Integer idRole) {
-		Role roleToRemove = roleRepository.findById(idRole).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		roleRepository.deleteById(roleToRemove.getIdRole());
-		return new ResponseEntity<>("Le role a bien été supprimé.", HttpStatus.OK);
-	}
+//	
+//	@DeleteMapping(value = "/roles/{id}")
+//	public ResponseEntity<?> removeById(@PathVariable Integer idRole) {
+//		Role roleToRemove = roleRepository.findById(idRole).orElseThrow(
+//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//		roleRepository.deleteById(roleToRemove.getIdRole());
+//		return new ResponseEntity<>("Le role a bien été supprimé.", HttpStatus.OK);
+//	}
 	
 }

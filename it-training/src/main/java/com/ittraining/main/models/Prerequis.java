@@ -16,7 +16,7 @@ public class Prerequis {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idPrerequis;
+	private Integer id;
 	private String qcmPrerequis;
 	private boolean validationPrerequis;
 
@@ -36,8 +36,8 @@ public class Prerequis {
 		this.formation = formation;
 	}
 
-	public Integer getIdPrerequis() {
-		return idPrerequis;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getQcmPrerequis() {
@@ -66,7 +66,7 @@ public class Prerequis {
 
 	@Override
 	public String toString() {
-		return "Prerequis [idPrerequis=" + idPrerequis + ", qcmPrerequis=" + qcmPrerequis + ", validationPrerequis="
+		return "Prerequis [idPrerequis=" + id + ", qcmPrerequis=" + qcmPrerequis + ", validationPrerequis="
 				+ validationPrerequis + ", formation=" + formation + "]";
 	}
 

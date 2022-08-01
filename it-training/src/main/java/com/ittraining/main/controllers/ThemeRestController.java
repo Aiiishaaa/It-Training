@@ -1,10 +1,10 @@
-package com.ittraining.main.controllers;
+
+ package com.ittraining.main.controllers;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.ittraining.main.dao.ThemeRepository;
-import com.ittraining.main.models.Employe;
 import com.ittraining.main.models.Theme;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +50,12 @@ public class ThemeRestController {
 		themeACorriger.setNomTheme(theme.getNomTheme());
 		return new ResponseEntity<Theme>(themeRepository.save(themeACorriger), HttpStatus.OK);
 	}
-	
-	@DeleteMapping(value = "/themes/{id}")
-	public ResponseEntity<?> supprimerTheme(@PathVariable Integer idTheme) {
-		Theme themeASupprimer = themeRepository.findById(idTheme).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		themeRepository.deleteById(themeASupprimer.getIdTheme());
-		return new ResponseEntity<>("Le thème a bien été supprimé.", HttpStatus.OK);
-	}
+//	
+//	@DeleteMapping(value = "/themes/{id}")
+//	public ResponseEntity<?> supprimerTheme(@PathVariable Integer idTheme) {
+//		Theme themeASupprimer = themeRepository.findById(idTheme).orElseThrow(
+//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+//		themeRepository.deleteById(themeASupprimer.getIdTheme());
+//		return new ResponseEntity<>("Le thème a bien été supprimé.", HttpStatus.OK);
+//	}
 }

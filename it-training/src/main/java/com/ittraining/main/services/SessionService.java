@@ -31,8 +31,8 @@ public class SessionService implements ISessionService {
 	}
 
 	@Override
-	public List<Session> findAllByClientId(Integer idClient) {
-		return sessionRepository.findAllByClientId(idClient);
+	public List<Session> findAllByClientsId(Integer idClient) {
+		return sessionRepository.findAllByClientsId(idClient);
 	}
 
 	@Override

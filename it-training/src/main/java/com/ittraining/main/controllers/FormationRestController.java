@@ -29,6 +29,9 @@ public class FormationRestController {
 	
 //	@Autowired
 //	private IThemeService themeService;
+//	
+//	@Autowired
+//	private IThemeService themeService;
 	
 	@GetMapping(value = "/formations")
 	public ResponseEntity<List<Formation>> recupererFormations() {
@@ -61,27 +64,27 @@ public class FormationRestController {
 		return new ResponseEntity<Formation>(formationService.update(formationACorriger), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/formations/{idFormation}")
-	public ResponseEntity<?> supprimerFormation(@PathVariable Integer idFormation) {
-		Formation formationASupprimer = formationService.findById(idFormation).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec id : " + idFormation));
-		formationService.removeById(formationASupprimer.getIdFormation());
-		return new ResponseEntity<>("La formation a bien été supprimée.", HttpStatus.OK);
-	}
+//	@DeleteMapping(value = "/formations/{idFormation}")
+//	public ResponseEntity<?> supprimerFormation(@PathVariable Integer idFormation) {
+//		Formation formationASupprimer = formationService.findById(idFormation).orElseThrow(
+//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec id : " + idFormation));
+//		formationService.removeById(formationASupprimer.getIdFormation());
+//		return new ResponseEntity<>("La formation a bien été supprimée.", HttpStatus.OK);
+//	}
 	
-	@GetMapping(value = "/themes/{idTheme}/formations")
-	public ResponseEntity<List<Formation>> recupererFormationsParTheme(@PathVariable Integer idTheme) {
-		
-		return new ResponseEntity<List<Formation>>(formationService.findAllByTheme(idTheme), HttpStatus.OK);
-	}
-	
-	@GetMapping(value = "/domaines/{idDomaine}/formations")
-	public ResponseEntity<List<Formation>> recupererFormationsParDomaine(@PathVariable Integer idDomaine) {
-		return new ResponseEntity<List<Formation>>(formationService.findAllByDomaine(idDomaine), HttpStatus.OK);
-	}
-	
-	@GetMapping(value = "/employes/{idEmploye}/formations")
-	public ResponseEntity<List<Formation>> recupererFormationsParEmploye(@PathVariable Integer idEmploye) {
-		return new ResponseEntity<List<Formation>>(formationService.findAllByEmploye(idEmploye), HttpStatus.OK);
-	}
+//	@GetMapping(value = "/themes/{idTheme}/formations")
+//	public ResponseEntity<List<Formation>> recupererFormationsParTheme(@PathVariable Integer idTheme) {
+//		
+//		return new ResponseEntity<List<Formation>>(formationService.findAllByTheme(idTheme), HttpStatus.OK);
+//	}
+//	
+//	@GetMapping(value = "/domaines/{idDomaine}/formations")
+//	public ResponseEntity<List<Formation>> recupererFormationsParDomaine(@PathVariable Integer idDomaine) {
+//		return new ResponseEntity<List<Formation>>(formationService.findAllByDomaine(idDomaine), HttpStatus.OK);
+//	}
+//	
+//	@GetMapping(value = "/employes/{idEmploye}/formations")
+//	public ResponseEntity<List<Formation>> recupererFormationsParEmploye(@PathVariable Integer idEmploye) {
+//		return new ResponseEntity<List<Formation>>(formationService.findAllByEmploye(idEmploye), HttpStatus.OK);
+//	}
 }
