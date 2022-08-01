@@ -20,7 +20,11 @@ public class Formation {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idFormation;
+	private Integer id;
+
+	@ManyToOne
+	@JoinColumn(name = "id_domaine")
+	private Domaine domaine;
 
 	@ManyToOne
 	@JoinColumn(name = "id_theme")
@@ -28,7 +32,6 @@ public class Formation {
 	private double prix;
 
 	@OneToMany
-//	@JoinColumn(name = "id_Session")
 	private List<Session> sessions = new ArrayList<Session>();
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -49,9 +52,11 @@ public class Formation {
 		super();
 	}
 
-	public Formation(Theme theme, double prix, List<Session> sessions, Prerequis prerequis, String descriptionBreve,
-			String descriptionLongue, String programme, Employe employe, String intitule, int nbHeures) {
+	public Formation(Domaine domaine, Theme theme, double prix, List<Session> sessions, Prerequis prerequis,
+			String descriptionBreve, String descriptionLongue, String programme, Employe employe, String intitule,
+			int nbHeures) {
 		super();
+		this.domaine = domaine;
 		this.theme = theme;
 		this.prix = prix;
 		this.sessions = sessions;
@@ -64,8 +69,16 @@ public class Formation {
 		this.nbHeures = nbHeures;
 	}
 
-	public Integer getIdFormation() {
-		return idFormation;
+	public Integer getId() {
+		return id;
+	}
+
+	public Domaine getDomaine() {
+		return domaine;
+	}
+
+	public void setDomaine(Domaine domaine) {
+		this.domaine = domaine;
 	}
 
 	public Theme getTheme() {
@@ -150,7 +163,7 @@ public class Formation {
 
 	@Override
 	public String toString() {
-		return "Formation [idFormation=" + idFormation + ", theme=" + theme + ", prix=" + prix + ", sessions="
+		return "Formation [id=" + id + ", domaine=" + domaine + ", theme=" + theme + ", prix=" + prix + ", sessions="
 				+ sessions + ", prerequis=" + prerequis + ", descriptionBreve=" + descriptionBreve
 				+ ", descriptionLongue=" + descriptionLongue + ", programme=" + programme + ", employe=" + employe
 				+ ", intitule=" + intitule + ", nbHeures=" + nbHeures + "]";

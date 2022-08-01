@@ -64,13 +64,13 @@ public class FormationRestController {
 		return new ResponseEntity<Formation>(formationService.update(formationACorriger), HttpStatus.OK);
 	}
 	
-	@DeleteMapping(value = "/formations/{idFormation}")
-	public ResponseEntity<?> supprimerFormation(@PathVariable Integer idFormation) {
-		Formation formationASupprimer = formationService.findById(idFormation).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec id : " + idFormation));
-		formationService.removeById(formationASupprimer.getIdFormation());
-		return new ResponseEntity<>("La formation a bien été supprimée.", HttpStatus.OK);
-	}
+//	@DeleteMapping(value = "/formations/{idFormation}")
+//	public ResponseEntity<?> supprimerFormation(@PathVariable Integer idFormation) {
+//		Formation formationASupprimer = formationService.findById(idFormation).orElseThrow(
+//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec id : " + idFormation));
+//		formationService.removeById(formationASupprimer.getIdFormation());
+//		return new ResponseEntity<>("La formation a bien été supprimée.", HttpStatus.OK);
+//	}
 	
 //	@GetMapping(value = "/themes/{idTheme}/formations")
 //	public ResponseEntity<List<Formation>> recupererFormationsParTheme(@PathVariable Integer idTheme) {

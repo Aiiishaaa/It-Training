@@ -41,8 +41,8 @@ public class EmployeService implements IEmployeService {
 	}
 
 	@Override
-	public List<Employe> findAllByRoleId(Integer idRole) {
-		return employeRepository.findAllByRoleId(idRole);
+	public List<Employe> findAllByRolesId(Integer idRole) {
+		return employeRepository.findAllByRolesId(idRole);
 	}
 
 }

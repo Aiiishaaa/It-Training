@@ -18,7 +18,7 @@ public class Employe {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idEmploye;
+	private Integer id;
 
 	private String nomEmploye;
 	private String prenomEmploye;
@@ -43,12 +43,8 @@ public class Employe {
 		super();
 	}
 
-	public Integer getIdEmploye() {
-		return idEmploye;
-	}
-
-	public void setIdEmploye(Integer idEmploye) {
-		this.idEmploye = idEmploye;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomEmploye() {
@@ -93,7 +89,7 @@ public class Employe {
 
 	@Override
 	public String toString() {
-		return "Employe [idEmploye=" + idEmploye + ", nomEmploye=" + nomEmploye + ", prenomEmploye=" + prenomEmploye
+		return "Employe [idEmploye=" + id + ", nomEmploye=" + nomEmploye + ", prenomEmploye=" + prenomEmploye
 				+ ", passwordEmploye=" + passwordEmploye + ", emailEmploye=" + emailEmploye + ", roles=" + roles + "]";
 	}
 

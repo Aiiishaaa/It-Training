@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,7 +20,7 @@ public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
-	private Integer idClient;
+	private Integer id;
 	private String nomClient;
 	private String prenomClient;
 	private String passwordClient;
@@ -45,8 +44,8 @@ public class Client {
 		this.sessions = sessions;
 	}
 
-	public Integer getIdClient() {
-		return idClient;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomClient() {
@@ -91,7 +90,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "Client [idClient=" + idClient + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient
+		return "Client [idClient=" + id + ", nomClient=" + nomClient + ", prenomClient=" + prenomClient
 				+ ", passwordClient=" + passwordClient + ", emailClient=" + emailClient + ", sessions=" + sessions
 				+ "]";
 	}

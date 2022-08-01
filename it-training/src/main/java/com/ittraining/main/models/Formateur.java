@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,7 +19,7 @@ public class Formateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idFormateur;
+	private Integer id;
 
 	private String nomFormateur;
 	private String prenomFormateur;
@@ -28,7 +27,6 @@ public class Formateur {
 	private String passwordFormateur;
 
 	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "id_session")
 	@JsonIgnore
 	private List<Session> sessions = new ArrayList<Session>();
 
@@ -46,8 +44,8 @@ public class Formateur {
 		this.sessions = sessions;
 	}
 
-	public Integer getIdFormateur() {
-		return idFormateur;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomFormateur() {
@@ -92,7 +90,7 @@ public class Formateur {
 
 	@Override
 	public String toString() {
-		return "Formateur [idFormateur=" + idFormateur + ", nomFormateur=" + nomFormateur + ", prenomFormateur="
+		return "Formateur [idFormateur=" + id + ", nomFormateur=" + nomFormateur + ", prenomFormateur="
 				+ prenomFormateur + ", emailFormateur=" + emailFormateur + ", passwordFormateur=" + passwordFormateur
 				+ ", sessions=" + sessions + "]";
 	}

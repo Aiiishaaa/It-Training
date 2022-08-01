@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,11 +19,10 @@ public class Domaine {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idDomaine;
+	private Integer id;
 	private String nomDomaine;
 
 	@OneToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "id_theme")
 	@JsonIgnore
 	private List<Theme> themes = new ArrayList<Theme>();
 
@@ -38,8 +36,8 @@ public class Domaine {
 		this.themes = themes;
 	}
 
-	public Integer getIdDomaine() {
-		return idDomaine;
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomDomaine() {
@@ -60,7 +58,7 @@ public class Domaine {
 
 	@Override
 	public String toString() {
-		return "Domaine [idDomaine=" + idDomaine + ", nomDomaine=" + nomDomaine + ", themes=" + themes + "]";
+		return "Domaine [idDomaine=" + id + ", nomDomaine=" + nomDomaine + ", themes=" + themes + "]";
 	}
 
 }

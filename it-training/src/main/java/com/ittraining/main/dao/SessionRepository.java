@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SessionRepository extends JpaRepository<Session, Integer> {
 	List<Session> findAllByFormationId(Integer idFormation);
-	List<Session> findAllByClientId(Integer idClient);
+	List<Session> findAllByClientsId(Integer idClient);
 }
