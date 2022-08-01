@@ -10,6 +10,7 @@ import { HeaderComponent } from './composants/header/header.component';
 import { FooterComponent } from './composants/footer/footer.component';
 import { AccueilComponent } from './composants/accueil/accueil.component';
 import { PageInconnuComponent } from './composants/page-inconnu/page-inconnu.component';
+import { FormateurComponent } from './composants/formateur/formateur.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PageInconnuComponent } from './composants/page-inconnu/page-inconnu.com
     FooterComponent,
     AccueilComponent,
     PageInconnuComponent,
+    FormateurComponent,
   ],
   imports: [
     BrowserModule,
