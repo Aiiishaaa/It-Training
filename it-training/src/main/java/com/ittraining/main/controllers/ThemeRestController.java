@@ -37,6 +37,7 @@ public class ThemeRestController {
 		return new ResponseEntity<Optional<Theme>>(themeRepository.findById(idTheme), HttpStatus.OK);
 	}
 	
+
 	@PostMapping(value = "/themes")
 	public ResponseEntity<Theme> ajouterTheme(Theme theme) {
 		return new ResponseEntity<Theme>(themeRepository.save(theme), HttpStatus.OK);
@@ -50,12 +51,12 @@ public class ThemeRestController {
 		themeACorriger.setNomTheme(theme.getNomTheme());
 		return new ResponseEntity<Theme>(themeRepository.save(themeACorriger), HttpStatus.OK);
 	}
-//	
-//	@DeleteMapping(value = "/themes/{id}")
-//	public ResponseEntity<?> supprimerTheme(@PathVariable Integer idTheme) {
-//		Theme themeASupprimer = themeRepository.findById(idTheme).orElseThrow(
-//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//		themeRepository.deleteById(themeASupprimer.getIdTheme());
-//		return new ResponseEntity<>("Le thème a bien été supprimé.", HttpStatus.OK);
-//	}
+
+	@DeleteMapping(value = "/themes/{id}")
+	public ResponseEntity<?> supprimerTheme(@PathVariable Integer idTheme) {
+		Theme themeASupprimer = themeRepository.findById(idTheme).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		themeRepository.deleteById(themeASupprimer.getId());
+		return new ResponseEntity<>("Le thème a bien été supprimé.", HttpStatus.OK);
+	}
 }

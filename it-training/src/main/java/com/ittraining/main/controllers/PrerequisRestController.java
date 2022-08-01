@@ -3,9 +3,7 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.ittraining.main.models.Client;
 import com.ittraining.main.models.Prerequis;
-import com.ittraining.main.services.IClientService;
 import com.ittraining.main.services.IPrerequisService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,20 +41,21 @@ public class PrerequisRestController {
 		return new ResponseEntity<Prerequis> (prerequisService.add(prerequis), HttpStatus.OK);
 	}
 	
-	//@PutMapping(value = "/prerequis/{id}")
-	//public ResponseEntity<Prerequis> modifierPrerequis(@PathVariable Integer idPrerequis, Prerequis prerequis) {
-	//	Prerequis prerequisACorriger = prerequisService.findById(idPrerequis).orElseThrow(
-	//			() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-	//	prerequisACorriger.setQcm(prerequis.getQcm());
-	//	prerequisACorriger.setValidation(prerequis.getValidation());
-	//	return new ResponseEntity<Prerequis> (prerequisService.add(prerequisACorriger), HttpStatus.OK);
-	//}
+	@PutMapping(value = "/prerequis/{id}")
+	public ResponseEntity<Prerequis> modifierPrerequis(@PathVariable Integer idPrerequis, Prerequis prerequis) {
+	 Prerequis prerequisACorriger = prerequisService.findById(idPrerequis).orElseThrow(
+	 			() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+	 	prerequisACorriger.setQcmPrerequis(prerequis.getQcmPrerequis());
+	 	prerequisACorriger.setValidationPrerequis(prerequis.isValidationPrerequis());
+	 	prerequisACorriger.setFormation(prerequis.getFormation());
+	 	return new ResponseEntity<Prerequis> (prerequisService.add(prerequisACorriger), HttpStatus.OK);
+	 }
 	
-//	@DeleteMapping(value = "/prerequis/{id}")
-//	public ResponseEntity<?> supprimerPrerequis(@PathVariable Integer idPrerequis) {
-//		Prerequis prerequisASupprimer = prerequisService.findById(idPrerequis).orElseThrow(
-//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//		prerequisService.removeById(prerequisASupprimer.getIdPrerequis());
-//		return new ResponseEntity<> ("Le Prerequis a bien été supprimé.", HttpStatus.OK);
-//	}
+	@DeleteMapping(value = "/prerequis/{id}")
+	public ResponseEntity<?> supprimerPrerequis(@PathVariable Integer idPrerequis) {
+		Prerequis prerequisASupprimer = prerequisService.findById(idPrerequis).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+		prerequisService.removeById(prerequisASupprimer.getId());
+		return new ResponseEntity<> ("Le Prerequis a bien été supprimé.", HttpStatus.OK);
+	}
 }
