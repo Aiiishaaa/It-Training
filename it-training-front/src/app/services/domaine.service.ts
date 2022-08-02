@@ -7,15 +7,20 @@ import { Domaine } from '../interfaces/domaine';
 })
 export class DomaineService {
 
-  private url: string = "http://localhost:8080/domaines";
+  private url1: string = "http://localhost:8080/domaines";
+  private url2: string = "http://localhost:8080/formations";
 
   constructor(private http: HttpClient) { }
 
   getAllDomaines() {
-    return this.http.get<Domaine[]>(this.url);
+    return this.http.get<Domaine[]>(this.url1);
+  }
+  
+  getOneEmployeById(id: number) {
+    return this.http.get<Domaine>(this.url1 + "/" + id);
   }
 
-  getOneEmployeById(id: number) {
-    return this.http.get<Domaine>(this.url + "/" + id);
+  getOneByFormation(idFormation: number) {
+    return this.http.get<Domaine>(this.url2 + "/" + idFormation + "/domaines");
   }
 }

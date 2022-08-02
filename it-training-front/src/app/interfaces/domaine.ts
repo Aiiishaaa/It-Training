@@ -1,5 +1,7 @@
+import { Theme } from "./theme";
+
 export interface Domaine {
 
     id?: number;
-    nom?: string;
+    nomDomaine?: string;
 }
