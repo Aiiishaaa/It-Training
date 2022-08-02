@@ -14,99 +14,108 @@
                 <div class="col-md-5 order-md-last">
                     <div class="login-wrap p-4 p-md-5">
                         <h3 class="mb-4"> Créer un compte </h3>
-                        <form action="#" class="signup-form">
+                        <form class="signup-form" (ngSubmit)="ajouterClient()" #monFormInscription="ngForm">
                             <div class="form-group">
-                                <label class="label" for="name">Prénom :</label>
-                                <input type="text" class="form-control" placeholder="John ">
-                            </div>
-                            <div class="form-group">
-                                <label class="label" for="name">Nom :</label>
-                                <input type="text" class="form-control" placeholder="Doe">
-                            </div>
-                            <div class="form-group">
-                                <label class="label" for="email">Email :</label>
-                                <input type="text" class="form-control" placeholder="johndoe@gmail.com">
-                            </div>
-                            <div class="form-group">
-                                <label class="label" for="password">Mot de passe :</label>
-                                <input id="password-field" type="password" class="form-control" placeholder="Mot de passe">
-                            </div>
-                            <div class="form-group">
-                                <label class="label" for="password">Confirmation de mot de passe :</label>
-                                <input id="password-field" type="password" class="form-control" placeholder="Confirmer mot de passe">
-                            </div>
-                            <div class="form-group d-flex justify-content-end mt-4">
-                                <button type="submit" class="btn btn-primary submit"><span
-                                    class="fa fa-paper-plane"></span></button>
-                            </div>
+                                <label class="label" for="prenom">Prénom :</label>
+                                <input type="text" class="form-control" placeholder="John " id="prenom" name="prenom" [(ngModel)]="client.prenom" required #prenom="ngModel">
+                                <div [hidden]="prenom.valid || prenom.pristine " class="text-danger text-center ">
+                                    Ce champs est obligatoire !
+                                </div>
+                                <div class="form-group ">
+                                    <label class="label " for="nom ">Nom :</label>
+                                    <input type="text " class="form-control " placeholder="Doe " id="nom " name="nom " [(ngModel)]="client.nom" required #nom=" ngModel">
+                                    <div [hidden]="nom.valid || nom.pristine " class="text-danger text-center ">
+                                        Ce champs est obligatoire !</div>
+                                    <div class="form-group ">
+                                        <label class="label " for="email ">Email :</label>
+                                        <input type="text " class="form-control " placeholder="johndoe@gmail.com " id="email " name="email " [(ngModel)]="client.email" required #email=" ngModel">
+                                        <div [hidden]="email.valid || email.pristine " class="text-danger text-center ">
+                                            Ce champs est obligatoire !</div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <label class="label " for="password ">Mot de passe :</label>
+                                        <input type="password " class="form-control " placeholder="Mot de passe" id="motDePasse " name="motDePasse " [(ngModel)]="client.motDePasse" required minlength="3 " maxlength="30
+                                        " #motDePasse="ngModel ">
+                                        <div [hidden]="motDePasse.valid || motDePasse.pristine " class="text-danger text-center ">
+                                            Le mot de passe est obligatoire et doit contenir entre 3 et 30 caractères!>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="label " for="password ">Confirmation de mot de passe :</label>
+                                            <input id="password-field " type="password " class="form-control " placeholder="Confirmer mot de passe" id="motDePasseV " name="motDePasseV " [(ngModel)]="client.motDePasseV" required minlength="3 " maxlength="30
+                                            " #motDePasseV="ngModel ">
+                                        </div>
+                                        <div class="form-group d-flex justify-content-end mt-4 ">
+                                            <button type="submit " class="btn btn-primary submit ">
+                                        <span class="fa fa-paper-plane "></span></button>
+                                        </div>
                         </form>
+                        </div>
+                        </div>
+                        </div>
                     </div>
+    </section>
+
+    </div>
+    <section class="section ">
+        <div class="container ">
+            <div class="row justify-content-center pb-4 ">
+                <div class="col-md-12 heading-section text-center ">
+                    <span class=" ">Commencez à apprendre dès aujourd'hui</span>
+                    <h2 class="mb-4 ">Parcourir les thémes</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center ">
+                <div class="col-md-3 col-lg-2 ">
+                    <a href="# " class="course-category img d-flex align-items-center justify-content-center " style="background-image: url( '../../../assets/images/work-1.jpg'); ">
+                        <div class="text w-100 text-center ">
+                            <h3>Data Science&amp;IA</h3>
+                            <span>100 course</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-lg-2 ">
+                    <a href="# " class="course-category img d-flex align-items-center justify-content-center " style="background-image: url( '../../../assets/images/work-9.jpg'); ">
+                        <div class="text w-100 text-center ">
+                            <h3>Systémes d'exploitation</h3>
+                            <span>100 course</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-lg-2 ">
+                    <a href="# " class="course-category img d-flex align-items-center justify-content-center " style="background-image: url( '../../../assets/images/work-3.jpg'); ">
+                        <div class="text w-100 text-center ">
+                            <h3>Photography</h3>
+                            <span>100 course</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-lg-2 ">
+                    <a href="# " class="course-category img d-flex align-items-center justify-content-center " style="background-image: url( '../../../assets/images/work-5.jpg'); ">
+                        <div class="text w-100 text-center ">
+                            <h3>Marketing</h3>
+                            <span>100 course</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-lg-2 ">
+                    <a href="# " class="course-category img d-flex align-items-center justify-content-center " style="background-image: url( '../../../assets/images/work-8.jpg'); ">
+                        <div class="text w-100 text-center ">
+                            <h3>Health</h3>
+                            <span>100 course</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-lg-2 ">
+                    <a href="# " class="course-category img d-flex align-items-center justify-content-center " style="background-image: url( '../../../assets/images/work-6.jpg'); ">
+                        <span class="text w-100 text-center ">
+                        <h3>Audio Video</h3>
+                        <span>100 course</span>
+                        </span>
+                    </a>
+                </div>
+                <div class="col-md-12 text-center mt-5 ">
+                    <a href="# " class="btn btn-secondary ">AFFICHER LES FORMATIONS</a>
                 </div>
             </div>
         </div>
     </section>
-
-</div>
-<section class="section">
-    <div class="container">
-        <div class="row justify-content-center pb-4">
-            <div class="col-md-12 heading-section text-center">
-                <span class="">Commencez à apprendre dès aujourd'hui</span>
-                <h2 class="mb-4">Parcourir les thémes</h2>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-3 col-lg-2">
-                <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/images/work-1.jpg');">
-                    <div class="text w-100 text-center">
-                        <h3>Data Science&amp;IA</h3>
-                        <span>100 course</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-lg-2">
-                <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/images/work-9.jpg');">
-                    <div class="text w-100 text-center">
-                        <h3>Systémes d'exploitation</h3>
-                        <span>100 course</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-lg-2">
-                <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/images/work-3.jpg');">
-                    <div class="text w-100 text-center">
-                        <h3>Photography</h3>
-                        <span>100 course</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-lg-2">
-                <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/images/work-5.jpg');">
-                    <div class="text w-100 text-center">
-                        <h3>Marketing</h3>
-                        <span>100 course</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-lg-2">
-                <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/images/work-8.jpg');">
-                    <div class="text w-100 text-center">
-                        <h3>Health</h3>
-                        <span>100 course</span>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-lg-2">
-                <a href="#" class="course-category img d-flex align-items-center justify-content-center" style="background-image: url('../../../assets/images/work-6.jpg');">
-                    <span class="text w-100 text-center">
-                        <h3>Audio Video</h3>
-                        <span>100 course</span>
-                    </span>
-                </a>
-            </div>
-            <div class="col-md-12 text-center mt-5">
-                <a href="#" class="btn btn-secondary">AFFICHER LES FORMATIONS</a>
-            </div>
-        </div>
-    </div>
-</section>
