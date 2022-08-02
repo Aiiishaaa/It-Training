@@ -11,7 +11,7 @@ export class DomaineService {
 
   constructor(private http: HttpClient) { }
 
-  getAllDomaine() {
+  getAllDomaines() {
     return this.http.get<Domaine[]>(this.url);
   }
 
