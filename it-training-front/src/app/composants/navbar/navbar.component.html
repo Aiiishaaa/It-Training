@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand offset-lg-1 " routerLink=""><span>{{ titre }}</span></a>
+    <div class=" offset-lg-1 container-fluid">
+        <a class="navbar-brand" routerLink=""><span>{{ titre }}</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="oi oi-menu"></span> Menu
+        <span class="oi oi-menu"></span> Menu
         </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav offset-lg-1 ">
+        <div class="collapse navbar-collapse " id="ftco-nav">
+            <ul class="navbar-nav offset-lg-1">
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="" class="nav-link">Accueil</a></li>
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/Formations" class="nav-link">Formations</a></li>
                 <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><a routerLink="/Formateurs" class="nav-link">Formateurs</a></li>
@@ -16,7 +16,7 @@
                 <input class="form-control mr-sm-1 lg-sm-2 " type="password " placeholder="Mot de passe " id="password-field " [(ngModel)]="password " required>
                 <button class="btn btn-primary submit " type="submit "><i class=" fa-solid fa-right-to-bracket "></i></button>
             </form>
-            <div Class="erreur mr-sm-1 ml-5 " [hidden]='erreur'>Identifiants incorrects</div>
+            <div Class="erreur ml-5 lg-sm-2" [hidden]='erreur'>Identifiants incorrects</div>
         </div>
     </div>
 </nav>
