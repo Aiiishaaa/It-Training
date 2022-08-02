@@ -8,11 +8,10 @@ import { PageInconnuComponent } from './composants/page-inconnu/page-inconnu.com
 
 const routes: Routes = [
   {path: '', component: AccueilComponent},
-  {path: 'formations', component: FormationComponent},
   {path: 'formations/:id', component: FormationComponent},
   {path: 'catalogues', component: CatalogueComponent},
   {path: 'catalogues/:id', component: CatalogueComponent},
- {path: 'formateurs', component: FormateurComponent},
+  {path: 'formateurs', component: FormateurComponent},
   {path: 'error', component: PageInconnuComponent},
   {path: '**', redirectTo: '/error'}
 ];

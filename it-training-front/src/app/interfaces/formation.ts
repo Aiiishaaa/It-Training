@@ -1,13 +1,14 @@
 export interface Formation {
 
     id?: number;
-    idTheme?: number;
+    // theme?: string;
+    // domaine?: number;
     prix?: number;
-    idPrerequis?: number;
+    prerequis?: number;
     descriptionBreve?: string;
     descriptionLongue?: string;
     programme?: string;
-    idEmploye?: number;
+    // employe?: Employe = [];
     intitule?: string;
     nbHeures?: number;
 }

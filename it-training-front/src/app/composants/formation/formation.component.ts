@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Formation } from 'src/app/interfaces/formation';
 import { FormationService } from 'src/app/services/formation.service';
 
@@ -11,16 +12,23 @@ export class FormationComponent implements OnInit {
 
   formations: Formation[] = [];
   formation: Formation = {};
+  id: number = 0;
 
-  constructor(private fs:FormationService) { }
+  constructor(
+    private fs: FormationService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.recupFormations();
+    this.route.paramMap.subscribe(res => {
+      this.id = Number(res.get("id"));
+      this.recupFormation(this.id);
+      console.log(this.id)
+    });
   }
 
-  recupFormations() {
-    this.fs.getAllFormations().subscribe(res => {
-      this.formations = res;
+  recupFormation(id: number) {
+    this.fs.getOneFormationById(id).subscribe(res => {
+      this.formation = res;
     })
   }
 }
