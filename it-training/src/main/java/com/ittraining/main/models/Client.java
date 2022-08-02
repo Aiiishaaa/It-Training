@@ -6,8 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.List;
 
@@ -17,14 +19,14 @@ public class Client {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	private Integer id;
 	private String nomClient;
 	private String prenomClient;
 	private String passwordClient;
 	private String emailClient;
 
-	@OneToMany(mappedBy = "clients")
+	@JsonIgnore
+	@ManyToMany(mappedBy = "clients")
 	private List<Session> sessions = new ArrayList<Session>();
 
 	public Client() {

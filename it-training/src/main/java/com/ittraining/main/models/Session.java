@@ -35,17 +35,18 @@ public class Session {
 	@ManyToOne
 	@JoinColumn(name = "id_adresse")
 	private Adresse adresse;
-	
+
 	@ManyToMany
-	@JoinTable(name = "sessions_clients", joinColumns = { @JoinColumn(name = "id_session") }, inverseJoinColumns = { @JoinColumn(name = "id_client") })
+	@JoinTable(name = "sessions_clients", joinColumns = { @JoinColumn(name = "id_session") }, inverseJoinColumns = {
+			@JoinColumn(name = "id_client") })
 	private List<Client> clients = new ArrayList<Client>();
 
 	public Session() {
 		super();
 	}
 
-	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur,
-			Adresse adresse, List<Client> clients) {
+	public Session(LocalDate dateDebut, LocalDate dateFin, Formation formation, Formateur formateur, Adresse adresse,
+			List<Client> clients) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
@@ -54,7 +55,6 @@ public class Session {
 		this.adresse = adresse;
 		this.clients = clients;
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -114,7 +114,4 @@ public class Session {
 				+ formation + ", formateur=" + formateur + ", adresse=" + adresse + ", clients=" + clients + "]";
 	}
 
-	
-
-	
 }

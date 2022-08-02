@@ -3,13 +3,16 @@ package com.ittraining.main.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "adresses")
@@ -22,8 +25,8 @@ public class Adresse {
 	private String codePostal;
 	private String ville;
 
-	@OneToMany
-	@JoinColumn(name = "id_session")
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "adresse")
 	private List<Session> sessions = new ArrayList<Session>();
 
 	public Adresse() {

@@ -29,7 +29,7 @@ public class ThemeRestController {
 
 	@GetMapping(value = "/themes")
 	public ResponseEntity<List<Theme>> recupererThemes() {
-		return new ResponseEntity<List<Theme>>(themeService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<List<Theme>> (themeService.findAll(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/themes/{id}")
