@@ -10,11 +10,8 @@ const routes: Routes = [
   {path: '', component: AccueilComponent},
   {path: 'formations/:id', component: FormationComponent},
   {path: 'catalogue', component: CatalogueComponent},
-<<<<<<< HEAD
   {path: 'catalogue/:nomDomaine', component: CatalogueComponent},
   {path: 'catalogue/:nomDomaine/:nomTheme', component: CatalogueComponent},
-=======
->>>>>>> 72f1931591126a7a71ce9e9b24b044dd273bc7ef
   {path: 'formateurs', component: FormateurComponent},
   {path: 'error', component: PageInconnuComponent},
   {path: '**', redirectTo: '/error'}
