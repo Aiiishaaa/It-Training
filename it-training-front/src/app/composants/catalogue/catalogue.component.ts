@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Formation } from 'src/app/interfaces/formation';
+import { FormationService } from 'src/app/services/formation.service';
 
 @Component({
   selector: 'app-catalogue',
@@ -7,8 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogueComponent implements OnInit {
 
+  formations: Formation[] = [];
+  
   constructor(
-    
+    private fs: FormationService,
+    private route: ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {
