@@ -6,7 +6,7 @@ export interface Employe {
     nom?: string;
     prenom?: string;
     password?: string;
-    email_employe?: string;
+    email?: string;
     role?: Role;
 
 }
