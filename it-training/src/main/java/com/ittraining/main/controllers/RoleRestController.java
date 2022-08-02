@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import com.ittraining.main.dao.RoleRepository;
 import com.ittraining.main.models.Role;
+import com.ittraining.main.services.IEmployeService;
+import com.ittraining.main.services.IRoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -23,44 +26,47 @@ import org.springframework.web.server.ResponseStatusException;
 public class RoleRestController {
 
 	@Autowired
-	private RoleRepository roleRepository;
+	private IRoleService roleService;
+	
+	@Autowired
+	private IEmployeService employeService;
 	
 	@GetMapping(value = "/roles")
-	public ResponseEntity<List<Role>> findAll() {
-		return new ResponseEntity<List<Role>>(roleRepository.findAll(), HttpStatus.OK);
+	public ResponseEntity<List<Role>> recupererRoles() {
+		return new ResponseEntity<List<Role>>(roleService.findAll(), HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/roles/{id}")
-	public ResponseEntity<Optional<Role>> findById(@PathVariable Integer idRole) {
-		return new ResponseEntity<Optional<Role>>(roleRepository.findById(idRole), HttpStatus.OK);
+	public ResponseEntity<Optional<Role>> recupererRoleParId(@PathVariable("id") Integer idRole) {
+		return new ResponseEntity<Optional<Role>>(roleService.findById(idRole), HttpStatus.OK);
 	}
 	
 	@PostMapping(value = "/roles")
-	public ResponseEntity<Role> ajouterTheme(Role role) {
-		return new ResponseEntity<Role>(roleRepository.save(role), HttpStatus.OK);
+	public ResponseEntity<Role> ajouterRole(@RequestBody Role role) {
+		return new ResponseEntity<Role>(roleService.add(role), HttpStatus.OK);
 	}
 	
 	@PutMapping(value = "/roles/{id}")
-	public ResponseEntity<Role> update(@PathVariable Integer idRole, Role role) {
-		Role roleToUpdate = roleRepository.findById(idRole).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+	public ResponseEntity<Role> modifierRole(@PathVariable("id") Integer idRole, @RequestBody Role role) {
+		Role roleToUpdate = roleService.findById(idRole).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role non trouvé avec Id " + idRole));
 		roleToUpdate.setDesignationRole(role.getDesignationRole());
-		return new ResponseEntity<Role>(roleRepository.save(roleToUpdate), HttpStatus.OK);
+		return new ResponseEntity<Role>(roleService.update(roleToUpdate), HttpStatus.OK);
 	}
 	
 	@DeleteMapping(value = "/roles/{id}")
-	public ResponseEntity<?> removeById(@PathVariable Integer idRole) {
-		Role roleToRemove = roleRepository.findById(idRole).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		roleRepository.deleteById(roleToRemove.getId());
+	public ResponseEntity<?> supprimerRole(@PathVariable("id") Integer idRole) {
+		Role roleToRemove = roleService.findById(idRole).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role non trouvé avec Id " + idRole));
+		roleService.removeById(roleToRemove.getId());
 		return new ResponseEntity<>("Le role a bien été supprimé.", HttpStatus.OK);
 	}
 	
 	@GetMapping(value = "/employes/{id}/roles")
 	public ResponseEntity<List<Role>> findAllByEmployesId(@PathVariable("id") Integer id) {
-		roleRepository.findById(id).orElseThrow(
+		employeService.findById(id).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Person not found with id : " + id));
-		List<Role> roles = roleRepository.findAllByEmployesId(id);
+		List<Role> roles = roleService.findAllByEmployesId(id);
 		return new ResponseEntity<>(roles, HttpStatus.OK);
 	}
 	

@@ -8,10 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "domaines")
@@ -23,7 +22,7 @@ public class Domaine {
 	private String nomDomaine;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	@JsonIgnore
+	@JoinColumn(name = "id_theme")
 	private List<Theme> themes = new ArrayList<Theme>();
 
 	public Domaine() {

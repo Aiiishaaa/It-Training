@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -27,6 +28,7 @@ public class Formateur {
 	private String passwordFormateur;
 
 	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id_session")
 	@JsonIgnore
 	private List<Session> sessions = new ArrayList<Session>();
 

@@ -23,40 +23,41 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @CrossOrigin(origins = "*")
 public class EmployeRestController {
-	
+
 	@Autowired
 	private IEmployeService employeService;
-	
+
 	@Autowired
 	private IRoleService roleService;
-	
+
 	@GetMapping(value = "/employes")
 	public ResponseEntity<List<Employe>> recupererEmployes() {
 		return new ResponseEntity<List<Employe>>(employeService.findAll(), HttpStatus.OK);
 	}
-	
+
 	@GetMapping(value = "/employes/{id}")
-	public ResponseEntity<Optional<Employe>> recupererEmployeParId(@PathVariable Integer idEmploye) {
+	public ResponseEntity<Optional<Employe>> recupererEmployeParId(@PathVariable("id") Integer idEmploye) {
 		employeService.findById(idEmploye).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employe non trouvé avec Id " + idEmploye));
 		return new ResponseEntity<Optional<Employe>>(employeService.findById(idEmploye), HttpStatus.OK);
 	}
-	
-	@GetMapping(value = "/roles/{idRole}/employes")
-	public ResponseEntity<List<Employe>> recupererEmployeParRole(@PathVariable Integer idRole) {
+
+	@GetMapping(value = "/roles/{id}/employes")
+	public ResponseEntity<List<Employe>> recupererEmployeParRole(@PathVariable("id") Integer idRole) {
 		roleService.findById(idRole).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Rôle non trouvé avec Id " + idRole));
 		List<Employe> employesParRole = employeService.findAllByRolesId(idRole);
 		return new ResponseEntity<>(employesParRole, HttpStatus.OK);
 	}
-	
+
 	@PostMapping(value = "/employes")
 	public ResponseEntity<Employe> ajouterEmploye(@RequestBody Employe employe) {
 		return new ResponseEntity<Employe>(employeService.add(employe), HttpStatus.OK);
 	}
-	
+
 	@PutMapping(value = "/employes/{id}")
-	public ResponseEntity<Employe> modifierEmploye(@PathVariable Integer idEmploye, @RequestBody Employe employe) {
+	public ResponseEntity<Employe> modifierEmploye(@PathVariable("id") Integer idEmploye,
+			@RequestBody Employe employe) {
 		Employe employeACorriger = employeService.findById(idEmploye).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employe non trouvé avec Id " + idEmploye));
 		employeACorriger.setEmailEmploye(employe.getEmailEmploye());
@@ -66,11 +67,11 @@ public class EmployeRestController {
 		employeACorriger.setPrenomEmploye(employe.getPrenomEmploye());
 		return new ResponseEntity<Employe>(employeService.update(employeACorriger), HttpStatus.OK);
 	}
-	
+
 	@DeleteMapping(value = "/employes/{id}")
-	public ResponseEntity<?> supprimerEmploye(@PathVariable Integer idEmploye) {
+	public ResponseEntity<?> supprimerEmploye(@PathVariable("id") Integer idEmploye) {
 		Employe employeASupprimer = employeService.findById(idEmploye).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employe non trouvé avec Id " + idEmploye));
 		employeService.removeById(employeASupprimer.getId());
 		return new ResponseEntity<>("L'employé a bien été supprimé.", HttpStatus.OK);
 	}

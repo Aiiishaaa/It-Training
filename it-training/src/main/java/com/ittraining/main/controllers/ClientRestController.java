@@ -36,12 +36,12 @@ public class ClientRestController {
 	}
 	
 	@GetMapping(value = "/clients/{id}")
-	public ResponseEntity<Optional<Client>> recupererClientParId(@PathVariable Integer idClient) {
+	public ResponseEntity<Optional<Client>> recupererClientParId(@PathVariable("id") Integer idClient) {
 		return new ResponseEntity<Optional<Client>> (clientService.findById(idClient), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/sessions/{id}/clients")
-	public ResponseEntity<List<Client>> recupererClientParSession(@PathVariable Integer idSession) {
+	public ResponseEntity<List<Client>> recupererClientParSession(@PathVariable("id") Integer idSession) {
 		sessionService.findById(idSession).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Session non trouvée avec Id " + idSession));
 		List<Client> clientsParSession = clientService.findAllBySessionsId(idSession);
@@ -54,7 +54,7 @@ public class ClientRestController {
 	}
 	
 	@PutMapping(value = "/clients/{id}")
-	public ResponseEntity<Client> modifierClient(@PathVariable Integer idClient, @RequestBody Client client) {
+	public ResponseEntity<Client> modifierClient(@PathVariable("id") Integer idClient, @RequestBody Client client) {
 		Client clientACorriger = clientService.findById(idClient).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		clientACorriger.setEmailClient(client.getEmailClient());
@@ -65,7 +65,7 @@ public class ClientRestController {
 	}
 	
 	@DeleteMapping(value = "/clients/{id}")
-	public ResponseEntity<?> supprimerClient(@PathVariable Integer idClient) {
+	public ResponseEntity<?> supprimerClient(@PathVariable("id") Integer idClient) {
 		Client clientASupprimer = clientService.findById(idClient).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		clientService.removeById(clientASupprimer.getId());

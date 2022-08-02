@@ -10,7 +10,6 @@ import com.ittraining.main.dao.DomaineRepository;
 import com.ittraining.main.models.Domaine;
 
 @Service(value = "domaineService")
-
 public class DomaineService implements IDomaineService {
 
 	@Autowired
