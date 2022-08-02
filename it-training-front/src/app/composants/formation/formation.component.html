@@ -1,4 +1,4 @@
-<ng-container *ngFor="let elt of formations">
+<ng-container>
 
     <!-- Bandeau du haut avec fil d'Ariane -->
     <section class="hero-wrap hero-wrap-2" style="background-image: url('../../../assets/images/work-6.jpg');">
@@ -11,9 +11,9 @@
                         <span class="mr-2"><a href="/catalogue">Catalogue <i class="fa fa-chevron-right"></i></a></span>
                         <span class="mr-2"><a href="/catalogue/domaine">Domaine <i
                                     class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/domaine/theme">{{ elt.idTheme }} </a></span>
+                        <span class="mr-2"><a href="/catalogue/domaine/theme">Theme </a></span>
                     </p>
-                    <h1 class="mb-0 bread">{{ elt.intitule }}</h1>
+                    <h1 class="mb-0 bread">{{ formation.intitule }}</h1>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                                 <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
                                     <span class="subheading">Développez de nouvelles compétences</span>
                                     <h2 class="mb-4">En quelques mots</h2>
-                                    <p style="text-align: justify">{{ elt.descriptionLongue }}</p>
+                                    <p style="text-align: justify">{{ formation.descriptionLongue }}</p>
                                     <p><a href="#" class="btn btn-primary">Trouvez votre session !</a></p>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                         <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
                                 class="fa-regular fa-3x fa-calendar"></i></div>
                         <div class="text">
-                            <strong class="number" data-number="4500">4</strong>
+                            <strong class="number" data-number="4500">{{sessions.length}}</strong>
                             <span>Sessions à venir</span>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
                                 class="fa-regular fa-3x fa-clock"></i></div>
                         <div class="text">
-                            <strong class="number" data-number="400">{{ elt.nbHeures}}</strong>
+                            <strong class="number" data-number="400">{{ formation.nbHeures}}</strong>
                             <span>Heures</span>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                         <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
                                 class="fa-solid fa-3x fa-euro-sign"></i></div>
                         <div class="text">
-                            <strong class="number" data-number="300">{{ elt.prix }}</strong>
+                            <strong class="number" data-number="300">{{ formation.prix }}</strong>
                             <span>Eligible CPF</span>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                     <div class="w-100 mb-4 mb-md-0">
                         <span class="subheading">Améliorez votre employabilité</span>
                         <h2 class="mb-4">Le programme en détails</h2>
-                        <p>{{ elt.programme }}</p>
+                        <p>{{ formation.programme }}</p>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -119,7 +119,7 @@
                                 style="color: white"><i class="fa-regular fa-2x fa-address-card"></i></div>
                             <div class="media-body">
                                 <h3 class="heading mb-3">Contact</h3>
-                                <div>prenomContact : {{ elt.idEmploye }}</div>
+                                <div>prenomContact : Employe</div>
                                 <div>nomContact : </div>
                                 <div>Téléphone : </div>
                                 <div>Email : </div>
@@ -132,7 +132,7 @@
                                 style="color: white"><i class="fa-regular fa-2x fa-pen-to-square"></i></div>
                             <div class="media-body">
                                 <h3 class="heading mb-3">Quiz</h3>
-                                <p>Faîtes le test pour savoir si vous avez le niveau requis. {{ elt.idPrerequis }}
+                                <p>Faîtes le test pour savoir si vous avez le niveau requis. Prerequis
                                 </p>
                             </div>
                         </div>

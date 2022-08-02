@@ -1,13 +1,19 @@
+import { Employe } from "./employe";
+import { Prerequis } from "./prerequis";
+import { Session } from "./session";
+
 export interface Formation {
 
     id?: number;
-    idTheme?: number;
+    // theme?: Theme;
+    // domaine?: Domaine;
     prix?: number;
-    idPrerequis?: number;
+    prerequis?: Prerequis;
     descriptionBreve?: string;
     descriptionLongue?: string;
     programme?: string;
-    idEmploye?: number;
+    employe?: Employe;
+    sessions?: Session[];
     intitule?: string;
     nbHeures?: number;
 }

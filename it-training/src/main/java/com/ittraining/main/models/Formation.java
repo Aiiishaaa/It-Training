@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import org.hibernate.annotations.Type;
 
@@ -24,17 +27,20 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_domaine")
 	private Domaine domaine;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_theme")
 	private Theme theme;
+
 	private double prix;
 
-	@OneToMany
-	@JoinColumn(name = "id_session")
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "formation")
 	private List<Session> sessions = new ArrayList<Session>();
 
 	@OneToOne(cascade = CascadeType.ALL)
