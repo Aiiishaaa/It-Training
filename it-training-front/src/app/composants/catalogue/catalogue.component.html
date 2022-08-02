@@ -3,18 +3,15 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Acceuil
-                    <svg width="24px" height="24px" viewBox="0 2 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" y="">
-                        <path d="M10 17L15 12M10 7L12.5 9.5" stroke="#001A72" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        
-                        </a></span> <span>Formations <i class="fa fa-chevron-right"></i></span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Acceuil<i
+                                class="fa fa-chevron-right"></i></a></span>
+                    <span>Formations <i class="fa fa-chevron-right"></i></span>
+                </p>
                 <h1 class="mb-0 bread">Liste de formations</h1>
             </div>
         </div>
     </div>
 </section>
-
 
 <section class="ftco-section bg-light">
     <div class="container">
@@ -32,14 +29,10 @@
                 <div class="sidebar-box bg-white p-4 ftco-animate fadeInUp ftco-animated">
                     <h3 class="heading-sidebar">Domaines de Formation</h3>
                     <form action="#" class="browse-form">
-                        <label for="option-category-1"><input type="radio" id="option-category-1" name="vehicle"
-                                value=""> Informatique</label><br>
-                        <label for="option-category-2"><input type="radio" id="option-category-2" name="vehicle"
-                                value=""> Bureautique</label><br>
-                        <label for="option-category-3"><input type="radio" id="option-category-3" name="vehicle"
-                                value=""> Management &amp; Soft skills</label><br>
-                        <label for="option-category-4"><input type="radio" id="option-category-4" name="vehicle"
-                                value=""> Multimédia</label><br>
+                        <ng-container *ngFor="let elt of domaines">
+                            <label for="option-category-1"><input type="radio" id="option-category-1" name="vehicle"
+                                    value=""> {{ elt.nom }} </label><br>
+                        </ng-container>
                     </form>
                 </div>
 
@@ -91,67 +84,23 @@
             </div>
             <div class="col-lg-9">
                 <div class="row">
-                    <div class="col-md-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(./assets/images/work-1.jpg);">
-                                <span class="price">Informatique</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Base de données</a></h3>
-                                <p class="advisor">Formateur <span>Damien MATUI</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>Sophia Antipolis</li>
-                                    <li class="price">10€</li>
-                                </ul>
+                    <ng-container *ngFor="let elt of formations">
+                        <div class="col-md-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
+                            <div class="project-wrap">
+                                <a href="#" class="img" style="background-image: url(./assets/images/work-1.jpg);">
+                                    <span class="price">Informatique</span>
+                                </a>
+                                <div class="text p-4">
+                                    <h3><a href="#">{{ elt.intitule }}</a></h3>
+                                    <p class="advisor"></p>
+                                    <ul class="d-flex justify-content-between">
+                                        <li><span class="flaticon-shower"></span>{{ elt.nbHeures }} heures</li>
+                                        <li class="price">{{ elt.prix }} €</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(./assets/images/work-6.jpg);">
-                                <span class="price">Informatique</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Base de données</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>Marseille</li>
-                                    <li class="price">20€</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(./assets/images/work-3.jpg);">
-                                <span class="price">Informatique</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Base de données</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>Lyon</li>
-                                    <li class="price">30€</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
-                        <div class="project-wrap">
-                            <a href="#" class="img" style="background-image: url(./assets/images/work-4.jpg);">
-                                <span class="price">Informatique</span>
-                            </a>
-                            <div class="text p-4">
-                                <h3><a href="#">Base de données</a></h3>
-                                <p class="advisor">Advisor <span>Tony Garret</span></p>
-                                <ul class="d-flex justify-content-between">
-                                    <li><span class="flaticon-shower"></span>Bordeaux</li>
-                                    <li class="price">40€</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    </ng-container>
                 </div>
                 <div class="row mt-5">
                     <div class="col">

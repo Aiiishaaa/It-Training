@@ -39,6 +39,10 @@ public class ThemeService implements IThemeService {
 	public void removeById(Integer id) {
 		themeRepository.deleteById(id);
 	}
-	
-	
+
+	@Override
+	public Theme findByFormationsId(Integer idFormation) {
+		return themeRepository.findByFormationsId(idFormation);
+	}
+
 }

@@ -4,7 +4,9 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import com.ittraining.main.models.Employe;
 import com.ittraining.main.models.Theme;
+import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.IThemeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,14 +29,25 @@ public class ThemeRestController {
 	@Autowired
 	private IThemeService themeService;
 
+	@Autowired
+	private IFormationService formationService;
+
 	@GetMapping(value = "/themes")
 	public ResponseEntity<List<Theme>> recupererThemes() {
-		return new ResponseEntity<List<Theme>> (themeService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<List<Theme>>(themeService.findAll(), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/themes/{id}")
 	public ResponseEntity<Optional<Theme>> recupererThemeParId(@PathVariable("id") Integer idTheme) {
 		return new ResponseEntity<Optional<Theme>>(themeService.findById(idTheme), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/formations/{id}/themes")
+	public ResponseEntity<Theme> recupererThemeParFormation(@PathVariable("id") Integer idFormation) {
+		formationService.findById(idFormation).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec Id " + idFormation));
+		Theme theme = themeService.findByFormationsId(idFormation);
+		return new ResponseEntity<Theme>(theme, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/themes")
@@ -44,8 +57,8 @@ public class ThemeRestController {
 
 	@PutMapping(value = "/themes/{id}")
 	public ResponseEntity<Theme> modifierTheme(@PathVariable("id") Integer idTheme, @RequestBody Theme theme) {
-		Theme themeACorriger = themeService.findById(idTheme)
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Thème non trouvé avec l'id " + idTheme));
+		Theme themeACorriger = themeService.findById(idTheme).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Thème non trouvé avec l'id " + idTheme));
 		themeACorriger.setDomaine(theme.getDomaine());
 		themeACorriger.setNomTheme(theme.getNomTheme());
 		return new ResponseEntity<Theme>(themeService.update(themeACorriger), HttpStatus.OK);
@@ -53,8 +66,8 @@ public class ThemeRestController {
 
 	@DeleteMapping(value = "/themes/{id}")
 	public ResponseEntity<?> supprimerTheme(@PathVariable("id") Integer idTheme) {
-		Theme themeASupprimer = themeService.findById(idTheme)
-				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Thème non trouvé avec l'id " + idTheme));
+		Theme themeASupprimer = themeService.findById(idTheme).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Thème non trouvé avec l'id " + idTheme));
 		themeService.removeById(themeASupprimer.getId());
 		return new ResponseEntity<>("Le thème a bien été supprimé.", HttpStatus.OK);
 	}

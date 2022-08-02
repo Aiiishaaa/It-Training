@@ -7,16 +7,21 @@ import { Employe } from '../interfaces/employe';
 })
 export class EmployeService {
 
-  private url: string = "http://localhost:8080/employes";
+  private url1: string = "http://localhost:8080/employes";
+  private url2: string = "http://localhost:8080/formations";
 
   constructor(private http: HttpClient) { }
 
 getAllEmploye() {
-  return this.http.get<Employe[]>(this.url);
+  return this.http.get<Employe[]>(this.url1);
 }
 
 getOneEmployeById(id: number) {
-  return this.http.get<Employe>(this.url + "/" + id);
+  return this.http.get<Employe>(this.url1 + "/" + id);
+}
+
+getOneEmployeByFormation(idFormation: number) {
+  return this.http.get<Employe>(this.url2 + "/" + idFormation + "/employes");
 }
 
 }
