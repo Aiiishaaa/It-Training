@@ -27,6 +27,7 @@ export class FormationComponent implements OnInit {
   domaine: Domaine = {};
   prerequis: Prerequis = {};
   id: number = 0;
+  urlBackground: string = "";
 
   constructor(
     private formationServ: FormationService,
@@ -75,6 +76,17 @@ export class FormationComponent implements OnInit {
   recupDomaineParFormation(idFormation: number) {
     this.domaineServ.getOneByFormation(idFormation).subscribe(res => {
       this.domaine = res;
+      switch (this.domaine.id) {
+        case 1:
+          this.urlBackground = "/assets/images/work-6.jpg";
+          break;
+        case 2:
+          this.urlBackground = "/assets/images/work-5.jpg";
+          break;
+        default:
+          console.log("Erreur chargement background");
+      }
+
     })
   }
 
