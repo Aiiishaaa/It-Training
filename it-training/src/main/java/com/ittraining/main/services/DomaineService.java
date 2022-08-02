@@ -40,4 +40,9 @@ public class DomaineService implements IDomaineService {
 		domaineRepository.deleteById(id);
 	}
 
+	@Override
+	public Domaine findByFormationsId(Integer idFormation) {
+		return domaineRepository.findByFormationsId(idFormation);
+	}
+
 }

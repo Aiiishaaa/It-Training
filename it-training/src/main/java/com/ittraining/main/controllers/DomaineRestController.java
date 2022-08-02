@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ittraining.main.models.Domaine;
+import com.ittraining.main.models.Theme;
 import com.ittraining.main.services.IDomaineService;
+import com.ittraining.main.services.IFormationService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,9 @@ public class DomaineRestController {
 
 	@Autowired
 	private IDomaineService domaineService;
+	
+	@Autowired
+	private IFormationService formationService;
 
 	@GetMapping(value = "/domaines")
 	public ResponseEntity<List<Domaine>> recupererDomaines() {
@@ -36,6 +41,14 @@ public class DomaineRestController {
 		return new ResponseEntity<Optional<Domaine>>(domaineService.findById(idDomaine), HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/formations/{id}/domaines")
+	public ResponseEntity<Domaine> recupererThemeParFormation(@PathVariable("id") Integer idFormation) {
+		formationService.findById(idFormation).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvée avec Id " + idFormation));
+		Domaine domaine = domaineService.findByFormationsId(idFormation);
+		return new ResponseEntity<Domaine>(domaine, HttpStatus.OK);
+	}
+	
 	@PostMapping(value = "/domaines")
 	public ResponseEntity<Domaine> ajouterDomaine(@RequestBody Domaine domaine) {
 		return new ResponseEntity<Domaine>(domaineService.add(domaine), HttpStatus.OK);

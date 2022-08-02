@@ -6,6 +6,7 @@ import { Formation } from 'src/app/interfaces/formation';
 import { Prerequis } from 'src/app/interfaces/prerequis';
 import { Session } from 'src/app/interfaces/session';
 import { Theme } from 'src/app/interfaces/theme';
+import { DomaineService } from 'src/app/services/domaine.service';
 import { EmployeService } from 'src/app/services/employe.service';
 import { FormationService } from 'src/app/services/formation.service';
 import { SessionService } from 'src/app/services/session.service';
@@ -32,6 +33,7 @@ export class FormationComponent implements OnInit {
     private sessionServ: SessionService,
     private employeServ: EmployeService,
     private themeServ: ThemeService,
+    private domaineServ: DomaineService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class FormationComponent implements OnInit {
       this.recupSessionsParFormation(this.id);
       this.recupContactParFormation(this.id);
       this.recupThemeParFormation(this.id);
+      this.recupDomaineParFormation(this.id);
     });
   }
 
@@ -65,7 +68,13 @@ export class FormationComponent implements OnInit {
   recupThemeParFormation(idFormation: number) {
     this.themeServ.getOneThemeByFormation(idFormation).subscribe(res => {
       this.theme = res;
-      console.log(this.theme);
+    })
+  }
+
+  recupDomaineParFormation(idFormation: number) {
+    this.domaineServ.getOneByFormation(idFormation).subscribe(res => {
+      this.domaine = res;
+      console.log(this.domaine);
     })
   }
 }

@@ -91,9 +91,9 @@ public class RunnerConfig implements CommandLineRunner {
 		clientsSession3.add(c4);
 		clientsSession3.add(c6);
 		
-		Domaine d1 = new Domaine("Informatique", null);
+		Domaine d1 = new Domaine("Informatique", null, null);
 		domaineRepository.save(d1);
-		Domaine d2 = new Domaine("Management & soft skills", null);
+		Domaine d2 = new Domaine("Management & soft skills", null, null);
 		domaineRepository.save(d2);
 		
 		Theme t1 = new Theme("Langages & Développement", d1);

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "domaines")
 public class Domaine {
@@ -22,16 +24,23 @@ public class Domaine {
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "domaine")
 	private List<Theme> themes = new ArrayList<Theme>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "domaine")
+	private List<Formation> formations = new ArrayList<Formation>();
 
 	public Domaine() {
 		super();
 	}
 
-	public Domaine(String nomDomaine, List<Theme> themes) {
+	public Domaine(String nomDomaine, List<Theme> themes, List<Formation> formations) {
 		super();
 		this.nomDomaine = nomDomaine;
 		this.themes = themes;
+		this.formations = formations;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -53,9 +62,19 @@ public class Domaine {
 		this.themes = themes;
 	}
 
-	@Override
-	public String toString() {
-		return "Domaine [idDomaine=" + id + ", nomDomaine=" + nomDomaine + ", themes=" + themes + "]";
+	public List<Formation> getFormations() {
+		return formations;
 	}
 
+	public void setFormations(List<Formation> formations) {
+		this.formations = formations;
+	}
+
+	@Override
+	public String toString() {
+		return "Domaine [id=" + id + ", nomDomaine=" + nomDomaine + ", themes=" + themes + ", formations=" + formations
+				+ "]";
+	}
+
+	
 }
