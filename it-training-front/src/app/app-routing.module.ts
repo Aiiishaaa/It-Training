@@ -10,6 +10,8 @@ const routes: Routes = [
   {path: '', component: AccueilComponent},
   {path: 'formations/:id', component: FormationComponent},
   {path: 'catalogue', component: CatalogueComponent},
+  {path: 'catalogue/:nomDomaine', component: CatalogueComponent},
+  {path: 'catalogue/:nomDomaine/:nomTheme', component: CatalogueComponent},
   {path: 'formateurs', component: FormateurComponent},
   {path: 'error', component: PageInconnuComponent},
   {path: '**', redirectTo: '/error'}
