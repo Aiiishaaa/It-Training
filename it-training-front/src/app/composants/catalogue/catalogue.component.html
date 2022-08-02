@@ -39,18 +39,10 @@
                 <div class="sidebar-box bg-white p-4 ftco-animate fadeInUp ftco-animated">
                     <h3 class="heading-sidebar">Thèmes</h3>
                     <form action="#" class="browse-form">
-                        <label for="option-instructor-1"><input type="radio" id="option-instructor-1" name="vehicle"
-                                value=""> Base de données</label><br>
-                        <label for="option-instructor-2"><input type="radio" id="option-instructor-2" name="vehicle"
-                                value=""> Cloud</label><br>
-                        <label for="option-instructor-3"><input type="radio" id="option-instructor-3" name="vehicle"
-                                value=""> DevOps</label><br>
-                        <label for="option-instructor-4"><input type="radio" id="option-instructor-4" name="vehicle"
-                                value=""> Langage &amp; developpement</label><br>
-                        <label for="option-instructor-5"><input type="radio" id="option-instructor-5" name="vehicle"
-                                value=""> Réseaux &amp; Télécoms</label><br>
-                        <label for="option-instructor-6"><input type="radio" id="option-instructor-6" name="vehicle"
-                                value=""> Systèmes</label><br>
+                        <ng-container *ngFor="let elt of themes">
+                            <label for="option-instructor-1"><input type="radio" id="option-instructor-1" name="vehicle"
+                                 value=""> {{ elt.nomTheme }}</label><br>
+                        </ng-container>
                     </form>
                 </div>
 
