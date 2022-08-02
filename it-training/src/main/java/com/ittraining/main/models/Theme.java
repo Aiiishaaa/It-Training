@@ -1,5 +1,8 @@
 package com.ittraining.main.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
@@ -7,9 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "themes")
@@ -23,7 +28,11 @@ public class Theme {
 	@ManyToOne
 	@JoinColumn(name = "id_domaine")
 	private Domaine domaine;
-
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "theme")
+	private List<Formation> formations = new ArrayList<Formation>();
+	
 	public Theme() {
 		super();
 	}

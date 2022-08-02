@@ -7,15 +7,20 @@ import { Theme } from '../interfaces/theme';
 })
 export class ThemeService {
 
-  private url: string = "http://localhost:8080/themes";
+  private url1: string = "http://localhost:8080/themes";
+  private url2: string = "http://localhost:8080/formations";
 
   constructor(private http: HttpClient) { }
 
   getAllTheme() {
-    return this.http.get<Theme[]>(this.url);
+    return this.http.get<Theme[]>(this.url1);
   }
 
   getOneThemeById(id: number) {
-    return this.http.get<Theme>(this.url + "/" + id);
+    return this.http.get<Theme>(this.url1 + "/" + id);
+  }
+
+  getOneThemeByFormation(idFormation: number) {
+    return this.http.get<Theme>(this.url2 + "/" + idFormation + "/themes");
   }
 }
