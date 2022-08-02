@@ -9,9 +9,9 @@
                     <p class="breadcrumbs">
                         <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
                         <span class="mr-2"><a href="/catalogue">Catalogue <i class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/domaine">{{ domaine.nomDomaine }} <i
+                        <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}">{{ domaine.nomDomaine }} <i
                                     class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/domaine/theme">{{ theme.nomTheme }}</a></span>
+                        <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}/{{ theme.nomTheme }}">{{ theme.nomTheme }}</a></span>
                     </p>
                     <h1 class="mb-0 bread">{{ formation.intitule }}</h1>
                 </div>
