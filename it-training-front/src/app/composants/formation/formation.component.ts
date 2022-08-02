@@ -4,6 +4,7 @@ import { Employe } from 'src/app/interfaces/employe';
 import { Formation } from 'src/app/interfaces/formation';
 import { Prerequis } from 'src/app/interfaces/prerequis';
 import { Session } from 'src/app/interfaces/session';
+import { EmployeService } from 'src/app/services/employe.service';
 import { FormationService } from 'src/app/services/formation.service';
 import { SessionService } from 'src/app/services/session.service';
 
@@ -24,6 +25,7 @@ export class FormationComponent implements OnInit {
   constructor(
     private formationServ: FormationService,
     private sessionServ: SessionService,
+    private employeServ: EmployeService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class FormationComponent implements OnInit {
       this.id = Number(res.get("id"));
       this.recupFormation(this.id);
       this.recupSessionsParFormation(this.id);
+      this.recupContactParFormation(this.id);
     });
   }
 
@@ -42,7 +45,13 @@ export class FormationComponent implements OnInit {
 
   recupSessionsParFormation(idFormation: number) {
     this.sessionServ.getAllSessionsByFormation(idFormation).subscribe(res => {
-      this.sessions = res;
+      this.sessions = res; 
+    })
+  }
+
+  recupContactParFormation(idFormation: number) {
+    this.employeServ.getOneEmployeByFormation(idFormation).subscribe(res => {
+      this.contact = res;
     })
   }
 }

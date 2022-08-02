@@ -10,7 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "employes")
@@ -29,18 +32,23 @@ public class Employe {
 	@JoinColumn(name = "id_role")
 	private List<Role> roles = new ArrayList<Role>();
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "employe")
+	private List<Formation> formations = new ArrayList<Formation>();
+
+	public Employe() {
+		super();
+	}
+
 	public Employe(String nomEmploye, String prenomEmploye, String passwordEmploye, String emailEmploye,
-			List<Role> roles) {
+			List<Role> roles, List<Formation> formations) {
 		super();
 		this.nomEmploye = nomEmploye;
 		this.prenomEmploye = prenomEmploye;
 		this.passwordEmploye = passwordEmploye;
 		this.emailEmploye = emailEmploye;
 		this.roles = roles;
-	}
-
-	public Employe() {
-		super();
+		this.formations = formations;
 	}
 
 	public Integer getId() {
@@ -87,10 +95,19 @@ public class Employe {
 		this.roles = roles;
 	}
 
+	public List<Formation> getFormations() {
+		return formations;
+	}
+
+	public void setFormations(List<Formation> formations) {
+		this.formations = formations;
+	}
+
 	@Override
 	public String toString() {
-		return "Employe [idEmploye=" + id + ", nomEmploye=" + nomEmploye + ", prenomEmploye=" + prenomEmploye
-				+ ", passwordEmploye=" + passwordEmploye + ", emailEmploye=" + emailEmploye + ", roles=" + roles + "]";
+		return "Employe [id=" + id + ", nomEmploye=" + nomEmploye + ", prenomEmploye=" + prenomEmploye
+				+ ", passwordEmploye=" + passwordEmploye + ", emailEmploye=" + emailEmploye + ", roles=" + roles
+				+ ", formations=" + formations + "]";
 	}
 
 }

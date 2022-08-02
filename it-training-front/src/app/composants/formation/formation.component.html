@@ -62,7 +62,7 @@
                         <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
                                 class="fa-regular fa-3x fa-calendar"></i></div>
                         <div class="text">
-                            <strong class="number" data-number="4500">{{sessions.length}}</strong>
+                            <strong class="number" data-number="4500">{{ sessions.length }}</strong>
                             <span>Sessions à venir</span>
                         </div>
                     </div>
@@ -119,10 +119,9 @@
                                 style="color: white"><i class="fa-regular fa-2x fa-address-card"></i></div>
                             <div class="media-body">
                                 <h3 class="heading mb-3">Contact</h3>
-                                <div>prenomContact : Employe</div>
-                                <div>nomContact : </div>
+                                <div>Nom : {{ contact.prenomEmploye }} {{ contact.nomEmploye }}</div>
                                 <div>Téléphone : </div>
-                                <div>Email : </div>
+                                <div>Email : {{ contact.emailEmploye }}</div>
                             </div>
                         </div>
                     </div>

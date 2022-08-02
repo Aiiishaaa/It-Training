@@ -45,4 +45,9 @@ public class EmployeService implements IEmployeService {
 		return employeRepository.findAllByRolesId(idRole);
 	}
 
+	@Override
+	public Optional<Employe> findByFormationsId(Integer idFormation) {
+		return employeRepository.findByFormationsId(idFormation);
+	}
+
 }

@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.ittraining.main.models.Employe;
 import com.ittraining.main.services.IEmployeService;
+import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.IRoleService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,9 @@ public class EmployeRestController {
 
 	@Autowired
 	private IRoleService roleService;
+	
+	@Autowired
+	private IFormationService formationService;
 
 	@GetMapping(value = "/employes")
 	public ResponseEntity<List<Employe>> recupererEmployes() {
@@ -48,6 +52,14 @@ public class EmployeRestController {
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Rôle non trouvé avec Id " + idRole));
 		List<Employe> employesParRole = employeService.findAllByRolesId(idRole);
 		return new ResponseEntity<>(employesParRole, HttpStatus.OK);
+	}
+	
+	@GetMapping(value = "/formations/{id}/employes")
+	public ResponseEntity<Optional<Employe>> recupererEmployeParFormation(@PathVariable("id") Integer idFormation) {
+		formationService.findById(idFormation).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Formation non trouvé avec Id " + idFormation));
+		Optional<Employe> employe = employeService.findByFormationsId(idFormation);
+		return new ResponseEntity<Optional<Employe>>(employe, HttpStatus.OK);
 	}
 
 	@PostMapping(value = "/employes")

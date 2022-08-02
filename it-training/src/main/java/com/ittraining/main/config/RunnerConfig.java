@@ -117,9 +117,9 @@ public class RunnerConfig implements CommandLineRunner {
 		d2.setThemes(themesDom2);
 		domaineRepository.save(d2);
 		
-		Employe e1 = new Employe("Hamida", "Aicha", "aicha", "hamida.aicha@it-training.com", null);
-		Employe e2 = new Employe("Di Lorenzo", "Lucas", "lucas", "dilorenzo.lucas@it-training.com", null);
-		Employe e3 = new Employe("Heuillet", "Cecile", "cecile", "heuillet.cecile@it-training.com", null);
+		Employe e1 = new Employe("Hamida", "Aicha", "aicha", "hamida.aicha@it-training.com", null, null);
+		Employe e2 = new Employe("Di Lorenzo", "Lucas", "lucas", "dilorenzo.lucas@it-training.com", null, null);
+		Employe e3 = new Employe("Heuillet", "Cecile", "cecile", "heuillet.cecile@it-training.com", null, null);
 		employeRepository.save(e1);
 		employeRepository.save(e2);
 		employeRepository.save(e3);
