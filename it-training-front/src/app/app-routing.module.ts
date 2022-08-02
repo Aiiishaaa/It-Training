@@ -8,7 +8,6 @@ import { PageInconnuComponent } from './composants/page-inconnu/page-inconnu.com
 
 const routes: Routes = [
   {path: '', component: AccueilComponent},
-  {path: 'formations', component: FormationComponent},
   {path: 'formations/:id', component: FormationComponent},
   {path: 'catalogues', component: CatalogueComponent},
   {path: 'catalogues/:id', component: CatalogueComponent},
