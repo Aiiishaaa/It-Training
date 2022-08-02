@@ -5,6 +5,10 @@ export interface Client {
     nom?: string;
     prenom?: string;
     email?: string;
-    password?: string;
+    password?:
+    {
+        pwd: string;
+        confirmPwd: string;
+    };
     sessions?: Session[];
 }

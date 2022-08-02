@@ -17,8 +17,13 @@
     }
 }
 
+.erreur {
+    color: red;
+}
+
 .ftco-navbar-light .container {
-    width: 1110px;
+    width: 1300px;
+    height: inherit;
     margin: 0 auto;
     padding: 0;
 }
