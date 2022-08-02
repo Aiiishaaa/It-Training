@@ -12,10 +12,10 @@ export class DomaineService {
 
   constructor(private http: HttpClient) { }
 
-  getAllDomaine() {
+  getAllDomaines() {
     return this.http.get<Domaine[]>(this.url1);
   }
-
+  
   getOneEmployeById(id: number) {
     return this.http.get<Domaine>(this.url1 + "/" + id);
   }
