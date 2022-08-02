@@ -14,6 +14,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "sessions")
 public class Session {
@@ -24,6 +26,7 @@ public class Session {
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_formation")
 	private Formation formation;
