@@ -42,7 +42,8 @@
                                     <span class="subheading">Développez de nouvelles compétences</span>
                                     <h2 class="mb-4">En quelques mots</h2>
                                     <p style="text-align: justify">{{ formation.descriptionLongue }}</p>
-                                    <p><a href="#" class="btn btn-primary">Trouvez votre session !</a></p>
+                                    <p><button class="btn btn-primary" data-bs-toggle="offcanvas"
+                                            data-bs-target="#myCanvas">Trouvez votre session !</button></p>
                                 </div>
                             </div>
                         </div>
@@ -51,6 +52,20 @@
             </div>
         </div>
     </section>
+
+    <div class="offcanvas offcanvas-end" id="myCanvas">
+        <div class="offcanvas-header">
+            <h1 class="offcanvas-title">Trouvez votre session</h1>
+            <h2>{{ formation.intitule }}</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Some text lorem ipsum.</p>
+            <p>Some text lorem ipsum.</p>
+            <p>Some text lorem ipsum.</p>
+            <button class="btn btn-secondary" type="button">A Button</button>
+        </div>
+    </div>
 
     <!-- Bande avec image qui scroll -->
     <section class="section ftco-counter img" id="section-counter"
