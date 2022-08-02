@@ -19,7 +19,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class FormationComponent implements OnInit {
 
-  formations: Formation[] = [];
+  formationsMemeDomaine: Formation[] = [];
   formation: Formation = {};
   sessions: Session[] = [];
   contact: Employe = {};
@@ -44,6 +44,7 @@ export class FormationComponent implements OnInit {
       this.recupContactParFormation(this.id);
       this.recupThemeParFormation(this.id);
       this.recupDomaineParFormation(this.id);
+      this.recupFormationsMemeDomaine(this.id);
     });
   }
 
@@ -55,7 +56,7 @@ export class FormationComponent implements OnInit {
 
   recupSessionsParFormation(idFormation: number) {
     this.sessionServ.getAllSessionsByFormation(idFormation).subscribe(res => {
-      this.sessions = res; 
+      this.sessions = res;
     })
   }
 
@@ -74,7 +75,21 @@ export class FormationComponent implements OnInit {
   recupDomaineParFormation(idFormation: number) {
     this.domaineServ.getOneByFormation(idFormation).subscribe(res => {
       this.domaine = res;
-      console.log(this.domaine);
+    })
+  }
+
+  recupFormationsMemeDomaine(idFormation: number) {
+    let dom: Domaine;
+    this.domaineServ.getOneByFormation(idFormation).subscribe(res => {
+      dom = res;
+      this.formationServ.getAllFormationsByDomaine(dom.id ?? 0).subscribe(res => {
+        let f = res;
+        for (const elt of f) {
+          if (elt.id != idFormation) {
+            this.formationsMemeDomaine.push(elt);
+          }
+        }
+      })
     })
   }
 }
