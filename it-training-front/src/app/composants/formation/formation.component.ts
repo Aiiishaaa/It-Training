@@ -24,7 +24,7 @@ export class FormationComponent implements OnInit {
   sessions: Session[] = [];
   contact: Employe = {};
   theme: Theme = {};
-  domaine: Domaine = {};
+  domaine!: Domaine;
   prerequis: Prerequis = {};
   id: number = 0;
 

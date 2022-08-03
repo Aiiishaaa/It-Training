@@ -13,10 +13,17 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent implements OnInit {
+  i: number = 0;
+
+  name!:string;
 
   formations: Formation[] = [];
   themes: Theme[] = [];
   domaines: Domaine[] = [];
+  formationsMemeDomaine: Formation[] = [];
+
+  formationsDom: Formation[] = [];
+  id: number = 0;
   
   constructor(
     private ts: ThemeService,
@@ -29,25 +36,60 @@ export class CatalogueComponent implements OnInit {
     this.recupAllFormations();
     this.recupAllThemes();
     this.recupAllDomaines();
+    this.route.paramMap.subscribe(res => {
+    this.id = Number(res.get("id"));
+    this.recupAllFormationsByDomaine(this.id);
+    })
   }
 
   recupAllFormations() {
     this.fs.getAllFormations().subscribe(res => {
+      console.log(res);
       this.formations = res;
+      console.log(this.formations);    
+    })
+  }
+
+  recupAllFormationsByDomaineName(name: string) {
+    this.fs.getAllFormationsByDomaineName(name).subscribe(res => {
+      console.log(res);
+      this.formations = res;
+      console.log(this.formations);    
     })
   }
 
   recupAllDomaines() {
     this.ds.getAllDomaines().subscribe(res => {
       this.domaines = res;
-      console.log(this.domaines)
     })
   }
 
   recupAllThemes() {
     this.ts.getAllTheme().subscribe(res => {
       this.themes = res;
-      console.log(this.themes)
     })
   }
+
+  recupAllFormationsByDomaine(idDomaine: number) {
+    this.fs.getAllFormationsByDomaine(idDomaine).subscribe(res => {
+      this.formationsDom = res;
+    })
+  }
+
+  recupFormationsMemeDomaine(idFormation: number) {
+    let dom: Domaine;
+    this.ds.getOneByFormation(idFormation).subscribe(res => {
+      dom = res;
+      this.fs.getAllFormationsByDomaine(dom.id ?? 0).subscribe(res => {
+        let f = res;
+        for (const elt of f) {
+          if (elt.id != idFormation) {
+            this.formationsMemeDomaine.push(elt);
+          }
+        }
+      })
+    })
+  }
+
+
 }
