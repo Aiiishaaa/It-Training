@@ -11,6 +11,8 @@ import com.ittraining.main.dao.FormationRepository;
 import com.ittraining.main.models.Formation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service(value = "formationService")
@@ -57,6 +59,21 @@ public class FormationService implements IFormationService {
 	@Override
 	public List<Formation> findAllByEmployeId(Integer idEmploye) {
 		return formationRepository.findAllByEmployeId(idEmploye);
+	}
+
+	@Override
+	public Page<Formation> findByDomaineContaining(String domaine, Pageable pageable) {
+		return formationRepository.findByDomaineContaining(domaine, pageable);
+	}
+
+	@Override
+	public List<Formation> findAllByDomaine(String domaine) {
+		return formationRepository.findAllByDomaine(domaine);
+	}
+
+	@Override
+	public List<Formation> findAllByTheme(String theme) {
+		return formationRepository.findAllByTheme(theme);
 	}
 
 }

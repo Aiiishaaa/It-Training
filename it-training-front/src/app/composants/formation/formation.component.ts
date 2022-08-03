@@ -23,7 +23,7 @@ export class FormationComponent implements OnInit {
   formation: Formation = {};
   sessions: Session[] = [];
   contact: Employe = {};
-  theme: Theme = {};
+  theme!: Theme;
   domaine!: Domaine;
   prerequis: Prerequis = {};
   id: number = 0;

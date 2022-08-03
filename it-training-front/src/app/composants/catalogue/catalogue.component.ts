@@ -13,10 +13,9 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent implements OnInit {
-  i: number = 0;
 
+  lien: string = "http://localhost:4200/formations/";
   name!:string;
-
   formations: Formation[] = [];
   themes: Theme[] = [];
   domaines: Domaine[] = [];
@@ -33,28 +32,16 @@ export class CatalogueComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(res => {
     this.recupAllFormations();
     this.recupAllThemes();
     this.recupAllDomaines();
-    this.route.paramMap.subscribe(res => {
-    this.id = Number(res.get("id"));
-    this.recupAllFormationsByDomaine(this.id);
     })
   }
 
   recupAllFormations() {
     this.fs.getAllFormations().subscribe(res => {
-      console.log(res);
       this.formations = res;
-      console.log(this.formations);    
-    })
-  }
-
-  recupAllFormationsByDomaineName(name: string) {
-    this.fs.getAllFormationsByDomaineName(name).subscribe(res => {
-      console.log(res);
-      this.formations = res;
-      console.log(this.formations);    
     })
   }
 
@@ -70,26 +57,16 @@ export class CatalogueComponent implements OnInit {
     })
   }
 
-  recupAllFormationsByDomaine(idDomaine: number) {
-    this.fs.getAllFormationsByDomaine(idDomaine).subscribe(res => {
-      this.formationsDom = res;
+  recupAllFormationsByDomaineName(name: string) {
+    this.fs.getAllFormationsByDomaineName(name).subscribe(res => {
+      this.formations = res;
     })
   }
 
-  recupFormationsMemeDomaine(idFormation: number) {
-    let dom: Domaine;
-    this.ds.getOneByFormation(idFormation).subscribe(res => {
-      dom = res;
-      this.fs.getAllFormationsByDomaine(dom.id ?? 0).subscribe(res => {
-        let f = res;
-        for (const elt of f) {
-          if (elt.id != idFormation) {
-            this.formationsMemeDomaine.push(elt);
-          }
-        }
-      })
+  recupAllFormationByThemeName(name: string) {
+    this.fs.getAllFormationsByThemeName(name).subscribe(res => {
+      this.formations = res;
     })
   }
-
 
 }

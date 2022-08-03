@@ -10,6 +10,7 @@ export class FormationService {
   private url1: string = "http://localhost:8080/formations";
   private url2: string = "http://localhost:8080/domaines";
   private url3: string = "http://localhost:8080/forms";
+  private url4: string = "http://localhost:8080/forma";
 
   constructor(private http: HttpClient) { }
 
@@ -27,5 +28,9 @@ export class FormationService {
 
   getAllFormationsByDomaineName(nomDomaine: string) {
     return this.http.get<Formation[]>(this.url3 + "/" + nomDomaine);
+  }
+
+  getAllFormationsByThemeName(nomTheme: string) {
+    return this.http.get<Formation[]>(this.url4 + "/" + nomTheme);
   }
 }
