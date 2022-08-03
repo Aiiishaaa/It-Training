@@ -19,7 +19,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class FormationComponent implements OnInit {
 
-  formations: Formation[] = [];
+  formationsMemeDomaine: Formation[] = [];
   formation: Formation = {};
   sessions: Session[] = [];
   contact: Employe = {};
@@ -27,6 +27,7 @@ export class FormationComponent implements OnInit {
   domaine: Domaine = {};
   prerequis: Prerequis = {};
   id: number = 0;
+  urlBackground: string = "";
 
   constructor(
     private formationServ: FormationService,
@@ -44,6 +45,7 @@ export class FormationComponent implements OnInit {
       this.recupContactParFormation(this.id);
       this.recupThemeParFormation(this.id);
       this.recupDomaineParFormation(this.id);
+      this.recupFormationsMemeDomaine(this.id);
     });
   }
 
@@ -55,7 +57,7 @@ export class FormationComponent implements OnInit {
 
   recupSessionsParFormation(idFormation: number) {
     this.sessionServ.getAllSessionsByFormation(idFormation).subscribe(res => {
-      this.sessions = res; 
+      this.sessions = res;
     })
   }
 
@@ -74,7 +76,32 @@ export class FormationComponent implements OnInit {
   recupDomaineParFormation(idFormation: number) {
     this.domaineServ.getOneByFormation(idFormation).subscribe(res => {
       this.domaine = res;
-      console.log(this.domaine);
+      switch (this.domaine.id) {
+        case 1:
+          this.urlBackground = "/assets/images/work-6.jpg";
+          break;
+        case 2:
+          this.urlBackground = "/assets/images/work-5.jpg";
+          break;
+        default:
+          console.log("Erreur chargement background");
+      }
+
+    })
+  }
+
+  recupFormationsMemeDomaine(idFormation: number) {
+    let dom: Domaine;
+    this.domaineServ.getOneByFormation(idFormation).subscribe(res => {
+      dom = res;
+      this.formationServ.getAllFormationsByDomaine(dom.id ?? 0).subscribe(res => {
+        let f = res;
+        for (const elt of f) {
+          if (elt.id != idFormation) {
+            this.formationsMemeDomaine.push(elt);
+          }
+        }
+      })
     })
   }
 }

@@ -1,7 +1,7 @@
 <ng-container>
 
     <!-- Bandeau du haut avec fil d'Ariane -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../../../assets/images/work-6.jpg');">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ urlBackground }}');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -9,9 +9,10 @@
                     <p class="breadcrumbs">
                         <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
                         <span class="mr-2"><a href="/catalogue">Catalogue <i class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/domaine">{{ domaine.nomDomaine }} <i
+                        <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}">{{ domaine.nomDomaine }} <i
                                     class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/domaine/theme">{{ theme.nomTheme }}</a></span>
+                        <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}/{{ theme.nomTheme }}">{{
+                                theme.nomTheme }}</a></span>
                     </p>
                     <h1 class="mb-0 bread">{{ formation.intitule }}</h1>
                 </div>
@@ -41,7 +42,8 @@
                                     <span class="subheading">Développez de nouvelles compétences</span>
                                     <h2 class="mb-4">En quelques mots</h2>
                                     <p style="text-align: justify">{{ formation.descriptionLongue }}</p>
-                                    <p><a href="#" class="btn btn-primary">Trouvez votre session !</a></p>
+                                    <p><button class="btn btn-primary" data-bs-toggle="offcanvas"
+                                            data-bs-target="#myCanvas">Trouvez votre session !</button></p>
                                 </div>
                             </div>
                         </div>
@@ -50,6 +52,20 @@
             </div>
         </div>
     </section>
+
+    <div class="offcanvas offcanvas-end" id="myCanvas">
+        <div class="offcanvas-header">
+            <h1 class="offcanvas-title">Trouvez votre session</h1>
+            <h2>{{ formation.intitule }}</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <p>Some text lorem ipsum.</p>
+            <p>Some text lorem ipsum.</p>
+            <p>Some text lorem ipsum.</p>
+            <button class="btn btn-secondary" type="button">A Button</button>
+        </div>
+    </div>
 
     <!-- Bande avec image qui scroll -->
     <section class="section ftco-counter img" id="section-counter"
@@ -105,14 +121,14 @@
         <div class="container">
             <div class="row d-flex">
                 <div
-                    class="col-md-8 heading-section pr-md-5 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
+                    class="col-md-7 heading-section pr-md-5 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
                     <div class="w-100 mb-4 mb-md-0">
                         <span class="subheading">Améliorez votre employabilité</span>
                         <h2 class="mb-4">Le programme en détails</h2>
-                        <p>{{ formation.programme }}</p>
+                        <p style="overflow: auto; max-height: 500px;">{{ formation.programme }}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="col-md-12 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
                         <div class="services">
                             <div class="icon icon-4 d-flex align-items-center justify-content-center"
@@ -148,263 +164,39 @@
         <div class="container">
             <div class="row pb-4">
                 <div class="col-md-7 heading-section ftco-animate fadeInUp ftco-animated">
-                    <span class="subheading">Dans le même thème</span>
+                    <span class="subheading">Dans le même domaine</span>
                     <h2 class="mb-4">Autres suggestions</h2>
                 </div>
             </div>
         </div>
-        <div class="container container-2">
+        <div class="container">
             <div class="row ftco-animate fadeInUp ftco-animated">
                 <div class="col-md-12">
-                    <div class="carousel-testimony owl-carousel owl-loaded owl-drag">
-                        <div class="owl-stage-outer">
-                            <div class="owl-stage"
-                                style="transform: translate3d(-967px, 0px, 0px); transition: all 0.25s ease 0s; width: 4193px;">
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
+                    <div id="myCarousel" class="carousel slide offset-1 col-10" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" *ngFor="let item of formationsMemeDomaine;let index = index"
+                                [attr.data-slide-to]="index"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item p-5"
+                                style="background-color: rgba(106, 165, 228, 0.6); border-radius: 10px;"
+                                *ngFor="let elt of formationsMemeDomaine;let index = index;let isFirst = first"
+                                [ngClass]="{active:isFirst}">
+                                <a href="/formations/{{ elt.id }}">
+                                    <img src="/assets/images/bg_4.jpg" class="col-xl-4 col-sm-6 p-4" [alt]="">
+                                    <div class="carousel-caption offset-xl-2 col-xl-7 offset-sm-4 col-sm-6">
+                                        <h4 style="font-weight: bold; color: white">{{ elt.intitule }}</h4>
+                                        <p style="color: black;">{{ elt.descriptionBreve }}</p>
                                     </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned active" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/work-3.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                    elit. Cumque dicta suscipit deserunt necessitatibus dolorum
-                                                    voluptatibus facere eos neque maiores maxime?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/image_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien Devops</p>
-                                                        <span class="position">Nb sessions à venir : 7</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                    elit. Cumque dicta suscipit deserunt necessitatibus dolorum
-                                                    voluptatibus facere eos neque maiores maxime?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/work-1.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Angular avancé</p>
-                                                        <span class="position">Nb sessions à venir : 1</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                    elit. Cumque dicta suscipit deserunt necessitatibus dolorum
-                                                    voluptatibus facere eos neque maiores maxime?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item active" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Scrum developer</p>
-                                                        <span class="position">Nb sessions à venir : 3</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Lorem ipsum, dolor sit amet consectetur adipisicing
-                                                    elit. Cumque dicta suscipit deserunt necessitatibus dolorum
-                                                    voluptatibus facere eos neque maiores maxime?</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="owl-item cloned" style="width: 292.5px; margin-right: 30px;">
-                                    <div class="item">
-                                        <div class="testimony-wrap py-4">
-                                            <div class="text">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="user-img"
-                                                        style="background-image: url(assets/images/bg_4.jpg)"></div>
-                                                    <div class="pl-3">
-                                                        <p class="name">Technicien helpdesk</p>
-                                                        <span class="position">Nb sessions à venir : 4</span>
-                                                    </div>
-                                                </div>
-                                                <p class="mb-4">Far far away, behind the word mountains, far from the
-                                                    countries Vokalia and Consonantia, there live the blind texts.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
-                        <div class="owl-nav disabled"><button role="presentation" class="owl-prev"><span
-                                    class="ion-ios-arrow-back"></span></button><button role="presentation"
-                                class="owl-next"><span class="ion-ios-arrow-forward"></span></button></div>
-                        <div class="owl-dots"><button class="owl-dot"><span></span></button><button
-                                class="owl-dot active"><span></span></button></div>
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -412,7 +204,7 @@
     </section>
 
     <!-- Bandeau du bas -->
-    <section class="ftco-intro ftco-section ftco-no-pb">
+    <!-- <section class="ftco-intro ftco-section ftco-no-pb">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12 text-center">
@@ -425,6 +217,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 </ng-container>
