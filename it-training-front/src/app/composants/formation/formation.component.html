@@ -53,17 +53,40 @@
         </div>
     </section>
 
-    <div class="offcanvas offcanvas-end" id="myCanvas">
+    <div class="container offcanvas offcanvas-end" id="myCanvas">
         <div class="offcanvas-header">
-            <h1 class="offcanvas-title">Trouvez votre session</h1>
-            <h2>{{ formation.intitule }}</h2>
+            <h2>Trouvez votre session - {{ formation.intitule }}</h2>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         </div>
         <div class="offcanvas-body">
-            <p>Some text lorem ipsum.</p>
-            <p>Some text lorem ipsum.</p>
-            <p>Some text lorem ipsum.</p>
-            <button class="btn btn-secondary" type="button">A Button</button>
+            <div class="container">
+                <table class="table" *ngIf="sessions.length != 0">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Début</th>
+                            <th style="text-align: center;">Fin</th>
+                            <th style="text-align: center;">Lieu</th>
+                            <th style="text-align: center;">Formateur</th>
+                            <th style="text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let elt of sessions; let i = index">
+                            <td style="text-align: center;">{{ elt.dateDebut }}</td>
+                            <td style="text-align: center;">{{ elt.dateFin }}</td>
+                            <td style="text-align: center;">{{ lieux[i] }}</td>
+                            <td style="text-align: center;">{{ formateurs[i] }}</td>
+                            <td style="text-align: center;"><button type="button" class="btn btn-outline-secondary">M'inscrire</button></td>
+                            <!-- <td>{{ elt.formateur.nomEmployee }}</td>
+                    <div *ngFor="let key of JSObject.keys(elt.formateur)">{{ key + ' : ' + obj[key] }}</div>
+                    <td></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-warning" *ngIf="sessions.length == 0">
+                    Il n'y a pas encore de session programmée pour l'instant.
+                </div>
+            </div>
         </div>
     </div>
 
