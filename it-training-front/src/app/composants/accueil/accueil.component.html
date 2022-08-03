@@ -39,10 +39,7 @@
                                 <label class="label " for="password ">Mot de passe :</label>
                                 <input type="password " class="form-control " placeholder="Mot de passe" id="pwd " name="pwd " [(ngModel)]="client.password" required minlength="8 " #pwd="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
                             </div>
-                            <div class="form-group ">
-                                <label class="label " for="password ">Confirmation de mot de passe :</label>
-                                <input id="password-field " type="password " class="form-control " placeholder="Confirmer mot de passe" id="confirmPwd" [(ngModel)]="client.password" name="confirmPwd">
-                            </div>
+
                             <div class="form-group d-flex justify-content-end mt-4 ">
                                 <button type="submit " class="btn btn-primary submit  [disabled]= !myForm.valid ">
                                         <span class="fa fa-paper-plane "></span></button>

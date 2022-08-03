@@ -8,7 +8,7 @@ import { ClientService } from 'src/app/services/client.service';
   templateUrl: './accueil.component.html',
   styleUrls: ['./accueil.component.css']
 })
-export class AccueilComponent implements OnInit {
+export class AccueilComponent  {
   constructor(
     private cs : ClientService,
     private router: Router,
