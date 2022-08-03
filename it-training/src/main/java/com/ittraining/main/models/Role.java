@@ -3,13 +3,17 @@ package com.ittraining.main.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 @Table(name = "roles")
@@ -18,7 +22,11 @@ public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String designationRole;
+
+	@Enumerated(EnumType.STRING)
+	@NaturalId
+	@Column(length = 60)
+	private RoleName designation;
 
 	@ManyToMany
 	@JoinColumn(name = "id_employe")
@@ -28,9 +36,9 @@ public class Role {
 		super();
 	}
 
-	public Role(String designationRole, List<Employe> employes) {
+	public Role(RoleName designation, List<Employe> employes) {
 		super();
-		this.designationRole = designationRole;
+		this.designation = designation;
 		this.employes = employes;
 	}
 
@@ -38,12 +46,12 @@ public class Role {
 		return id;
 	}
 
-	public String getDesignationRole() {
-		return designationRole;
+	public RoleName getDesignation() {
+		return designation;
 	}
 
-	public void setDesignationRole(String designationRole) {
-		this.designationRole = designationRole;
+	public void setDesignation(RoleName designation) {
+		this.designation = designation;
 	}
 
 	public List<Employe> getEmployes() {
@@ -56,7 +64,7 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", designationRole=" + designationRole + ", employes=" + employes + "]";
+		return "Role [id=" + id + ", designation=" + designation + ", employes=" + employes + "]";
 	}
 
 }

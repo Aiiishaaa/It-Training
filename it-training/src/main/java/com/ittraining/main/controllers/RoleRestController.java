@@ -46,13 +46,13 @@ public class RoleRestController {
 		return new ResponseEntity<Role>(roleService.add(role), HttpStatus.OK);
 	}
 	
-	@PutMapping(value = "/roles/{id}")
-	public ResponseEntity<Role> modifierRole(@PathVariable("id") Integer idRole, @RequestBody Role role) {
-		Role roleToUpdate = roleService.findById(idRole).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role non trouvé avec Id " + idRole));
-		roleToUpdate.setDesignationRole(role.getDesignationRole());
-		return new ResponseEntity<Role>(roleService.update(roleToUpdate), HttpStatus.OK);
-	}
+//	@PutMapping(value = "/roles/{id}")
+//	public ResponseEntity<Role> modifierRole(@PathVariable("id") Integer idRole, @RequestBody Role role) {
+//		Role roleToUpdate = roleService.findById(idRole).orElseThrow(
+//				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Role non trouvé avec Id " + idRole));
+//		roleToUpdate.setDesignationRole(role.getDesignationRole());
+//		return new ResponseEntity<Role>(roleService.update(roleToUpdate), HttpStatus.OK);
+//	}
 	
 	@DeleteMapping(value = "/roles/{id}")
 	public ResponseEntity<?> supprimerRole(@PathVariable("id") Integer idRole) {

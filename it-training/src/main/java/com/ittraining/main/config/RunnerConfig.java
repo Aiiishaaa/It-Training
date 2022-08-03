@@ -15,6 +15,7 @@ import com.ittraining.main.dao.PrerequisRepository;
 import com.ittraining.main.dao.RoleRepository;
 import com.ittraining.main.dao.SessionRepository;
 import com.ittraining.main.dao.ThemeRepository;
+import com.ittraining.main.dao.UserRepository;
 import com.ittraining.main.models.Adresse;
 import com.ittraining.main.models.Client;
 import com.ittraining.main.models.Domaine;
@@ -25,6 +26,7 @@ import com.ittraining.main.models.Prerequis;
 import com.ittraining.main.models.Role;
 import com.ittraining.main.models.Session;
 import com.ittraining.main.models.Theme;
+import com.ittraining.main.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -63,6 +65,9 @@ public class RunnerConfig implements CommandLineRunner {
 	@Autowired
 	SessionRepository sessionRepository;
 	
+	@Autowired
+	UserRepository userRepository;
+	
 	@Override
 	public void run(String... args) throws Exception {
 
@@ -79,6 +84,20 @@ public class RunnerConfig implements CommandLineRunner {
 		clientRepository.save(c4);
 		clientRepository.save(c5);
 		clientRepository.save(c6);
+		
+		User u1 = new User("Taylor", "John", "john@mail.com", "taylor");
+		User u2 = new User("Monceau", "Rose", "rose@mail.com", "monceau");
+		User u3 = new User("Beanbean", "Tony", "tony@mail.com", "beanbean");
+		User u4 = new User("Natoni", "Maya", "maya@mail.com", "natoni");
+		User u5 = new User("Gronchon", "Richard", "richard@mail.com", "gronchon");
+		User u6 = new User("Bellami", "Louise", "louise@mail.com", "bellami");
+		userRepository.save(u1);
+		userRepository.save(u2);
+		userRepository.save(u3);
+		userRepository.save(u4);
+		userRepository.save(u5);
+		userRepository.save(u6);
+		
 		
 		List<Client> clientsSession1 = new ArrayList<>();
 		clientsSession1.add(c1);
@@ -124,24 +143,25 @@ public class RunnerConfig implements CommandLineRunner {
 		employeRepository.save(e2);
 		employeRepository.save(e3);
 		
-		Role r1 = new Role("Admin", null);
-		roleRepository.save(r1);
-		Role r2 = new Role("Employe", null);
-		roleRepository.save(r2);
 		
-		List<Role> roles1 = new ArrayList<>();
-		roles1.add(r1);
-		roles1.add(r2);
+//		Role r1 = new Role(ROLE_ADMIN, null);
+//		roleRepository.save(r1);
+//		Role r2 = new Role("Employe", null);
+//		roleRepository.save(r2);
 		
-		List<Role> roles2 = new ArrayList<>();
-		roles2.add(r1);
+//		List<Role> roles1 = new ArrayList<>();
+//		roles1.add(r1);
+//		roles1.add(r2);
+//		
+//		List<Role> roles2 = new ArrayList<>();
+//		roles2.add(r1);
 		
-		e1.setRoles(roles1);
-		e2.setRoles(roles2);
-		e3.setRoles(roles2);
-		employeRepository.save(e1);
-		employeRepository.save(e2);
-		employeRepository.save(e3);
+//		e1.setRoles(roles1);
+//		e2.setRoles(roles2);
+//		e3.setRoles(roles2);
+//		employeRepository.save(e1);
+//		employeRepository.save(e2);
+//		employeRepository.save(e3);
 		
 		Formateur fo1 = new Formateur("Gregoire", "Bruno", "bruno", "gregoire.bruno@it-training.com", null);
 		Formateur fo2 = new Formateur("Lieutaud", "Caroline", "caroline", "lieutaud.caroline@it-training.com", null);
