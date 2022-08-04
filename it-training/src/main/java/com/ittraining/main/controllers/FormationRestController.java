@@ -68,6 +68,7 @@ public class FormationRestController {
 		formationACorriger.setPrix(formation.getPrix());
 		formationACorriger.setProgramme(formation.getProgramme());
 		formationACorriger.setNbHeures(formation.getNbHeures());
+		formationACorriger.setUrlImage(formation.getUrlImage());
 		return new ResponseEntity<Formation>(formationService.update(formationACorriger), HttpStatus.OK);
 	}
 

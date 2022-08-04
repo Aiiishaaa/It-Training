@@ -20,7 +20,6 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./formation.component.css']
 })
 export class FormationComponent implements OnInit {
-  JSObject: Object = Object;
   formationsMemeDomaine: Formation[] = [];
   formation: Formation = {};
   formateur!: Formateur;

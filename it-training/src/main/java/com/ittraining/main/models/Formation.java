@@ -58,6 +58,7 @@ public class Formation {
 
 	private String intitule;
 	private int nbHeures;
+	private String urlImage;
 
 	public Formation() {
 		super();
@@ -65,7 +66,7 @@ public class Formation {
 
 	public Formation(Domaine domaine, Theme theme, double prix, List<Session> sessions, Prerequis prerequis,
 			String descriptionBreve, String descriptionLongue, String programme, Employe employe, String intitule,
-			int nbHeures) {
+			int nbHeures, String urlImage) {
 		super();
 		this.domaine = domaine;
 		this.theme = theme;
@@ -78,6 +79,7 @@ public class Formation {
 		this.employe = employe;
 		this.intitule = intitule;
 		this.nbHeures = nbHeures;
+		this.urlImage = urlImage;
 	}
 
 	public Integer getId() {
@@ -172,12 +174,21 @@ public class Formation {
 		this.sessions = sessions;
 	}
 
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
 	@Override
 	public String toString() {
 		return "Formation [id=" + id + ", domaine=" + domaine + ", theme=" + theme + ", prix=" + prix + ", sessions="
 				+ sessions + ", prerequis=" + prerequis + ", descriptionBreve=" + descriptionBreve
 				+ ", descriptionLongue=" + descriptionLongue + ", programme=" + programme + ", employe=" + employe
-				+ ", intitule=" + intitule + ", nbHeures=" + nbHeures + "]";
+				+ ", intitule=" + intitule + ", nbHeures=" + nbHeures + ", urlImage=" + urlImage + "]";
 	}
 
+	
 }
