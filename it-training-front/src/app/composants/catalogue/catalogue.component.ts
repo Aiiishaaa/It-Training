@@ -42,6 +42,7 @@ export class CatalogueComponent implements OnInit {
   recupAllFormations() {
     this.fs.getAllFormations().subscribe(res => {
       this.formations = res;
+      console.log(this.formations);
     })
   }
 
