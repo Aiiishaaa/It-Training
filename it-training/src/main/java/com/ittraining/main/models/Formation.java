@@ -27,7 +27,7 @@ public class Formation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_domaine")
 	private Domaine domaine;

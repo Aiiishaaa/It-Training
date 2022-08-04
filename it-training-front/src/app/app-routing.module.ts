@@ -10,16 +10,17 @@ import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-
 import { UserComponent } from './composants/user/user.component';
 
 const routes: Routes = [
-  {path: '', component: AccueilComponent},
-  {path: 'formations/:id', component: FormationComponent},
+  {path: 'accueil', component: AccueilComponent},
   {path: 'Dashboard', component: TableauDeBordComponent},
   {path: 'catalogue', component: CatalogueComponent},
   {path: 'catalogue/:nomDomaine', component: CatalogueComponent},
   {path: 'catalogue/:nomDomaine/:nomTheme', component: CatalogueComponent},
+  {path: 'formations/:id', component: FormationComponent},
   {path: 'formateurs', component: FormateurComponent},
-  { path: 'signup', component: ConnexionComponent},
+  {path: 'signup', component: ConnexionComponent},
   {path: 'auth/login',component: ConnexionComponent},
   {path: 'user', component: UserComponent},
+  {path: '', redirectTo:'accueil', pathMatch:'full'},  
   {path: 'error', component: PageInconnuComponent},
   {path: '**', redirectTo: '/error'}
 ];
