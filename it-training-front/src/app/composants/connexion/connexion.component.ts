@@ -31,13 +31,13 @@ export class ConnexionComponent implements OnInit {
       console.log(this.form);
    
       this.loginInfo = new AuthLoginInfo(
-        this.form.email,
+        this.form.username,
         this.form.password);
    
       this.authService.attemptAuth(this.loginInfo).subscribe(
         data => {
           this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUsername(data.email);
+          this.tokenStorage.saveUsername(data.username);
           this.tokenStorage.saveAuthorities(data.authorities);
    
           this.isLoginFailed = false;

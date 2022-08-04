@@ -4,3 +4,10 @@
     font-weight: bold;
     font-size: x-small;
 }
+
+.head {
+    color: rgb(69, 61, 211);
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Courier New', Courier, monospace;
+}

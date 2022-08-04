@@ -3,12 +3,13 @@
 </div>
 
 <ng-template #signupForm>
+    <h3 class="mb-4"> Créer un compte </h3>
     <form class="signup-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
         <div class="form-group">
             <label for="name"> Prénom :</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="form.prenom" #prenom="ngModel" required placeholder="John" />
-            <div class="error" *ngIf="f.submitted && prenom.invalid">
-                <div *ngIf="prenom.errors">Ce champs est obligatoire !</div>
+            <input type="text" class="form-control" name="name" [(ngModel)]="form.name" #name="ngModel" required placeholder="John" />
+            <div class="error" *ngIf="f.submitted && name.invalid">
+                <div *ngIf="name.errors">Ce champs est obligatoire !</div>
             </div>
         </div>
         <div class="form-group">

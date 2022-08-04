@@ -1,140 +1,361 @@
-<div *ngIf="info.token; else loggedOut">
-    <h5 class="text-primary">Your Information</h5>
-    <p>
-        <strong>Username:</strong> {{info.username}}<br/>
-        <strong>Roles:</strong> {{info.authorities}}<br />
-        <strong>Token:</strong> {{info.token}}.
-    </p>
-
-</div>
-
-<ng-template #loggedOut>
-    <main role="main">
-
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class=""></li>
-                <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="2" class=""></li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                    <div class="container">
-                        <div class="carousel-caption text-left">
-                            <h1>Example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                        </div>
-                    </div>
+<div class="dashboard">
+    <div class="left">
+        <div class="sidebar">
+            <div class="wrapper">
+                <div class="menu">
+                    <img src="https://i.ibb.co/B4Dn7CT/menu.png" />
                 </div>
-                <div class="carousel-item active">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Another example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-                        </div>
-                    </div>
+                <div class="items">
+                    <img src="https://i.ibb.co/L8D5T60/light.png" />
+                    <img src="https://i.ibb.co/zmDbMVZ/diamond.png" />
+                    <img src="https://i.ibb.co/W5QZ9Fk/envelope.png" />
+                    <img src="https://i.ibb.co/CnKDBxC/flask.png" />
+                    <img src="https://i.ibb.co/MGs4Fyn/sent-mail.png" />
+                    <img src="https://i.ibb.co/zGtDpcp/map.png" />
                 </div>
-                <div class="carousel-item">
-                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"></rect></svg>
-                    <div class="container">
-                        <div class="carousel-caption text-right">
-                            <h1>One more for good measure.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-                        </div>
-                    </div>
+                <div class="profile">
+                    <img src="https://www.seekclipart.com/clipng/middle/103-1032140_graphic-transparent-1-vector-flat-small-user-icon.png" />
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
-
-
-        <!-- Marketing messaging and featurettes
-          ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
-
-        <div class="container marketing">
-
-            <!-- Three columns of text below the carousel -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+        <div class="navigation">
+            <div class="wrapper2">
+                <div class="abilan">
                 </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                    <h2>Heading</h2>
-                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <button class="compose">Compose Mail 
+               <span class="plus">
+                  <img src="https://i.ibb.co/v1HxGWj/add-1.png"/></span></button>
+                <div class="folders">Folders</div>
+                <div class="folder-icons">
+                    <div class="icon1">
+                        <img src="https://i.ibb.co/qdgf3TJ/envelope.png" />
+                    </div>
+                    <div class="icon-name1">Inbox
+                        <button class="buton-span"> 20
+                </button></div>
                 </div>
-                <!-- /.col-lg-4 -->
-                <div class="col-lg-4">
-                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                    <h2>Heading</h2>
-                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
-                        amet risus.</p>
-                    <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <div class="folder-icons">
+                    <div class="icon1">
+                        <img src="https://i.ibb.co/2yLfX9W/sent-mail.png" />
+                    </div>
+                    <div class="icon-name">Send Mail</div>
                 </div>
-                <!-- /.col-lg-4 -->
+
+                <div class="folder-icons">
+                    <div class="icon1">
+                        <img src="https://i.ibb.co/6ZH9kK3/star.png" />
+                    </div>
+                    <div class="icon-name">Important</div>
+                </div>
+                <div class="folder-icons">
+                    <div class="icon1">
+                        <img src="https://i.ibb.co/z4QhcbD/email.png" />
+                    </div>
+                    <div class="icon-name">Draft</div>
+                </div>
+                <div class="folder-icons">
+                    <div class="icon1">
+                        <img src="https://i.ibb.co/3MzfGDF/bug.png" />
+                    </div>
+                    <div class="icon-name">Spam</div>
+                </div>
+                <div class="folder-icons">
+                    <div class="icon1">
+                        <img src="https://i.ibb.co/xfcFLCN/waste-bin.png" />
+                    </div>
+                    <div class="icon-name">Trash</div>
+                </div>
+                <div class="folders">
+                    Online trainers
+                </div>
+                <div class="folder-icons">
+                    <div class="avatar">
+                        <div class="online">
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" />
+                    </div>
+                    <div class="names"> Diana Malik
+                    </div>
+
+                </div>
+                <div class="folder-icons">
+                    <div class="avatar">
+                        <div class="online">
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/women/71.jpg" />
+                    </div>
+                    <div class="names">Aaron Tim</div>
+                </div>
+                <div class="folder-icons">
+                    <div class="avatar">
+                        <div class="online yellow">
+                        </div>
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" />
+                    </div>
+                    <div class="names">Jack Joe</div>
+                </div>
+                <div class="folders">
+                    Labels
+                </div>
+                <div class="section1">
+                    <button class="btn buton1"> Important
+            <span class="tag">
+              <img src="https://i.ibb.co/Zdx3jGx/tag.png"/></span>
+            </button>
+
+                    <button class="btn buton2"> New
+              <span class="tag">
+              <img src="https://i.ibb.co/N1SMfgQ/tag.png"/></span>
+            </button>
+                </div>
+                <div class="section2">
+                    <button class="btn buton3"> Old
+               <span class="tag">
+              <img src="https://i.ibb.co/C5q0MDM/tag.png"/></span>
+             </button>
+                    <button class="btn buton4"> Priority
+               <span class="tag">
+              <img src="https://i.ibb.co/DMmSZW0/tag.png"/></span>
+             </button>
+                </div>
+
             </div>
-            <!-- /.row -->
-
-
-            <!-- START THE FEATURETTES -->
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5 order-md-1">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-                </div>
-                <div class="col-md-5">
-                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"></rect><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-                </div>
-            </div>
-
-            <hr class="featurette-divider">
-
-            <!-- /END THE FEATURETTES -->
-
         </div>
-        <!-- /.container -->
+    </div>
+    <div class="right-side">
+        <div class="right-header">
+            <div class="top-bar">
+                <div class="top-bar-justify">
+                    <div class="big-inbox">
+                        Inbox
+                    </div>
+
+                    <div class="top-bar-items">
+                        <div class="notif">
+                            <div class="online pink">
+                            </div>
+                            <img src="https://i.ibb.co/VJm73Hz/notifications-button.png" />
+                        </div>
+                        <img src="https://i.ibb.co/vz4HYJb/envelope.png" />
+                        <img src="https://i.ibb.co/52Vkq4M/earth-globe.png" />
+                        <div class="icon-name5"> English </div>
+                    </div>
+                </div>
+                <div class="profile2">
+                    <img src="https://www.seekclipart.com/clipng/middle/103-1032140_graphic-transparent-1-vector-flat-small-user-icon.png" />
+                    <div class="icon-name5">Damien</div>
+                </div>
+            </div>
+            <hr class="new-hr">
+            <div class="right-bottom">
+                <div class="check">
+                    <label class="checkbox">
+          <input type="checkbox"/>
+          </label>
+                    <div class="down-arrow">
+                        <img src="https://i.ibb.co/WDqrXj6/drop-down-arrow.png" />
+                    </div>
+                </div>
+                <div class="middle-buttons">
+                    <div class="buttons">
+                        <button class="new button"> 
+        <img src="https://i.ibb.co/X4j3TZR/reload.png" />
+             </button>
+                        <button class="new button"> 
+        <img src="https://i.ibb.co/L60Yr87/eye.png" />
+             </button>
+                        <button class="new button"> 
+        <img src="https://i.ibb.co/Lv6TqBG/waste-bin.png" />
+             </button>
+                    </div>
+                    <div class="form has-search">
+                        <input class="text" type="search" placeholder="Search here..." name="search" />
+                        <span class="searchIcon">
+           <img src="https://i.ibb.co/sqFgRq8/search.png" />
+         </span>
+                    </div>
+                </div>
+                <div class="search-arrow">
+                    <img src="https://i.ibb.co/cx2t05H/scroll-arrows.png" />
+                </div>
+            </div>
+        </div>
+        <div class="right-body">
+            <div class="scroll-cards">
+                <div class="card">
+                    <div class="mails">
+                        <img src="https://randomuser.me/api/portraits/men/20.jpg" />
+                        <div class="mail-names">
+                            Louis Adkins
+                        </div>
+
+                    </div>
+                    <div class="mail-info">
+                        How to motivate your learners?
+                    </div>
+                    <div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="check1">
+                            <label class="checkbox">
+          <input type="checkbox"/>
+          </label>
+                            <div class="star">
+                                <img src="https://i.ibb.co/SN5SJ8x/star.png" />
+                            </div>
+                            <div class="star">
+                                <img src="https://i.ibb.co/FW9tsHK/attachment.png" />
+                            </div>
+
+                        </div>
+                        <div class="date">8:30 AM</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <span class="person border1"> C</span>
+                        <div class="mail-names">
+                            Clarence Hogan
+                        </div>
+
+                    </div>
+                    <div class="mail-info">
+                        How to organise Job dating
+                    </div>
+                    <div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="check1">
+                            <label class="checkbox">
+          <input type="checkbox"/>
+          </label>
+                            <div class="star">
+                                <img src="https://i.ibb.co/SN5SJ8x/star.png" />
+                            </div>
+                            <div class="star">
+                                <img src="https://i.ibb.co/FW9tsHK/attachment.png" />
+                            </div>
+
+                        </div>
+                        <div class="date">8:30 AM</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <span class="person border2">O</span>
+                        <div class="mail-names">
+                            Olga Boone
+                        </div>
+
+                    </div>
+                    <div class="mail-info">
+                        Organization of the Sophia Antiplois session
+                    </div>
+                    <div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="check1">
+                            <label class="checkbox">
+          <input type="checkbox"/>
+          </label>
+                            <div class="star">
+                                <img src="https://i.ibb.co/SN5SJ8x/star.png" />
+                            </div>
+                            <div class="star">
+                                <img src="https://i.ibb.co/FW9tsHK/attachment.png" />
+                            </div>
+
+                        </div>
+                        <div class="date">8:30 AM</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="mails">
+                        <span class="person border3">H</span>
+                        <div class="mail-names">
+                            Harry Burton
+                        </div>
+
+                    </div>
+                    <div class="mail-info">
+                        How to prepare for a training session </div>
+                    <div>
+                    </div>
+                    <div class="bottom-info">
+                        <div class="check1">
+                            <label class="checkbox">
+          <input type="checkbox"/>
+          </label>
+                            <div class="star">
+                                <img src="https://i.ibb.co/SN5SJ8x/star.png" />
+                            </div>
+                            <div class="star">
+                                <img src="https://i.ibb.co/FW9tsHK/attachment.png" />
+                            </div>
+
+                        </div>
+                        <div class="date">8:30 AM</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="message">
+                <div class="mes-date">
+                    05 Août 2022
+                </div>
+                <div class="title">
+                    REMERCIEMENTS SUITE À VOTRE FORMATION
+                    <div class="title-icons">
+
+                    </div>
+                </div>
+                <div class="from">
+                    <span class="who">From: </span>ashraf@it-training.com
+                </div>
+                <div class="message-from">
+                    <p>Madame / Monsieur,</p>
+                    <p> J’ai eu l’honneur de participer à votre formation Java/JEE, qui s’est tenue au sein de votre entreprise réputée pour la qualité de ses services. Cette formation m’a permis de consolider mes connaissances et de confirmer ma passion
+                        pour le domaine de développement. </p>
+                    <p>Désormais, je suis définitivement convaincu(e) de m’orienter dans le secteur qui me convient. </p>
+                    <p> Je vous remercie également pour l’accueil particulièrement chaleureux qui m’a été accordé, mais aussi pour vos conseils, votre patience et votre professionnalisme.</p>
+                    <p> Cette expérience fut très enrichissante et va nécessairement m’aider à exceller tout au long de ma carrière. Avec toute ma reconnaissance, je vous prie de bien vouloir recevoir, Madame / Monsieur, l’expression de mes sentiments les
+                        meilleurs. </p>
+                    <p>Ashraf</p>
+                </div>
+                <div class="attachment-last">
+                    <img src="https://i.ibb.co/FW9tsHK/attachment.png" />
+                    <div class="att-write">
+                        Attachment (80MB)
+                    </div>
+                    <button class="btn1 buton0"> View All </button>
+
+
+                    <button class="btn1 buton9"> Download All</button>
+
+                </div>
+                <div class="son-images">
+                    <div class="inside-img">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" />
+                        <img src="https://images.unsplash.com/photo-1500917293891-ef795e70e1f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" />
+                        <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" />
+                        <img src="https://images.unsplash.com/photo-1450609283058-0ec52fa7eac4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60" />
+
+                    </div>
+                    <button class="son-buton"> 20+
+            </button>
+                </div>
+                <button class="btn2 butona"> Reply
+               <span class="tag"> 
+               <img src="https://i.ibb.co/GQf8frw/reply.png"/>
+               </span>
+            </button>
+
+                <button class="btn2 butonb"> Forward
+              <span class="tag"> 
+               <img src="https://i.ibb.co/6W40kTg/forward-arrow.png"/>
+               </span>
+            </button>
+            </div>
+        </div>
+    </div>
