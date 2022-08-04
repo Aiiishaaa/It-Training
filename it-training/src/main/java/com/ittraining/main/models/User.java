@@ -13,10 +13,11 @@ import java.util.*;
 
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long num;
+    private Integer id;
     private String name;
     private String username;
     @NaturalId
@@ -32,6 +33,10 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_num"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+    
+    @JsonIgnore
+	@ManyToMany(mappedBy = "users")
+	private List<Session> sessions = new ArrayList<Session>();
 
     public User() {
     }
@@ -45,8 +50,7 @@ public class User {
 
     }
 
-    public User(Long id, String name, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
-        this.num = id;
+    public User(String name, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
         this.name = name;
         this.username = username;
         this.email = email;
@@ -64,12 +68,12 @@ public class User {
 
 
 
-    public Long getId() {
-        return num;
+    public Integer getId() {
+        return id;
     }
 
-    public void setId(Long id) {
-        this.num = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getUsername() {

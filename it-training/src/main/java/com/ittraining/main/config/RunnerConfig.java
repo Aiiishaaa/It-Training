@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ittraining.main.dao.AdresseRepository;
-import com.ittraining.main.dao.ClientRepository;
 import com.ittraining.main.dao.DomaineRepository;
 import com.ittraining.main.dao.EmployeRepository;
 import com.ittraining.main.dao.FormateurRepository;
@@ -17,7 +16,6 @@ import com.ittraining.main.dao.SessionRepository;
 import com.ittraining.main.dao.ThemeRepository;
 import com.ittraining.main.dao.UserRepository;
 import com.ittraining.main.models.Adresse;
-import com.ittraining.main.models.Client;
 import com.ittraining.main.models.Domaine;
 import com.ittraining.main.models.Employe;
 import com.ittraining.main.models.Formateur;
@@ -40,9 +38,6 @@ public class RunnerConfig implements CommandLineRunner {
 	
 	@Autowired
 	private AdresseRepository adresseRepository;
-	
-	@Autowired
-	private ClientRepository clientRepository;
 	
 	@Autowired
 	private DomaineRepository domaineRepository;
@@ -72,19 +67,19 @@ public class RunnerConfig implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 
-		Client c1 = new Client("Taylor", "John", "john", "john@mail.com", null);
-		Client c2 = new Client("Monceau", "Rose", "rose", "rose@mail.com", null);
-		Client c3 = new Client("Bean", "Tony", "tony", "tony@mail.com", null);
-		Client c4 = new Client("Natoni", "Maya", "maya", "maya@mail.com", null);
-		Client c5 = new Client("Gronchon", "Richard", "richard", "richard@mail.com", null);
-		Client c6 = new Client("Bellami", "Louise", "louise", "louise@mail.com", null);
-		clientRepository.save(c1);
-		clientRepository.save(c2);
-		clientRepository.save(c3);
-		clientRepository.save(c4);
-		clientRepository.save(c5);
-		clientRepository.save(c6);
-		
+//		Client c1 = new Client("Taylor", "John", "john", "john@mail.com", null);
+//		Client c2 = new Client("Monceau", "Rose", "rose", "rose@mail.com", null);
+//		Client c3 = new Client("Bean", "Tony", "tony", "tony@mail.com", null);
+//		Client c4 = new Client("Natoni", "Maya", "maya", "maya@mail.com", null);
+//		Client c5 = new Client("Gronchon", "Richard", "richard", "richard@mail.com", null);
+//		Client c6 = new Client("Bellami", "Louise", "louise", "louise@mail.com", null);
+//		clientRepository.save(c1);
+//		clientRepository.save(c2);
+//		clientRepository.save(c3);
+//		clientRepository.save(c4);
+//		clientRepository.save(c5);
+//		clientRepository.save(c6);
+//		
 		User u1 = new User("Taylor", "John", "john@mail.com", "taylor");
 		User u2 = new User("Monceau", "Rose", "rose@mail.com", "monceau");
 		User u3 = new User("Beanbean", "Tony", "tony@mail.com", "beanbean");
@@ -99,16 +94,16 @@ public class RunnerConfig implements CommandLineRunner {
 		userRepository.save(u6);
 		
 		
-		List<Client> clientsSession1 = new ArrayList<>();
-		clientsSession1.add(c1);
-		clientsSession1.add(c2);
-		List<Client> clientsSession2 = new ArrayList<>();
-		clientsSession2.add(c3);
-		clientsSession2.add(c5);
-		List<Client> clientsSession3 = new ArrayList<>();
-		clientsSession3.add(c2);
-		clientsSession3.add(c4);
-		clientsSession3.add(c6);
+//		List<Client> clientsSession1 = new ArrayList<>();
+//		clientsSession1.add(c1);
+//		clientsSession1.add(c2);
+//		List<Client> clientsSession2 = new ArrayList<>();
+//		clientsSession2.add(c3);
+//		clientsSession2.add(c5);
+//		List<Client> clientsSession3 = new ArrayList<>();
+//		clientsSession3.add(c2);
+//		clientsSession3.add(c4);
+//		clientsSession3.add(c6);
 		
 		Domaine d1 = new Domaine("Informatique", null, null);
 		domaineRepository.save(d1);
@@ -211,15 +206,15 @@ public class RunnerConfig implements CommandLineRunner {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		Session s1 = new Session(LocalDate.parse("2023-05-15", formatter), LocalDate.parse("2023-08-05", formatter), f1, fo2, a2, null);
 		Session s2 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-12-05", formatter), f1, fo3, a1, null);
-		Session s3 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-12-05", formatter), f1, fo2, a2, clientsSession3);
-		Session s4 = new Session(LocalDate.parse("2022-09-19", formatter), LocalDate.parse("2022-09-21", formatter), f6, fo2, a3, clientsSession1);
-		Session s5 = new Session(LocalDate.parse("2022-10-03", formatter), LocalDate.parse("2022-10-07", formatter), f5, fo2, a3, clientsSession2);
+//		Session s3 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-12-05", formatter), f1, fo2, a2, clientsSession3);
+//		Session s4 = new Session(LocalDate.parse("2022-09-19", formatter), LocalDate.parse("2022-09-21", formatter), f6, fo2, a3, clientsSession1);
+//		Session s5 = new Session(LocalDate.parse("2022-10-03", formatter), LocalDate.parse("2022-10-07", formatter), f5, fo2, a3, clientsSession2);
 		Session s6 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-01", formatter), f1, fo3, a1, null);
 		sessionRepository.save(s1);
 		sessionRepository.save(s2);
-		sessionRepository.save(s3);
-		sessionRepository.save(s4);
-		sessionRepository.save(s5);
+//		sessionRepository.save(s3);
+//		sessionRepository.save(s4);
+//		sessionRepository.save(s5);
 		sessionRepository.save(s6);
 		
 		Prerequis p1 = new Prerequis("qcm1", false, f2);
