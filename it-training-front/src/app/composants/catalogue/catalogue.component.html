@@ -3,15 +3,19 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
             <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Acceuil<i
-                                class="fa fa-chevron-right"></i></a></span>
-                    <span>Formations <i class="fa fa-chevron-right"></i></span>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Acceuil
+                            <i class="fa fa-chevron-right"></i></a></span>
+                    <span>Catalogue <i class="fa fa-chevron-right"></i></span>
                 </p>
                 <h1 class="mb-0 bread">Liste de formations</h1>
             </div>
         </div>
     </div>
 </section>
+<br>
+<br>
+<br>
+<br>
 
 <section class="ftco-section bg-light">
     <div class="container">
@@ -25,52 +29,22 @@
                         </div>
                     </form>
                 </div>
-
                 <div class="sidebar-box bg-white p-4 ftco-animate fadeInUp ftco-animated">
                     <h3 class="heading-sidebar">Domaines de Formation</h3>
                     <form action="#" class="browse-form">
-                        <ng-container *ngFor="let elt of domaines">
-                            <label for="option-category-1"><input type="radio" id="option-category-1" name="vehicle"
-                                    value=""> {{ elt.nomDomaine }} </label><br>
-                        </ng-container>
-                    </form>
-                </div>
-
-                <div class="sidebar-box bg-white p-4 ftco-animate fadeInUp ftco-animated">
-                    <h3 class="heading-sidebar">Thèmes</h3>
-                    <form action="#" class="browse-form">
+                        <ng-container *ngFor="let elt of domaines;">
+                            <label for="option-category-1">
+                                <input type="radio" name="vehicle" value=""
+                                    (click)="recupAllFormationsByDomaineName(elt.nomDomaine)">{{elt.nomDomaine}}
+                            </label><br>
+                        </ng-container><br>
+                        <h3 class="heading-sidebar">Thèmes</h3>
                         <ng-container *ngFor="let elt of themes">
-                            <label for="option-instructor-1"><input type="radio" id="option-instructor-1" name="vehicle"
-                                 value=""> {{ elt.nomTheme }}</label><br>
+                            <label for="option-instructor-1">
+                                <input type="radio" name="vehicle" value=""
+                                    (click)="recupAllFormationByThemeName(elt.nomTheme)">{{ elt.nomTheme }}
+                            </label><br>
                         </ng-container>
-                    </form>
-                </div>
-
-                <div class="sidebar-box bg-white p-4 ftco-animate fadeInUp ftco-animated">
-                    <h3 class="heading-sidebar">Course Type</h3>
-                    <form action="#" class="browse-form">
-                        <label for="option-course-type-1"><input type="checkbox" id="option-course-type-1"
-                                name="vehicle" value="" checked=""> Basic</label><br>
-                        <label for="option-course-type-2"><input type="checkbox" id="option-course-type-2"
-                                name="vehicle" value=""> Intermediate</label><br>
-                        <label for="option-course-type-3"><input type="checkbox" id="option-course-type-3"
-                                name="vehicle" value=""> Advanced</label><br>
-                    </form>
-                </div>
-
-                <div class="sidebar-box bg-white p-4 ftco-animate">
-                    <h3 class="heading-sidebar">Software</h3>
-                    <form action="#" class="browse-form">
-                        <label for="option-software-1"><input type="checkbox" id="option-software-1" name="vehicle"
-                                value="" checked=""> Adobe Photoshop</label><br>
-                        <label for="option-software-2"><input type="checkbox" id="option-software-2" name="vehicle"
-                                value=""> Adobe Illustrator</label><br>
-                        <label for="option-software-3"><input type="checkbox" id="option-software-3" name="vehicle"
-                                value=""> Sketch</label><br>
-                        <label for="option-software-4"><input type="checkbox" id="option-software-4" name="vehicle"
-                                value=""> WordPress</label><br>
-                        <label for="option-software-5"><input type="checkbox" id="option-software-5" name="vehicle"
-                                value=""> HTML &amp; CSS</label><br>
                     </form>
                 </div>
             </div>
@@ -79,13 +53,13 @@
                     <ng-container *ngFor="let elt of formations">
                         <div class="col-md-6 d-flex align-items-stretch ftco-animate fadeInUp ftco-animated">
                             <div class="project-wrap">
-                                <a href="#" class="img" style="background-image: url(./assets/images/work-1.jpg);">
-                                    <span class="price">Informatique</span>
+                                <a href="http://localhost:4200/formations/{{elt.id}}" class="img" style="background-image: url(./assets/images/work-1.jpg);">
+                                    <span class="price">{{ elt.intitule }}</span>
                                 </a>
                                 <div class="text p-4">
-                                    <h3><a href="#">{{ elt.intitule }}</a></h3>
+                                    <h3><a href="http://localhost:4200/formations/{{elt.id}}">{{ elt.descriptionBreve }}</a></h3>
                                     <p class="advisor"></p>
-                                    <ul class="d-flex justify-content-between">
+                                    <ul class="d-flex justify-content-between align-items-end">
                                         <li><span class="flaticon-shower"></span>{{ elt.nbHeures }} heures</li>
                                         <li class="price">{{ elt.prix }} €</li>
                                     </ul>
@@ -102,8 +76,6 @@
                                 <li class="active"><span>1</span></li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
                                 <li><a href="#">&gt;</a></li>
                             </ul>
                         </div>
@@ -113,3 +85,6 @@
         </div>
     </div>
 </section>
+<br>
+<br>
+<br>

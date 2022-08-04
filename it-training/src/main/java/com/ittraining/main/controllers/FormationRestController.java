@@ -10,6 +10,9 @@ import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.IThemeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -38,9 +42,37 @@ public class FormationRestController {
 	@Autowired
 	private IEmployeService employeService;
 
+	// http://localhost:8080/formations
 	@GetMapping(value = "/formations")
 	public ResponseEntity<List<Formation>> recupererFormations() {
-		return new ResponseEntity<List<Formation>>(formationService.findAll(), HttpStatus.OK);
+		return new ResponseEntity<>(formationService.findAll(), HttpStatus.OK);
+	}
+
+	// http://localhost:8080/forms/informatique
+	@GetMapping(value = "/forms/{nomDomaine}")
+	public ResponseEntity<List<Formation>> recupererFormationsByDomaine(@PathVariable String nomDomaine) {
+		return new ResponseEntity<>(formationService.findAllByDomaine(nomDomaine), HttpStatus.OK);
+	}
+	
+	// http://localhost:8080/forma/communication
+	@GetMapping(value = "/forma/{nomTheme}")
+	public ResponseEntity<List<Formation>> recupererFormationsByTheme(@PathVariable String nomTheme) {
+		return new ResponseEntity<>(formationService.findAllByTheme(nomTheme), HttpStatus.OK);
+	}
+
+	// http://localhost:8080/formations
+	// http://localhost:8080/formations?page=0&size=6
+	// http://localhost:8080/formations?size=6
+	// http://localhost:8080/formations?domaine=informatique&page=0&size=6
+	@GetMapping(value = "/formationsFilter")
+	public ResponseEntity<Page<Formation>> recupererFormations(@RequestParam(required = false) String domaine,
+			@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "3") int size) {
+
+		Pageable paging = PageRequest.of(page, size);
+		Page<Formation> pageForms;
+
+		pageForms = formationService.findByDomaineContaining(domaine, paging);
+		return new ResponseEntity<>(pageForms, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/formations/{id}")
@@ -68,6 +100,7 @@ public class FormationRestController {
 		formationACorriger.setPrix(formation.getPrix());
 		formationACorriger.setProgramme(formation.getProgramme());
 		formationACorriger.setNbHeures(formation.getNbHeures());
+		formationACorriger.setUrlImage(formation.getUrlImage());
 		return new ResponseEntity<Formation>(formationService.update(formationACorriger), HttpStatus.OK);
 	}
 

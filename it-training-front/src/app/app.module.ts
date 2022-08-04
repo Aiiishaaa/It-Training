@@ -19,6 +19,7 @@ import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-
 import { UserComponent } from './composants/user/user.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,12 +29,16 @@ import { UserComponent } from './composants/user/user.component';
     AccueilComponent,
     PageInconnuComponent,
     FormateurComponent,
+<<<<<<< HEAD
     NavbarComponent,
     InscriptionComponent,
     ConnexionComponent,
     AdminComponent,
     TableauDeBordComponent,
     UserComponent
+=======
+
+>>>>>>> 251bbb4c9501071936cea9b8bc1f7051f48dddb8
   ],
   imports: [
     BrowserModule,

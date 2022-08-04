@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Adresse } from 'src/app/interfaces/adresse';
 import { Domaine } from 'src/app/interfaces/domaine';
 import { Employe } from 'src/app/interfaces/employe';
+import { Formateur } from 'src/app/interfaces/formateur';
 import { Formation } from 'src/app/interfaces/formation';
 import { Prerequis } from 'src/app/interfaces/prerequis';
 import { Session } from 'src/app/interfaces/session';
@@ -18,16 +20,20 @@ import { ThemeService } from 'src/app/services/theme.service';
   styleUrls: ['./formation.component.css']
 })
 export class FormationComponent implements OnInit {
-
   formationsMemeDomaine: Formation[] = [];
   formation: Formation = {};
+  formateur!: Formateur;
   sessions: Session[] = [];
   contact: Employe = {};
-  theme: Theme = {};
-  domaine: Domaine = {};
+  theme!: Theme;
+  domaine!: Domaine;
   prerequis: Prerequis = {};
   id: number = 0;
   urlBackground: string = "";
+  adresse: Adresse = {};
+  codePostal: string = "";
+  lieux: string[] = [];
+  formateurs: string[] = [];
 
   constructor(
     private formationServ: FormationService,
@@ -51,6 +57,7 @@ export class FormationComponent implements OnInit {
 
   recupFormation(id: number) {
     this.formationServ.getOneFormationById(id).subscribe(res => {
+      console.log(res);
       this.formation = res;
     })
   }
@@ -58,6 +65,8 @@ export class FormationComponent implements OnInit {
   recupSessionsParFormation(idFormation: number) {
     this.sessionServ.getAllSessionsByFormation(idFormation).subscribe(res => {
       this.sessions = res;
+      this.recupInfosSessions(this.sessions);
+      console.log(this.sessions);
     })
   }
 
@@ -103,5 +112,13 @@ export class FormationComponent implements OnInit {
         }
       })
     })
+  }
+
+  recupInfosSessions(s: Session[]) {
+    for (const elt of s) {
+      this.lieux.push(`${elt.adresse?.codePostal} ${elt.adresse?.ville}` ?? "");
+      this.formateurs.push(`${elt.formateur?.prenomFormateur} ${elt.formateur?.nomFormateur}` ?? "");
+      console.log(this.formateurs);
+    }
   }
 }

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 
 import com.ittraining.main.models.Session;
-import com.ittraining.main.services.IClientService;
+import com.ittraining.main.services.IUserService;
 import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.ISessionService;
 
@@ -27,7 +27,7 @@ import org.springframework.web.server.ResponseStatusException;
 public class SessionRestController {
 
 	@Autowired
-	private IClientService clientService;
+	private IUserService userService;
 	
 	@Autowired
 	private ISessionService sessionService;
@@ -53,11 +53,11 @@ public class SessionRestController {
 		return new ResponseEntity<>(sessionsParFormation, HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/clients/{id}/sessions")
-	public ResponseEntity<List<Session>> recupererSessionsParClient(@PathVariable("id") Integer idClient) {
-		clientService.findById(idClient).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client non trouvé avec Id " + idClient));
-		List<Session> sessionsParClient = sessionService.findAllByClientsId(idClient);
+	@GetMapping(value = "/users/{id}/sessions")
+	public ResponseEntity<List<Session>> recupererSessionsParUser(@PathVariable("id") Integer idUser) {
+		userService.findById(idUser).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User non trouvé avec Id " + idUser));
+		List<Session> sessionsParClient = sessionService.findAllByUsersId(idUser);
 		return new ResponseEntity<>(sessionsParClient, HttpStatus.OK);
 	}
 	
@@ -71,7 +71,7 @@ public class SessionRestController {
 		Session sessionACorriger = sessionService.findById(idSession).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 		sessionACorriger.setAdresse(session.getAdresse());
-		sessionACorriger.setClients(session.getClients());
+		sessionACorriger.setUsers(session.getUsers());
 		sessionACorriger.setDateDebut(session.getDateDebut());
 		sessionACorriger.setDateFin(session.getDateFin());
 		sessionACorriger.setFormateur(session.getFormateur());

@@ -14,9 +14,15 @@ import { ThemeService } from 'src/app/services/theme.service';
 })
 export class CatalogueComponent implements OnInit {
 
+  lien: string = "http://localhost:4200/formations/";
+  name!:string;
   formations: Formation[] = [];
   themes: Theme[] = [];
   domaines: Domaine[] = [];
+  formationsMemeDomaine: Formation[] = [];
+
+  formationsDom: Formation[] = [];
+  id: number = 0;
   
   constructor(
     private ts: ThemeService,
@@ -26,9 +32,11 @@ export class CatalogueComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(res => {
     this.recupAllFormations();
     this.recupAllThemes();
     this.recupAllDomaines();
+    })
   }
 
   recupAllFormations() {
@@ -40,14 +48,25 @@ export class CatalogueComponent implements OnInit {
   recupAllDomaines() {
     this.ds.getAllDomaines().subscribe(res => {
       this.domaines = res;
-      console.log(this.domaines)
     })
   }
 
   recupAllThemes() {
     this.ts.getAllTheme().subscribe(res => {
       this.themes = res;
-      console.log(this.themes)
     })
   }
+
+  recupAllFormationsByDomaineName(name: string) {
+    this.fs.getAllFormationsByDomaineName(name).subscribe(res => {
+      this.formations = res;
+    })
+  }
+
+  recupAllFormationByThemeName(name: string) {
+    this.fs.getAllFormationsByThemeName(name).subscribe(res => {
+      this.formations = res;
+    })
+  }
+
 }

@@ -4,7 +4,7 @@ import { Formation } from "./formation";
 export interface Theme {
 
     id?: number;
-    nomTheme?: string;
+    nomTheme: string;
     domaine?: Domaine;
     formations?: Formation[];
 }
