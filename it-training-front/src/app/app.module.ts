@@ -17,6 +17,7 @@ import { ConnexionComponent } from './composants/connexion/connexion.component';
 import { httpInterceptorProviders } from './auth/auth.interceptor';
 import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
 import { UserComponent } from './composants/user/user.component';
+import { CompteComponent } from './composants/compte/compte.component';
 
 
 
@@ -34,8 +35,8 @@ import { UserComponent } from './composants/user/user.component';
     ConnexionComponent,
     AdminComponent,
     TableauDeBordComponent,
-    UserComponent
-
+    UserComponent,
+    CompteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,5 @@
 package com.ittraining.main.controllers;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,7 +21,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -100,16 +98,12 @@ public class AuthRestAPis {
 		Set<Role> roles = new HashSet<>();
 
 		if (strRoles == null) {
-			Role userRole = roleRepository.findByDesignation(RoleName.ROLE_USER)
-					.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User role not find"));
-			roles.add(userRole);
+			Role clientRole = roleRepository.findByDesignation(RoleName.ROLE_CLIENT)
+					.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User  role not find"));
+			roles.add(clientRole);
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
-				case "client":
-						Role clientRole = roleRepository.findByDesignation(RoleName.ROLE_CLIENT)
-								.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User  role not find"));
-						roles.add(clientRole);
 				case "employe":
 					Role employeRole = roleRepository.findByDesignation(RoleName.ROLE_EMPLOYE)
 							.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User role not find"));
@@ -119,9 +113,9 @@ public class AuthRestAPis {
 							.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User role not find"));
 					roles.add(adminRole);
 				default:
-					Role userRole = roleRepository.findByDesignation(RoleName.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User role not find"));
-					roles.add(userRole);
+					Role clientRole = roleRepository.findByDesignation(RoleName.ROLE_CLIENT)
+							.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User  role not find"));
+					roles.add(clientRole);
 				}
 			});
 		}

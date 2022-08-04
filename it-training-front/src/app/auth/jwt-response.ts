@@ -1,6 +1,6 @@
 export class JwtResponse {
     accessToken: string =""
     type: string = "" ;
-    email: string = "";
+    username: string = "";
     authorities: string[] = [];
 }

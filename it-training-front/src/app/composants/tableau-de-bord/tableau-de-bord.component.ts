@@ -12,6 +12,7 @@ export class TableauDeBordComponent implements OnInit {
  
   constructor(private token: TokenStorageService) { }
  
+  
   ngOnInit() {
     this.info = {
       token: this.token.getToken(),
