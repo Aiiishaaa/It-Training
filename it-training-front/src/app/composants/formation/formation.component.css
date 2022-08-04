@@ -9,3 +9,7 @@
 width: 90%;
  }
 
+#imgCarousel {
+    max-height: 180px;
+    /* max-height: 200px; */
+}

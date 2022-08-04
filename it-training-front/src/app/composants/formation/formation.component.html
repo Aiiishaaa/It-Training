@@ -207,7 +207,7 @@
                                 *ngFor="let elt of formationsMemeDomaine;let index = index;let isFirst = first"
                                 [ngClass]="{active:isFirst}">
                                 <a href="/formations/{{ elt.id }}">
-                                    <img src="/assets/images/bg_4.jpg" class="col-xl-4 col-sm-6 p-4" [alt]="">
+                                    <img id="imgCarousel" src="{{ elt.urlImage }}" class="col-xl-4 col-sm-6 p-4" [alt]="">
                                     <div class="carousel-caption offset-xl-2 col-xl-7 offset-sm-4 col-sm-6">
                                         <h4 style="font-weight: bold; color: white">{{ elt.intitule }}</h4>
                                         <p style="color: black;">{{ elt.descriptionBreve }}</p>
