@@ -19,4 +19,5 @@ export interface Formation {
     intitule?: string;
     nbHeures?: number;
     urlImage?: string;
+    Formation?: Formation;
 }

@@ -3,6 +3,7 @@ package com.ittraining.main.services;
 import java.util.List;
 import java.util.Optional;
 
+import com.ittraining.main.models.Session;
 import com.ittraining.main.models.User;
 
 public interface IUserService {
@@ -21,4 +22,6 @@ public interface IUserService {
 	void removeById(Integer id);
 	
 	Optional<User> findByFormationsId(Integer idFormation);
+	
+	//User updateUserSessions(Integer id, Session session);
 }

@@ -1,120 +1,121 @@
-
-
-    <!-- Bandeau du haut avec fil d'Ariane -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ urlBackground }}');">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row no-gutters slider-text align-items-end justify-content-center">
-                <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
-                    <p class="breadcrumbs">
-                        <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue">Catalogue <i class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}">{{ domaine.nomDomaine }} <i
-                                    class="fa fa-chevron-right"></i></a></span>
-                        <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}/{{ theme.nomTheme }}">{{
-                                theme.nomTheme }}</a></span>
-                    </p>
-                    <h1 class="mb-0 bread">{{ formation.intitule }}</h1>
-                </div>
+<!-- Bandeau du haut avec fil d'Ariane -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url('{{ urlBackground }}');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs">
+                    <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"></i></a></span>
+                    <span class="mr-2"><a href="/catalogue">Catalogue <i class="fa fa-chevron-right"></i></a></span>
+                    <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}">{{ domaine.nomDomaine }} <i
+                                class="fa fa-chevron-right"></i></a></span>
+                    <span class="mr-2"><a href="/catalogue/{{ domaine.nomDomaine }}/{{ theme.nomTheme }}">{{
+                            theme.nomTheme }}</a></span>
+                </p>
+                <h1 class="mb-0 bread">{{ formation.intitule }}</h1>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Description -->
-    <section class="section ftco-about img" style="padding: 45px 45px 45px 45px;">
-        <div class="container">
-            <div class="row d-flex">
-                <div class="col-md-12 about-intro">
-                    <div class="row">
-                        <div class="col-md-6 d-flex">
-                            <div class="d-flex about-wrap">
-                                <div class="img d-flex align-items-center justify-content-center"
-                                    style="background-image:url(assets/images/image_4.jpg);">
-                                </div>
-                                <div class="img-2 d-flex align-items-center justify-content-center"
-                                    style="background-image:url(assets/images/image_5.jpg);">
-                                </div>
+<!-- Description -->
+<section class="section ftco-about img" style="padding: 45px 45px 45px 45px;">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-12 about-intro">
+                <div class="row">
+                    <div class="col-md-6 d-flex">
+                        <div class="d-flex about-wrap">
+                            <div class="img d-flex align-items-center justify-content-center"
+                                style="background-image:url(assets/images/image_4.jpg);">
                             </div>
-                        </div>
-                        <div class="col-md-6 pl-md-5 py-5">
-                            <div class="row justify-content-start pb-3">
-                                <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
-                                    <span class="subheading">Développez de nouvelles compétences</span>
-                                    <h2 class="mb-4">En quelques mots</h2>
-                                    <p style="text-align: justify">{{ formation.descriptionLongue }}</p>
-                                    <p><button class="btn btn-primary" data-bs-toggle="offcanvas"
-                                            data-bs-target="#myCanvas">Trouvez votre session !</button></p>
-                                </div>
+                            <div class="img-2 d-flex align-items-center justify-content-center"
+                                style="background-image:url(assets/images/image_5.jpg);">
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container offcanvas offcanvas-end" id="myCanvas">
-        <div class="offcanvas-header">
-            <h2>Trouvez votre session - {{ formation.intitule }}</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div class="container">
-                <table class="table" *ngIf="sessions.length != 0">
-                    <thead>
-                        <tr>
-                            <th style="text-align: center;">Début</th>
-                            <th style="text-align: center;">Fin</th>
-                            <th style="text-align: center;">Lieu</th>
-                            <th style="text-align: center;">Formateur</th>
-                            <th style="text-align: center;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let elt of sessions; let i = index">
-                            <td style="text-align: center;">{{ elt.dateDebut | date:"dd MMM y" }}</td>
-                            <td style="text-align: center;">{{ elt.dateFin | date:"dd MMM y" }}</td>
-                            <td style="text-align: center;">{{ lieux[i] }}</td>
-                            <td style="text-align: center;">{{ formateurs[i] }}</td>
-                            <td style="text-align: center;"><button type="button"
-                                    class="btn btn-outline-secondary">M'inscrire</button></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="alert alert-warning" *ngIf="sessions.length == 0">
-                    Il n'y a pas encore de session programmée pour l'instant.
+                    <div class="col-md-6 pl-md-5 py-5">
+                        <div class="row justify-content-start pb-3">
+                            <div class="col-md-12 heading-section ftco-animate fadeInUp ftco-animated">
+                                <span class="subheading">Développez de nouvelles compétences</span>
+                                <h2 class="mb-4">En quelques mots</h2>
+                                <p style="text-align: justify">{{ formation.descriptionLongue }}</p>
+                                <p><button class="btn btn-primary" data-bs-toggle="offcanvas"
+                                        data-bs-target="#myCanvas">Trouvez votre session !</button></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <!-- Bande avec image qui scroll -->
-    <section class="section ftco-counter img" id="section-counter"
-        style="background-image: url(assets/images/work-1.jpg);padding: 45px 45px 45px 45px;">
-        <div class="overlay"></div>
+<div class="container offcanvas offcanvas-end" id="myCanvas">
+    <div class="offcanvas-header">
+        <h2>Trouvez votre session - {{ formation.intitule }}</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
-                                class="fa-regular fa-3x fa-calendar"></i></div>
-                        <div class="text">
-                            <strong class="number" data-number="4500">{{ sessions.length }}</strong>
-                            <span>Sessions à venir</span>
-                        </div>
+            <table class="table" *ngIf="sessions.length != 0">
+                <thead>
+                    <tr>
+                        <th style="text-align: center;">Début</th>
+                        <th style="text-align: center;">Fin</th>
+                        <th style="text-align: center;">Lieu</th>
+                        <th style="text-align: center;">Formateur</th>
+                        <th style="text-align: center;">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let elt of sessions; let i = index">
+                        <td style="text-align: center;">{{ elt.dateDebut | date:"dd MMM y" }}</td>
+                        <td style="text-align: center;">{{ elt.dateFin | date:"dd MMM y" }}</td>
+                        <td style="text-align: center;">{{ lieux[i] }}</td>
+                        <td style="text-align: center;">{{ formateurs[i] }}</td>
+                        <td style="text-align: center;"><button (click)="sInscrire()" [disabled]="userName == ''" type="button"
+                                class="btn btn-outline-secondary">M'inscrire</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-warning" *ngIf="sessions.length == 0">
+                Il n'y a pas encore de session programmée pour l'instant.
+            </div>
+            <div class="alert alert-danger" *ngIf="userName == '' && sessions.length != 0">
+                Vous devez vous identifier pour pouvoir vous inscrire.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bande avec image qui scroll -->
+<section class="section ftco-counter img" id="section-counter"
+    style="background-image: url(assets/images/work-1.jpg);padding: 45px 45px 45px 45px;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
+                <div class="block-18 d-flex align-items-center">
+                    <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
+                            class="fa-regular fa-3x fa-calendar"></i></div>
+                    <div class="text">
+                        <strong class="number" data-number="4500">{{ sessions.length }}</strong>
+                        <span>Sessions à venir</span>
                     </div>
                 </div>
-                <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
-                                class="fa-regular fa-3x fa-clock"></i></div>
-                        <div class="text">
-                            <strong class="number" data-number="400">{{ formation.nbHeures}}</strong>
-                            <span>Heures</span>
-                        </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
+                <div class="block-18 d-flex align-items-center">
+                    <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
+                            class="fa-regular fa-3x fa-clock"></i></div>
+                    <div class="text">
+                        <strong class="number" data-number="400">{{ formation.nbHeures}}</strong>
+                        <span>Heures</span>
                     </div>
                 </div>
-                <!-- <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
+            </div>
+            <!-- <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
                     <div class="block-18 d-flex align-items-center">
                         <div class="icon"><span class="flaticon-instructor"></span></div>
                         <div class="text">
@@ -123,106 +124,137 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
-                    <div class="block-18 d-flex align-items-center">
-                        <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
-                                class="fa-solid fa-3x fa-euro-sign"></i></div>
-                        <div class="text">
-                            <strong class="number" data-number="300">{{ formation.prix }}</strong>
-                            <span>Eligible CPF</span>
-                        </div>
+            <div class="col-md-4 d-flex justify-content-center counter-wrap ftco-animate fadeInUp ftco-animated">
+                <div class="block-18 d-flex align-items-center">
+                    <div class="block d-flex align-items-center justify-content-center icon" style="color: white"><i
+                            class="fa-solid fa-3x fa-euro-sign"></i></div>
+                    <div class="text">
+                        <strong class="number" data-number="300">{{ formation.prix }}</strong>
+                        <span>Eligible CPF</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Détails programme et infos complémentaires -->
-    <section class="section services-section" style="padding: 45px 45px 45px 45px;">
-        <div class="container">
-            <div class="row d-flex">
-                <div
-                    class="col-md-7 heading-section pr-md-5 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
-                    <div class="w-100 mb-4 mb-md-0">
-                        <span class="subheading">Améliorez votre employabilité</span>
-                        <h2 class="mb-4">Le programme en détails</h2>
-                        <p style="overflow: auto; max-height: 500px;">{{ formation.programme }}</p>
+<!-- Détails programme et infos complémentaires -->
+<section class="section services-section" style="padding: 45px 45px 45px 45px;">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="col-md-7 heading-section pr-md-5 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
+                <div class="w-100 mb-4 mb-md-0">
+                    <span class="subheading">Améliorez votre employabilité</span>
+                    <h2 class="mb-4">Le programme en détails</h2>
+                    <p style="overflow: auto; max-height: 500px;">{{ formation.programme }}</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="col-md-12 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+                    <div class="services">
+                        <div class="icon icon-4 d-flex align-items-center justify-content-center" style="color: white">
+                            <i class="fa-regular fa-2x fa-address-card"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">Contact</h3>
+                            <div>Nom : {{ contact.firstname }} {{ contact.name }}</div>
+                            <div>Téléphone : {{ contact.phone }}</div>
+                            <div>Email : {{ contact.email }}</div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-5">
-                    <div class="col-md-12 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
-                        <div class="services">
-                            <div class="icon icon-4 d-flex align-items-center justify-content-center"
-                                style="color: white"><i class="fa-regular fa-2x fa-address-card"></i></div>
-                            <div class="media-body">
-                                <h3 class="heading mb-3">Contact</h3>
-                                <div>Nom : {{ contact.firstname }} {{ contact.name }}</div>
-                                <div>Téléphone : {{ contact.phone }}</div>
-                                <div>Email : {{ contact.email }}</div>
-                            </div>
+                <div class="col-md-12 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
+                    <div class="services">
+                        <div class="icon icon-3 d-flex align-items-center justify-content-center" style="color: white">
+                            <i class="fa-regular fa-2x fa-pen-to-square"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="heading mb-3">Quiz</h3>
+                            <p>Faîtes le test pour savoir si vous avez le niveau requis. Prerequis
+                            </p>
                         </div>
                     </div>
-                    <div class="col-md-12 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
-                        <div class="services">
-                            <div class="icon icon-3 d-flex align-items-center justify-content-center"
-                                style="color: white"><i class="fa-regular fa-2x fa-pen-to-square"></i></div>
-                            <div class="media-body">
-                                <h3 class="heading mb-3">Quiz</h3>
-                                <p>Faîtes le test pour savoir si vous avez le niveau requis. Prerequis
-                                </p>
-                            </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Carousel proposition autres formations -->
+<section class="section testimony-section bg-light" style="padding: 45px 45px 45px 45px;">
+    <div class="overlay" style="background-image: url(assets/images/bg_2.jpg);"></div>
+    <div class="container">
+        <div class="row pb-4">
+            <div class="col-md-7 heading-section ftco-animate fadeInUp ftco-animated">
+                <span class="subheading">Dans le même domaine</span>
+                <h2 class="mb-4">Autres suggestions</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row ftco-animate fadeInUp ftco-animated">
+            <div class="col-md-12">
+                <div id="myCarousel" class="carousel slide offset-1 col-10" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" *ngFor="let item of formationsMemeDomaine;let index = index"
+                            [attr.data-slide-to]="index"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item p-5"
+                            style="background-color: rgba(106, 165, 228, 0.6); border-radius: 10px;"
+                            *ngFor="let elt of formationsMemeDomaine;let index = index;let isFirst = first"
+                            [ngClass]="{active:isFirst}">
+                            <a href="/formations/{{ elt.id }}">
+                                <img id="imgCarousel" src="{{ elt.urlImage }}" class="col-xl-4 col-sm-6 p-4" [alt]="">
+                                <div class="carousel-caption offset-xl-2 col-xl-7 offset-sm-4 col-sm-6">
+                                    <h4 style="font-weight: bold; color: white">{{ elt.intitule }}</h4>
+                                    <p style="color: black;">{{ elt.descriptionBreve }}</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
-                    <!-- </div> -->
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Carousel proposition autres formations -->
-    <section class="section testimony-section bg-light" style="padding: 45px 45px 45px 45px;">
-        <div class="overlay" style="background-image: url(assets/images/bg_2.jpg);"></div>
-        <div class="container">
-            <div class="row pb-4">
-                <div class="col-md-7 heading-section ftco-animate fadeInUp ftco-animated">
-                    <span class="subheading">Dans le même domaine</span>
-                    <h2 class="mb-4">Autres suggestions</h2>
-                </div>
-            </div>
+<!-- A reporter dans le compte dès que opérationnel -->
+
+<section class="section testimony-section bg-light" style="padding: 45px 45px 45px 45px;">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Intitulé</th>
+                    <th style="text-align: center;">Début</th>
+                    <th style="text-align: center;">Fin</th>
+                    <th style="text-align: center;">Lieu</th>
+                    <th style="text-align: center;">Formateur</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let elt of inscriptions">
+                    <td>{{ elt?.formation?.intitule }}</td>
+                    <td style="text-align: center;">{{ elt.dateDebut | date:"dd MMM y" }}</td>
+                    <td style="text-align: center;">{{ elt.dateFin | date:"dd MMM y" }}</td>
+                    <td style="text-align: center;">{{ elt?.adresse?.codePostal }} {{ elt?.adresse?.ville }}</td>
+                    <td style="text-align: center;">{{ elt?.formateur?.prenomFormateur }} {{ elt?.formateur?.nomFormateur }}</td>
+                    <td style="text-align: center;"><button type="button"
+                            class="btn btn-outline-secondary">Annuler</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="alert alert-warning" *ngIf="sessions.length == 0">
+            Il n'y a pas encore de session programmée pour l'instant.
         </div>
-        <div class="container">
-            <div class="row ftco-animate fadeInUp ftco-animated">
-                <div class="col-md-12">
-                    <div id="myCarousel" class="carousel slide offset-1 col-10" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                            <li data-target="#myCarousel" *ngFor="let item of formationsMemeDomaine;let index = index"
-                                [attr.data-slide-to]="index"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item p-5"
-                                style="background-color: rgba(106, 165, 228, 0.6); border-radius: 10px;"
-                                *ngFor="let elt of formationsMemeDomaine;let index = index;let isFirst = first"
-                                [ngClass]="{active:isFirst}">
-                                <a href="/formations/{{ elt.id }}">
-                                    <img id="imgCarousel" src="{{ elt.urlImage }}" class="col-xl-4 col-sm-6 p-4" [alt]="">
-                                    <div class="carousel-caption offset-xl-2 col-xl-7 offset-sm-4 col-sm-6">
-                                        <h4 style="font-weight: bold; color: white">{{ elt.intitule }}</h4>
-                                        <p style="color: black;">{{ elt.descriptionBreve }}</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
+    </div>
+</section>

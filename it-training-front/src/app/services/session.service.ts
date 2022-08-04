@@ -9,6 +9,7 @@ export class SessionService {
 
   private url1: string = "http://localhost:8080/sessions";
   private url2: string = "http://localhost:8080/formations";
+  private url3: string = "http://localhost:8080/currentUser";
 
   constructor(private http: HttpClient) { }
 
@@ -18,5 +19,9 @@ export class SessionService {
 
   getOneSessionById(id: number) {
     return this.http.get<Session>(this.url1 + "/" + id);
+  }
+
+  getAllSessionsByUser(idUser: number) {
+    return this.http.get<Session[]>(this.url3 + "/sessions");
   }
 }

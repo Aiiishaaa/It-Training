@@ -90,6 +90,22 @@ public class UserRestController {
 		return new ResponseEntity<User> (userService.add(user), HttpStatus.OK);
 	}
 	
+//	@PutMapping(value = "/users/{id}")
+//	public ResponseEntity<?> updateUser(@PathVariable("id") Integer idUser,
+//			@RequestBody Session session) {
+//
+//		UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		String username = userDetails.getUsername();
+//
+//		User user = userService.findOneByUsername(username);
+//		idUser = user.getId();
+//
+//		List<Session> newList = user.getSessions();
+//		newList.add(session);
+//		user.setSessions(newList);
+//		return new ResponseEntity<>(userService.updateUserSessions(idUser, session), HttpStatus.OK);
+//	}
+	
 	@PutMapping(value = "/users/{id}")
 	public ResponseEntity<User> modifierUser(@PathVariable("id") Integer idUser, @RequestBody User user) {
 		User userACorriger = userService.findById(idUser).orElseThrow(

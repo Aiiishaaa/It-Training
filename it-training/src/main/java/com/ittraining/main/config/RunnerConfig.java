@@ -68,9 +68,9 @@ public class RunnerConfig implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		String password = encoder.encode("12345678");
+		String password = encoder.encode("aA123456");
 		User u1 = new User("Taylor", "John", "john@mail.com", password);
-		User u2 = new User("Monceau", "Rose", "rose@mail.com", password);
+		User u2 = new User("Monceau", "Rose", "Rose", "rose@mail.com", password, null, "");
 		User u3 = new User("Beanbean", "Tony", "tony@mail.com", password);
 		User u4 = new User("Natoni", "Maya", "maya@mail.com", password);
 		User u5 = new User("Gronchon", "Richard", "richard@mail.com", password);
@@ -221,17 +221,17 @@ public class RunnerConfig implements CommandLineRunner {
 		formationRepository.save(f7);
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		Session s1 = new Session(LocalDate.parse("2023-05-15", formatter), LocalDate.parse("2023-08-05", formatter), f1, fo2, a2, null);
+		Session s11 = new Session(LocalDate.parse("2023-05-15", formatter), LocalDate.parse("2023-08-05", formatter), f1, fo2, a2, null);
 		Session s2 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-12-05", formatter), f1, fo3, a1, null);
 		Session s3 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-12-05", formatter), f1, fo2, a2, clientsSession3);
-		Session s4 = new Session(LocalDate.parse("2022-09-19", formatter), LocalDate.parse("2022-09-21", formatter), f6, fo2, a3, clientsSession1);
+		Session s4 = new Session(LocalDate.parse("2022-09-19", formatter), LocalDate.parse("2022-09-21", formatter), f6, fo2, a3, null);
 		Session s5 = new Session(LocalDate.parse("2022-10-03", formatter), LocalDate.parse("2022-10-07", formatter), f5, fo2, a3, clientsSession2);
-		Session s6 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-01", formatter), f1, fo4, a4, null);
-		Session s7 = new Session(LocalDate.parse("2022-09-25", formatter), LocalDate.parse("2022-10-12", formatter), f2, fo1, a1, null);
-		Session s8 = new Session(LocalDate.parse("2022-09-25", formatter), LocalDate.parse("2022-10-11", formatter), f4, fo3, a2, null);
-		Session s9 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-09", formatter), f5, fo5, a1, null);
+		Session s8 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-01", formatter), f1, fo4, a4, null);
+		Session s6 = new Session(LocalDate.parse("2022-09-25", formatter), LocalDate.parse("2022-10-12", formatter), f2, fo1, a1, null);
+		Session s7 = new Session(LocalDate.parse("2022-09-25", formatter), LocalDate.parse("2022-10-11", formatter), f4, fo3, a2, null);
+		Session s9 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-09", formatter), f5, fo5, a1, clientsSession1);
 		Session s10 = new Session(LocalDate.parse("2023-02-06", formatter), LocalDate.parse("2023-03-06", formatter), f7, fo3, a3, null);
-		Session s11 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-10-13", formatter), f7, fo3, a4, null);
+		Session s1 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-10-13", formatter), f7, fo3, a4, null);
 		sessionRepository.save(s1);
 		sessionRepository.save(s2);
 		sessionRepository.save(s3);

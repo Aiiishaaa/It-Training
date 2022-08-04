@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from 'src/app/auth/token-storage.service';
 import { Adresse } from 'src/app/interfaces/adresse';
 import { Domaine } from 'src/app/interfaces/domaine';
 import { Formateur } from 'src/app/interfaces/formateur';
@@ -35,6 +36,9 @@ export class FormationComponent implements OnInit {
   codePostal: string = "";
   lieux: string[] = [];
   formateurs: string[] = [];
+  userName: string = "";
+
+  inscriptions: Session[] = [];
 
   constructor(
     private formationServ: FormationService,
@@ -42,6 +46,7 @@ export class FormationComponent implements OnInit {
     private userServ: UserService,
     private themeServ: ThemeService,
     private domaineServ: DomaineService,
+    private token: TokenStorageService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -53,6 +58,8 @@ export class FormationComponent implements OnInit {
       this.recupThemeParFormation(this.id);
       this.recupDomaineParFormation(this.id);
       this.recupFormationsMemeDomaine(this.id);
+      this.recupInscriptionsClient(this.id);
+      this.userName = this.token.getUsername();
     });
   }
 
@@ -121,5 +128,15 @@ export class FormationComponent implements OnInit {
       this.formateurs.push(`${elt.formateur?.prenomFormateur} ${elt.formateur?.nomFormateur}` ?? "");
       console.log(this.formateurs);
     }
+  }
+
+  recupInscriptionsClient(id: number) {
+    this.sessionServ.getAllSessionsByUser(id).subscribe( res => {
+      this.inscriptions = res;
+    })
+  }
+
+  sInscrire() {
+    
   }
 }

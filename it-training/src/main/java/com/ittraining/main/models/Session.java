@@ -26,7 +26,7 @@ public class Session {
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "id_formation")
 	private Formation formation;

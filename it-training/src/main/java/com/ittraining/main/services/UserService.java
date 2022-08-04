@@ -56,4 +56,9 @@ public class UserService implements IUserService {
 		return userRepository.findByFormationsId(idFormation);
 	}
 
+//	@Override
+//	public User updateUserSessions(Integer id, Session session) {
+//		return userRepository.updateUserSessions(id, session);
+//	}
+
 }
