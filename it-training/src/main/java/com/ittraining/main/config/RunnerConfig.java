@@ -165,17 +165,24 @@ public class RunnerConfig implements CommandLineRunner {
 
 		Formateur fo1 = new Formateur("Boulgour", "Roger", "boulgour.roger@it-training.com", "12345678", null);
 		Formateur fo2 = new Formateur("Pates", "Malika", "pates.malika@it-training.com", "12345678", null);
-		Formateur fo3 = new Formateur("Williams", "Bobi", "williams.bobi@it-training.com", "12345678", null);
+		Formateur fo3 = new Formateur("Malone", "Estelle", "malone.estelle@it-training.com", "12345678", null);
+		Formateur fo4 = new Formateur("Williams", "Bobi", "williams.bobi@it-training.com", "12345678", null);
+		Formateur fo5 = new Formateur("Resson", "Nicolas", "resson.nicolas@it-training.com", "12345678", null);
 		formateurRepository.save(fo1);
 		formateurRepository.save(fo2);
 		formateurRepository.save(fo3);
+		formateurRepository.save(fo4);
+		formateurRepository.save(fo5);
+		
 
 		Adresse a1 = new Adresse(154, "Rue due Paradis", "13006", "Marseille", null);
 		Adresse a2 = new Adresse(400, "Avenue Roumanille", "06906", "Sophia-Antipolis", null);
 		Adresse a3 = new Adresse(6, "Chemin du Dôme", "75012", "Paris", null);
+		Adresse a4 = new Adresse(37, "Chemin du crayon", "69001", "Lyon", null);
 		adresseRepository.save(a1);
 		adresseRepository.save(a2);
 		adresseRepository.save(a3);
+		adresseRepository.save(a4);
 
 		Formation f1 = new Formation(d1, t1, 5390.00, null, null, "Découvrir le langage de programmation Java et disposer des bases nécessaires au développement d'applications Web Java dans des environnements éditeur (WebSphere, WebLogic) comme Open Source.",
 				"Parce que les applications développées en Java sont très facilement portables sur différents systèmes d'exploitation tels que Windows, Mac OS, UNIX ou encore Linux, ce langage orienté Objet qui reprend en grande partie la syntaxe du C++ est toujours très prisé par les équipes de développement. Ce cursus métier vise à faire découvrir aux participants comment bien programmer en Java, et à les rendre autonomes pour développer des applications Web avec Angular, TypeScript et Bootstrap. A l'issue de ce parcours de 14 jours, les participants disposeront des compétences nécessaires prendre en charge des projets de développement d'applications web en Java.",
@@ -219,13 +226,23 @@ public class RunnerConfig implements CommandLineRunner {
 		Session s3 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-12-05", formatter), f1, fo2, a2, clientsSession3);
 		Session s4 = new Session(LocalDate.parse("2022-09-19", formatter), LocalDate.parse("2022-09-21", formatter), f6, fo2, a3, clientsSession1);
 		Session s5 = new Session(LocalDate.parse("2022-10-03", formatter), LocalDate.parse("2022-10-07", formatter), f5, fo2, a3, clientsSession2);
-		Session s6 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-01", formatter), f1, fo3, a1, null);
+		Session s6 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-01", formatter), f1, fo4, a4, null);
+		Session s7 = new Session(LocalDate.parse("2022-09-25", formatter), LocalDate.parse("2022-10-12", formatter), f2, fo1, a1, null);
+		Session s8 = new Session(LocalDate.parse("2022-09-25", formatter), LocalDate.parse("2022-10-11", formatter), f4, fo3, a2, null);
+		Session s9 = new Session(LocalDate.parse("2023-01-09", formatter), LocalDate.parse("2023-02-09", formatter), f5, fo5, a1, null);
+		Session s10 = new Session(LocalDate.parse("2023-02-06", formatter), LocalDate.parse("2023-03-06", formatter), f7, fo3, a3, null);
+		Session s11 = new Session(LocalDate.parse("2022-09-15", formatter), LocalDate.parse("2022-10-13", formatter), f7, fo3, a4, null);
 		sessionRepository.save(s1);
 		sessionRepository.save(s2);
 		sessionRepository.save(s3);
 		sessionRepository.save(s4);
 		sessionRepository.save(s5);
 		sessionRepository.save(s6);
+		sessionRepository.save(s7);
+		sessionRepository.save(s8);
+		sessionRepository.save(s9);
+		sessionRepository.save(s10);
+		sessionRepository.save(s11);
 
 		Prerequis p1 = new Prerequis("qcm1", false, f2);
 		Prerequis p2 = new Prerequis("qcm2", false, f5);

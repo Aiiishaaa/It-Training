@@ -72,15 +72,12 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let elt of sessions; let i = index">
-                            <td style="text-align: center;">{{ elt.dateDebut }}</td>
-                            <td style="text-align: center;">{{ elt.dateFin }}</td>
+                            <td style="text-align: center;">{{ elt.dateDebut | date:"dd MMM y" }}</td>
+                            <td style="text-align: center;">{{ elt.dateFin | date:"dd MMM y" }}</td>
                             <td style="text-align: center;">{{ lieux[i] }}</td>
                             <td style="text-align: center;">{{ formateurs[i] }}</td>
                             <td style="text-align: center;"><button type="button"
                                     class="btn btn-outline-secondary">M'inscrire</button></td>
-                            <!-- <td>{{ elt.formateur.nomEmployee }}</td>
-                    <div *ngFor="let key of JSObject.keys(elt.formateur)">{{ key + ' : ' + obj[key] }}</div>
-                    <td></td> -->
                         </tr>
                     </tbody>
                 </table>
