@@ -11,6 +11,7 @@ import { FooterComponent } from './composants/footer/footer.component';
 import { AccueilComponent } from './composants/accueil/accueil.component';
 import { PageInconnuComponent } from './composants/page-inconnu/page-inconnu.component';
 import { FormateurComponent } from './composants/formateur/formateur.component';
+import { KeysPipe } from './pipes/keys.pipe';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FormateurComponent } from './composants/formateur/formateur.component';
     AccueilComponent,
     PageInconnuComponent,
     FormateurComponent,
+    KeysPipe,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 <ng-container>
 
     <!-- Bandeau du haut avec fil d'Ariane -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('../../../assets/images/work-6.jpg');">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ urlBackground }}');">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -42,7 +42,8 @@
                                     <span class="subheading">Développez de nouvelles compétences</span>
                                     <h2 class="mb-4">En quelques mots</h2>
                                     <p style="text-align: justify">{{ formation.descriptionLongue }}</p>
-                                    <p><a href="#" class="btn btn-primary">Trouvez votre session !</a></p>
+                                    <p><button class="btn btn-primary" data-bs-toggle="offcanvas"
+                                            data-bs-target="#myCanvas">Trouvez votre session !</button></p>
                                 </div>
                             </div>
                         </div>
@@ -51,6 +52,43 @@
             </div>
         </div>
     </section>
+
+    <div class="container offcanvas offcanvas-end" id="myCanvas">
+        <div class="offcanvas-header">
+            <h2>Trouvez votre session - {{ formation.intitule }}</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="container">
+                <table class="table" *ngIf="sessions.length != 0">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Début</th>
+                            <th style="text-align: center;">Fin</th>
+                            <th style="text-align: center;">Lieu</th>
+                            <th style="text-align: center;">Formateur</th>
+                            <th style="text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let elt of sessions; let i = index">
+                            <td style="text-align: center;">{{ elt.dateDebut }}</td>
+                            <td style="text-align: center;">{{ elt.dateFin }}</td>
+                            <td style="text-align: center;">{{ lieux[i] }}</td>
+                            <td style="text-align: center;">{{ formateurs[i] }}</td>
+                            <td style="text-align: center;"><button type="button" class="btn btn-outline-secondary">M'inscrire</button></td>
+                            <!-- <td>{{ elt.formateur.nomEmployee }}</td>
+                    <div *ngFor="let key of JSObject.keys(elt.formateur)">{{ key + ' : ' + obj[key] }}</div>
+                    <td></td> -->
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-warning" *ngIf="sessions.length == 0">
+                    Il n'y a pas encore de session programmée pour l'instant.
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Bande avec image qui scroll -->
     <section class="section ftco-counter img" id="section-counter"
@@ -106,14 +144,14 @@
         <div class="container">
             <div class="row d-flex">
                 <div
-                    class="col-md-8 heading-section pr-md-5 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
+                    class="col-md-7 heading-section pr-md-5 ftco-animate d-flex align-items-center fadeInUp ftco-animated">
                     <div class="w-100 mb-4 mb-md-0">
                         <span class="subheading">Améliorez votre employabilité</span>
                         <h2 class="mb-4">Le programme en détails</h2>
                         <p style="overflow: auto; max-height: 500px;">{{ formation.programme }}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="col-md-12 d-flex align-self-stretch ftco-animate fadeInUp ftco-animated">
                         <div class="services">
                             <div class="icon icon-4 d-flex align-items-center justify-content-center"
