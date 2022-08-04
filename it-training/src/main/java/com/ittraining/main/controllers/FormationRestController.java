@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import com.ittraining.main.models.Formation;
 import com.ittraining.main.services.IDomaineService;
-import com.ittraining.main.services.IEmployeService;
 import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.IThemeService;
+import com.ittraining.main.services.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -40,7 +40,7 @@ public class FormationRestController {
 	private IDomaineService domaineService;
 
 	@Autowired
-	private IEmployeService employeService;
+	private IUserService userService;
 
 	// http://localhost:8080/formations
 	@GetMapping(value = "/formations")
@@ -53,7 +53,7 @@ public class FormationRestController {
 	public ResponseEntity<List<Formation>> recupererFormationsByDomaine(@PathVariable String nomDomaine) {
 		return new ResponseEntity<>(formationService.findAllByDomaine(nomDomaine), HttpStatus.OK);
 	}
-	
+
 	// http://localhost:8080/forma/communication
 	@GetMapping(value = "/forma/{nomTheme}")
 	public ResponseEntity<List<Formation>> recupererFormationsByTheme(@PathVariable String nomTheme) {
@@ -93,7 +93,7 @@ public class FormationRestController {
 						"Formation non trouvée avec id : " + idFormation));
 		formationACorriger.setDescriptionBreve(formation.getDescriptionBreve());
 		formationACorriger.setDescriptionLongue(formation.getDescriptionLongue());
-		formationACorriger.setEmploye(formation.getEmploye());
+		formationACorriger.setUser(formation.getUser());
 		formationACorriger.setPrerequis(formation.getPrerequis());
 		formationACorriger.setTheme(formation.getTheme());
 		formationACorriger.setIntitule(formation.getIntitule());
@@ -127,10 +127,10 @@ public class FormationRestController {
 		return new ResponseEntity<List<Formation>>(formationService.findAllByDomaineId(idDomaine), HttpStatus.OK);
 	}
 
-	@GetMapping(value = "/employes/{id}/formations")
-	public ResponseEntity<List<Formation>> recupererFormationsParEmploye(@PathVariable("id") Integer idEmploye) {
-		employeService.findById(idEmploye).orElseThrow(
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employé non trouvé avec id : " + idEmploye));
-		return new ResponseEntity<List<Formation>>(formationService.findAllByEmployeId(idEmploye), HttpStatus.OK);
+	@GetMapping(value = "/users/{id}/formations")
+	public ResponseEntity<List<Formation>> recupererFormationsParEmploye(@PathVariable("id") Integer idUser) {
+		userService.findById(idUser).orElseThrow(
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Employé non trouvé avec id : " + idUser));
+		return new ResponseEntity<List<Formation>>(formationService.findAllByUserId(idUser), HttpStatus.OK);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ittraining.main.dao.UserRepository;
+import com.ittraining.main.models.Session;
 import com.ittraining.main.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,16 @@ public class UserService implements IUserService {
 	@Override
 	public List<User> findAllBySessionsId(Integer idSession) {
 		return userRepository.findAllBySessionsId(idSession);
+	}
+
+	@Override
+	public User findOneByUsername(String username) {
+		return userRepository.findOneByUsername(username);
+	}
+
+	@Override
+	public Optional<User> findByFormationsId(Integer idFormation) {
+		return userRepository.findByFormationsId(idFormation);
 	}
 
 }

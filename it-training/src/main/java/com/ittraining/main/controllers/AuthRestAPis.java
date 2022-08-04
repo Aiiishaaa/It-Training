@@ -106,6 +106,14 @@ public class AuthRestAPis {
 		} else {
 			strRoles.forEach(role -> {
 				switch (role) {
+				case "client":
+						Role clientRole = roleRepository.findByDesignation(RoleName.ROLE_CLIENT)
+								.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User  role not find"));
+						roles.add(clientRole);
+				case "employe":
+					Role employeRole = roleRepository.findByDesignation(RoleName.ROLE_EMPLOYE)
+							.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User role not find"));
+					roles.add(employeRole);
 				case "admin":
 					Role adminRole = roleRepository.findByDesignation(RoleName.ROLE_ADMIN)
 							.orElseThrow(() -> new RuntimeException("Fail! -> Cause : User role not find"));

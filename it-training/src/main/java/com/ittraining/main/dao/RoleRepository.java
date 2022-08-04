@@ -9,6 +9,6 @@ import com.ittraining.main.models.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, Integer> {
-	List<Role> findAllByEmployesId(Integer idEmploye);
+	List<Role> findAllByUsersId(Integer idUser);
 	Optional<Role> findByDesignation(RoleName designation);
 }

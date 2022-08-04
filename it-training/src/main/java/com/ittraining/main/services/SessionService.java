@@ -31,8 +31,8 @@ public class SessionService implements ISessionService {
 	}
 
 	@Override
-	public List<Session> findAllByUsersId(Integer idUser) {
-		return sessionRepository.findAllByUsersId(idUser);
+	public List<Session> findAllSessionsByUsersId(Integer idUser) {
+		return sessionRepository.findAllSessionsByUsersId(idUser);
 	}
 
 	@Override
@@ -50,6 +50,12 @@ public class SessionService implements ISessionService {
 		sessionRepository.deleteById(idSession);
 
 	}
+
+//	@Override
+//	public Session saveOneSessionsByUsers(Integer idUser, Session session) {
+//		return sessionRepository.saveOneSessionsByUsers(idUser, session);
+//	}
+
 
 
 }

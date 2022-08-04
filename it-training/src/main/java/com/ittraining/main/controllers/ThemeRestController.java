@@ -4,7 +4,6 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.ittraining.main.models.Employe;
 import com.ittraining.main.models.Theme;
 import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.IThemeService;

@@ -9,6 +9,8 @@ public interface IUserService {
 	List<User> findAll();
 
 	Optional<User> findById(Integer idUser);
+	
+	User findOneByUsername(String username);
 
 	List<User> findAllBySessionsId(Integer idSession);
 
@@ -17,4 +19,6 @@ public interface IUserService {
 	User update(User user);
 
 	void removeById(Integer id);
+	
+	Optional<User> findByFormationsId(Integer idFormation);
 }

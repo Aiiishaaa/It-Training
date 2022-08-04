@@ -3,10 +3,9 @@ package com.ittraining.main.controllers;
 import java.util.List;
 import java.util.Optional;
 
-import com.ittraining.main.dao.RoleRepository;
 import com.ittraining.main.models.Role;
-import com.ittraining.main.services.IEmployeService;
 import com.ittraining.main.services.IRoleService;
+import com.ittraining.main.services.IUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,7 +28,7 @@ public class RoleRestController {
 	private IRoleService roleService;
 	
 	@Autowired
-	private IEmployeService employeService;
+	private IUserService userService;
 	
 	@GetMapping(value = "/roles")
 	public ResponseEntity<List<Role>> recupererRoles() {
@@ -62,11 +61,11 @@ public class RoleRestController {
 		return new ResponseEntity<>("Le role a bien été supprimé.", HttpStatus.OK);
 	}
 	
-	@GetMapping(value = "/employes/{id}/roles")
-	public ResponseEntity<List<Role>> findAllByEmployesId(@PathVariable("id") Integer id) {
-		employeService.findById(id).orElseThrow(
+	@GetMapping(value = "/users/{id}/roles")
+	public ResponseEntity<List<Role>> findAllByUsersId(@PathVariable("id") Integer id) {
+		userService.findById(id).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Person not found with id : " + id));
-		List<Role> roles = roleService.findAllByEmployesId(id);
+		List<Role> roles = roleService.findAllByUsersId(id);
 		return new ResponseEntity<>(roles, HttpStatus.OK);
 	}
 	

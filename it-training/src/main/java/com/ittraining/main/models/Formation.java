@@ -53,8 +53,8 @@ public class Formation {
 	private String programme;
 
 	@ManyToOne
-	@JoinColumn(name = "id_employe")
-	private Employe employe;
+	@JoinColumn(name = "id_user")
+	private User user;
 
 	private String intitule;
 	private int nbHeures;
@@ -65,7 +65,7 @@ public class Formation {
 	}
 
 	public Formation(Domaine domaine, Theme theme, double prix, List<Session> sessions, Prerequis prerequis,
-			String descriptionBreve, String descriptionLongue, String programme, Employe employe, String intitule,
+			String descriptionBreve, String descriptionLongue, String programme, User user, String intitule,
 			int nbHeures, String urlImage) {
 		super();
 		this.domaine = domaine;
@@ -76,7 +76,7 @@ public class Formation {
 		this.descriptionBreve = descriptionBreve;
 		this.descriptionLongue = descriptionLongue;
 		this.programme = programme;
-		this.employe = employe;
+		this.user = user;
 		this.intitule = intitule;
 		this.nbHeures = nbHeures;
 		this.urlImage = urlImage;
@@ -142,12 +142,12 @@ public class Formation {
 		this.programme = programme;
 	}
 
-	public Employe getEmploye() {
-		return employe;
+	public User getUser() {
+		return user;
 	}
 
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getIntitule() {
@@ -186,9 +186,8 @@ public class Formation {
 	public String toString() {
 		return "Formation [id=" + id + ", domaine=" + domaine + ", theme=" + theme + ", prix=" + prix + ", sessions="
 				+ sessions + ", prerequis=" + prerequis + ", descriptionBreve=" + descriptionBreve
-				+ ", descriptionLongue=" + descriptionLongue + ", programme=" + programme + ", employe=" + employe
+				+ ", descriptionLongue=" + descriptionLongue + ", programme=" + programme + ", user=" + user
 				+ ", intitule=" + intitule + ", nbHeures=" + nbHeures + ", urlImage=" + urlImage + "]";
 	}
 
-	
 }
