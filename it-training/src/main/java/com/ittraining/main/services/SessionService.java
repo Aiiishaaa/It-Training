@@ -52,8 +52,8 @@ public class SessionService implements ISessionService {
 	}
 
 //	@Override
-//	public Session saveOneSessionsByUsers(Integer idUser, Session session) {
-//		return sessionRepository.saveOneSessionsByUsers(idUser, session);
+//	public Session updateOneSessionsByUsers(Session session) {
+//		return sessionRepository.updateOneSessionsByUsers(session);
 //	}
 
 
