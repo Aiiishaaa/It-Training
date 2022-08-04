@@ -1,6 +1,6 @@
 import { FormateurComponent } from "../composants/formateur/formateur.component";
 import { Adresse } from "./adresse";
-import { Client } from "./client";
+import { User } from "./user";
 import { Formateur } from "./formateur";
 import { Formation } from "./formation";
 
@@ -11,5 +11,5 @@ export interface Session {
     formation ?: Formation;
     formateur ?: Formateur;
     adresse ?: Adresse;
-    client ?: Client;
+    user ?: User;
 }

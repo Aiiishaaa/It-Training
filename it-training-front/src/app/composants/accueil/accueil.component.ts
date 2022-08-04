@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Client } from 'src/app/interfaces/client';
-import { ClientService } from 'src/app/services/client.service';
+import { User } from 'src/app/interfaces/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-accueil',
@@ -10,55 +11,11 @@ import { ClientService } from 'src/app/services/client.service';
 })
 export class AccueilComponent  {
   constructor(
-    private cs : ClientService,
+    private us : UserService,
     private router: Router,
     private route: ActivatedRoute) { }
+    
+    
+  ngForm: FormGroup | undefined;
 
-  client: Client = {};
-  clients: Client[] = [];
-initClient() {
- }
-
-  ngOnInit() {
-    this.initClient();
-    this.getAllClients();
   }
-  getAllClients() {
-    this.cs.getAllClients().subscribe(
-      data => {
-        this.clients = data;
-      }
-    );
-  }
-  addClient() {
-    this.cs.addClient(this.client).subscribe(
-      data => {
-        this.getAllClients();
-      }
-    );
-  }
-  deleteClient(id: number) {
-    this.cs.deleteClient(id).subscribe(
-      data => {
-        this.getAllClients();
-      }
-
-    );
-  }
-  updateClient(client: Client) {
-    this.cs.updateClient(client).subscribe(
-      data => {
-        this.getAllClients();
-      }
-    );
-  }
-
-  checkClient(email: string, password: string) {
-    this.cs.checkClient(email, password).subscribe(
-      data => {
-        this.clients = data;
-      }
-    );
-  }
- 
-}

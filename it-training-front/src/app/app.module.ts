@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -11,6 +11,12 @@ import { AccueilComponent } from './composants/accueil/accueil.component';
 import { PageInconnuComponent } from './composants/page-inconnu/page-inconnu.component';
 import { FormateurComponent } from './composants/formateur/formateur.component';
 import { NavbarComponent } from './composants/navbar/navbar.component';
+import { AdminComponent } from './composants/admin/admin.component';
+import { InscriptionComponent } from './composants/inscription/inscription.component';
+import { ConnexionComponent } from './composants/connexion/connexion.component';
+import { httpInterceptorProviders } from './auth/auth.interceptor';
+import { TableauDeBordComponent } from './composants/tableau-de-bord/tableau-de-bord.component';
+import { UserComponent } from './composants/user/user.component';
 
 
 @NgModule({
@@ -23,15 +29,18 @@ import { NavbarComponent } from './composants/navbar/navbar.component';
     PageInconnuComponent,
     FormateurComponent,
     NavbarComponent,
+    InscriptionComponent,
+    ConnexionComponent,
+    AdminComponent,
+    TableauDeBordComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule
-  ],
-  providers: [],
+    FormsModule  ],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

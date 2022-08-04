@@ -1,0 +1,43 @@
+<div *ngIf="isSignedUp; else signupForm">
+    Votre inscription est réussie. Veuillez vous connecter !
+</div>
+
+<ng-template #signupForm>
+    <form class="signup-form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+        <div class="form-group">
+            <label for="name"> Prénom :</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="form.prenom" #prenom="ngModel" required placeholder="John" />
+            <div class="error" *ngIf="f.submitted && prenom.invalid">
+                <div *ngIf="prenom.errors">Ce champs est obligatoire !</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username"> Nom :</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="form.username" #username="ngModel" required placeholder=" Doe" />
+            <div class="error" *ngIf="f.submitted && username.invalid">
+                <div *ngIf="username.errors">Ce champs est obligatoire !</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email"> E-mail :</label>
+            <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" [(ngModel)]="form.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required placeholder="johndoe@gmail.com" />
+            <div class="error" *ngIf=" f.submitted && email.invalid ">
+                <div *ngIf="email.errors">Champs obligatoire || Ne ressemble pas à une adresse e-mail valide !</div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="password "> Mot de passe :</label>
+            <input type="password " class="form-control " name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="form.password " #password="ngModel" placeholder="Mot de passe" required minlength="6" />
+            <div class="error" *ngIf="f.submitted && password.invalid ">
+                <div *ngIf="password.errors"> Champs obligatoire || Doit contenir au moins un chiffre et une lettre majuscule et minuscule, et au moins 8 caractères !</div>
+            </div>
+        </div>
+        <div class="form-group d-flex justify-content-end mt-4">
+            <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
+
+        </div>
+        <div *ngIf="f.submitted && isSignUpFailed " class="alert alert-warning ">
+            Échec de l'inscription!<br/>{{errorMessage}}
+        </div>
+    </form>
+</ng-template>
