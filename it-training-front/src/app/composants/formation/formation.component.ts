@@ -25,8 +25,8 @@ export class FormationComponent implements OnInit {
   formateur!: Formateur;
   sessions: Session[] = [];
   contact: Employe = {};
-  theme: Theme = {};
-  domaine: Domaine = {};
+  theme!: Theme;
+  domaine!: Domaine;
   prerequis: Prerequis = {};
   id: number = 0;
   urlBackground: string = "";
