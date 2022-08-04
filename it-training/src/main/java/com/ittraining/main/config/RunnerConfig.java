@@ -29,6 +29,7 @@ import com.ittraining.main.models.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -60,19 +61,23 @@ public class RunnerConfig implements CommandLineRunner {
 
 	@Autowired
 	UserRepository userRepository;
+	
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		User u1 = new User("Taylor", "John", "john@mail.com", "taylor");
-		User u2 = new User("Monceau", "Rose", "rose@mail.com", "monceau");
-		User u3 = new User("Beanbean", "Tony", "tony@mail.com", "beanbean");
-		User u4 = new User("Natoni", "Maya", "maya@mail.com", "natoni");
-		User u5 = new User("Gronchon", "Richard", "richard@mail.com", "gronchon");
-		User u6 = new User("Bellami", "Louise", "louise@mail.com", "bellami");
-		User u7 = new User("Hamida", "Aicha", "Aicha", "hamida.aicha@it-training.com", "12345678", null, "06 55 49 33 14");
-		User u8 = new User("Di Lorenzo", "Lucas", "Lucas", "dilorenzo.lucas@it-training.com", "12345678", null, "06 37 31 32 34");
-		User u9 = new User("Heuillet", "Cecile", "Cecile", "heuillet.cecile@it-training.com", "12345678", null, "06 78 64 12 99");
+		String password = encoder.encode("12345678");
+		User u1 = new User("Taylor", "John", "john@mail.com", password);
+		User u2 = new User("Monceau", "Rose", "rose@mail.com", password);
+		User u3 = new User("Beanbean", "Tony", "tony@mail.com", password);
+		User u4 = new User("Natoni", "Maya", "maya@mail.com", password);
+		User u5 = new User("Gronchon", "Richard", "richard@mail.com", password);
+		User u6 = new User("Bellami", "Louise", "louise@mail.com", password);
+		User u7 = new User("Hamida", "Aicha", "Aicha", "hamida.aicha@it-training.com", password, null, "06 55 49 33 14");
+		User u8 = new User("Di Lorenzo", "Lucas", "Lucas", "dilorenzo.lucas@it-training.com", password, null, "06 37 31 32 34");
+		User u9 = new User("Heuillet", "Cecile", "Cecile", "heuillet.cecile@it-training.com", password, null, "06 78 64 12 99");
 		userRepository.save(u7);
 		userRepository.save(u8);
 		userRepository.save(u9);
@@ -160,7 +165,7 @@ public class RunnerConfig implements CommandLineRunner {
 
 		Formateur fo1 = new Formateur("Boulgour", "Roger", "boulgour.roger@it-training.com", "12345678", null);
 		Formateur fo2 = new Formateur("Pates", "Malika", "pates.malika@it-training.com", "12345678", null);
-		Formateur fo3 = new Formateur("Williams", "Bobi", "matui.damien@it-training.com", "12345678", null);
+		Formateur fo3 = new Formateur("Williams", "Bobi", "williams.bobi@it-training.com", "12345678", null);
 		formateurRepository.save(fo1);
 		formateurRepository.save(fo2);
 		formateurRepository.save(fo3);
