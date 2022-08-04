@@ -14,13 +14,18 @@ const routes: Routes = [
   {path: '', component: AccueilComponent},
   {path: 'formations/:id', component: FormationComponent},
   {path: 'dashboard', component: TableauDeBordComponent},
+  {path: 'accueil', component: AccueilComponent},
   {path: 'catalogue', component: CatalogueComponent},
   {path: 'catalogue/:nomDomaine', component: CatalogueComponent},
   {path: 'tableau-de-bord', component: TableauDeBordComponent},
   {path: 'catalogue/:nomDomaine/:nomTheme', component: CatalogueComponent},
+  {path: 'formations/:id', component: FormationComponent},
   {path: 'formateurs', component: FormateurComponent},
   { path: 'compte', component: CompteComponent},
+  // {path: 'signup', component: ConnexionComponent},
+  // {path: 'auth/login',component: ConnexionComponent},
   {path: 'user', component: UserComponent},
+  {path: '', redirectTo:'accueil', pathMatch:'full'},  
   {path: 'error', component: PageInconnuComponent},
   {path: '**', redirectTo: '/error'}
 ];

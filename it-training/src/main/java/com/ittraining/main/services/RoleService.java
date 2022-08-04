@@ -45,8 +45,8 @@ public class RoleService implements IRoleService{
 	}
 
 	@Override
-	public List<Role> findAllByEmployesId(Integer id) {
-		return roleRepository.findAllByEmployesId(id);
+	public List<Role> findAllByUsersId(Integer id) {
+		return roleRepository.findAllByUsersId(id);
 	}
 
 }

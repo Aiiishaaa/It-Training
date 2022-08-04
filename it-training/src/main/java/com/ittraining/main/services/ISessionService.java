@@ -9,8 +9,11 @@ public interface ISessionService {
 	List<Session> findAll();
 	Optional<Session> findById(Integer idSession);
 	List<Session> findAllByFormationId(Integer idFormation);
-	List<Session> findAllByUsersId(Integer idUser);
 	Session add(Session object);
+//	Session saveOneSessionsByUsers(Integer idUser, Session session);
 	Session update(Session object);
 	void removeById(Integer idSession);
+	List<Session> findAllSessionsByUsersId(Integer idUser);
+	
+
 }

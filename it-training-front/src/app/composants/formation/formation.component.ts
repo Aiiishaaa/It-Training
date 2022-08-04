@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Adresse } from 'src/app/interfaces/adresse';
 import { Domaine } from 'src/app/interfaces/domaine';
-import { Employe } from 'src/app/interfaces/employe';
 import { Formateur } from 'src/app/interfaces/formateur';
 import { Formation } from 'src/app/interfaces/formation';
 import { Prerequis } from 'src/app/interfaces/prerequis';
 import { Session } from 'src/app/interfaces/session';
 import { Theme } from 'src/app/interfaces/theme';
+import { User } from 'src/app/interfaces/user';
 import { DomaineService } from 'src/app/services/domaine.service';
 import { EmployeService } from 'src/app/services/employe.service';
 import { FormationService } from 'src/app/services/formation.service';
 import { SessionService } from 'src/app/services/session.service';
 import { ThemeService } from 'src/app/services/theme.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-formation',
@@ -24,7 +25,7 @@ export class FormationComponent implements OnInit {
   formation: Formation = {};
   formateur!: Formateur;
   sessions: Session[] = [];
-  contact: Employe = {};
+  contact: User = {};
   theme!: Theme;
   domaine!: Domaine;
   prerequis: Prerequis = {};
@@ -38,7 +39,7 @@ export class FormationComponent implements OnInit {
   constructor(
     private formationServ: FormationService,
     private sessionServ: SessionService,
-    private employeServ: EmployeService,
+    private userServ: UserService,
     private themeServ: ThemeService,
     private domaineServ: DomaineService,
     private route: ActivatedRoute) { }
@@ -71,7 +72,7 @@ export class FormationComponent implements OnInit {
   }
 
   recupContactParFormation(idFormation: number) {
-    this.employeServ.getOneEmployeByFormation(idFormation).subscribe(res => {
+    this.userServ.getOneUserByFormation(idFormation).subscribe(res => {
       this.contact = res;
     })
   }

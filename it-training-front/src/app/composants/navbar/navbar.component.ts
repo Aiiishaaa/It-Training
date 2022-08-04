@@ -30,10 +30,10 @@ export class NavbarComponent implements OnInit {
       this.roles = this.token.getAuthorities();
       this.roles.every(role => {
         if (role === 'ROLE_ADMIN') {
-          this.authority = 'tableau-de-bord';
+          this.authority = 'admin';
           return false;
         } else if (role === 'ROLE_PM') {
-          this.authority = 'user';
+          this.authority = 'pm';
           return false;
         }
         this.authority = 'user';

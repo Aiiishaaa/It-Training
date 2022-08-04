@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.Query;
 public interface FormationRepository extends JpaRepository<Formation, Integer> {
 	List<Formation> findAllByThemeId(Integer idTheme);
 	List<Formation> findAllByDomaineId(Integer idDomaine);
-	List<Formation> findAllByEmployeId(Integer idEmploye);
+	List<Formation> findAllByUserId(Integer idUser);
 	
 	@Query("select f from Formation f where f.domaine.nomDomaine = ?1")
 	Page<Formation> findByDomaineContaining(String domaine, Pageable pageable);

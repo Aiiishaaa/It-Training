@@ -29,17 +29,17 @@ public class Role {
 	private RoleName designation;
 
 	@ManyToMany
-	@JoinColumn(name = "id_employe")
-	private List<Employe> employes = new ArrayList<Employe>();
+	@JoinColumn(name = "id_user")
+	private List<User> users = new ArrayList<User>();
 
 	public Role() {
 		super();
 	}
 
-	public Role(RoleName designation, List<Employe> employes) {
+	public Role(RoleName designation, List<User> users) {
 		super();
 		this.designation = designation;
-		this.employes = employes;
+		this.users = users;
 	}
 
 	public Integer getId() {
@@ -54,17 +54,17 @@ public class Role {
 		this.designation = designation;
 	}
 
-	public List<Employe> getEmployes() {
-		return employes;
+	public List<User> getUsers() {
+		return users;
 	}
 
-	public void setEmployes(List<Employe> employes) {
-		this.employes = employes;
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", designation=" + designation + ", employes=" + employes + "]";
+		return "Role [id=" + id + ", designation=" + designation + ", users=" + users + "]";
 	}
 
 }

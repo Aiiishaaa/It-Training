@@ -13,6 +13,6 @@ public interface IRoleService {
 	Role update(Role role);
 	void removeById(Integer id);
 
-	List<Role> findAllByEmployesId(Integer idEmploye);
+	List<Role> findAllByUsersId(Integer idUser);
 	
 }

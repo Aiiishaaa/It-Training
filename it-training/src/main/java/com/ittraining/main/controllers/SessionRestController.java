@@ -5,6 +5,7 @@ import java.util.Optional;
 
 
 import com.ittraining.main.models.Session;
+import com.ittraining.main.models.User;
 import com.ittraining.main.services.IUserService;
 import com.ittraining.main.services.IFormationService;
 import com.ittraining.main.services.ISessionService;
@@ -12,6 +13,8 @@ import com.ittraining.main.services.ISessionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,7 +60,7 @@ public class SessionRestController {
 	public ResponseEntity<List<Session>> recupererSessionsParUser(@PathVariable("id") Integer idUser) {
 		userService.findById(idUser).orElseThrow(
 				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User non trouvé avec Id " + idUser));
-		List<Session> sessionsParClient = sessionService.findAllByUsersId(idUser);
+		List<Session> sessionsParClient = sessionService.findAllSessionsByUsersId(idUser);
 		return new ResponseEntity<>(sessionsParClient, HttpStatus.OK);
 	}
 	
@@ -79,6 +82,17 @@ public class SessionRestController {
 		return new ResponseEntity<Session> (sessionService.update(sessionACorriger), HttpStatus.OK);
 	}
 	
+//	 @PostMapping(value = "/currentUser/askSessions")
+//	    public ResponseEntity<?> askSaveSessionsByCurrentUser(@RequestBody Session session) {
+//
+//	        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//	        String username = userDetails.getUsername();
+//
+//	        User user = userService.findOneByUsername(username);
+//
+//	        return new ResponseEntity<>(sessionService.saveOneSessionsByUsers(user.getId(), session), HttpStatus.OK);
+//	    }
+	 
 	@DeleteMapping(value = "/sessions/{id}")
 	public ResponseEntity<?> supprimerSession(@PathVariable("id") Integer idSession) {
 		Session sessionASupprimer = sessionService.findById(idSession).orElseThrow(

@@ -6,20 +6,16 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav" routerLinkActive="active">
-                <li class="nav-item col-lg-2"><a routerLink="" class="nav-link">Accueil</a></li>
-
-
+                <li class="nav-item"><a routerLink="" class="nav-link">Accueil</a></li>
+                <li class="nav-item"> <a routerLink="/catalogue" class="nav-link">Catalogue</a></li>
 
                 <li *ngIf="authority === 'user'" class="nav-item">
                     <a class="nav-link" routerLink="compte">Compte</a>
                 </li>
 
-                <li *ngIf="authority === 'user'" class="nav-item">
-                    <a class="nav-link" style="cursor: pointer" (click)="logout()">logout</a>
-                </li>
 
                 <li *ngIf="authority === 'user'" class="nav-item">
-                    <a routerLink="/catalogue" class="nav-link">Catalogue</a>
+                    <a class="nav-link" style="cursor: pointer" (click)="logout()">logout</a>
                 </li>
 
                 <li *ngIf="authority === 'admin'" class="nav-item">
@@ -29,12 +25,8 @@
                     <a class="nav-link" style="cursor: pointer" (click)="logout()">logout</a>
                 </li>
 
-
-                <li *ngIf="!authority" class="nav-item">
-                    <a class="nav-link" routerLink="auth/login">
-                        <app-connexion class="offset-lg-5 mt-3">
-                        </app-connexion>
-                    </a>
+                <li *ngIf="!authority">
+                    <app-connexion></app-connexion>
                 </li>
             </ul>
         </div>

@@ -1,4 +1,4 @@
-<ng-container>
+
 
     <!-- Bandeau du haut avec fil d'Ariane -->
     <section class="hero-wrap hero-wrap-2" style="background-image: url('{{ urlBackground }}');">
@@ -21,7 +21,7 @@
     </section>
 
     <!-- Description -->
-    <section class="section ftco-about img">
+    <section class="section ftco-about img" style="padding: 45px 45px 45px 45px;">
         <div class="container">
             <div class="row d-flex">
                 <div class="col-md-12 about-intro">
@@ -93,7 +93,7 @@
 
     <!-- Bande avec image qui scroll -->
     <section class="section ftco-counter img" id="section-counter"
-        style="background-image: url(assets/images/work-1.jpg);">
+        style="background-image: url(assets/images/work-1.jpg);padding: 45px 45px 45px 45px;">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -141,7 +141,7 @@
     </section>
 
     <!-- Détails programme et infos complémentaires -->
-    <section class="section services-section">
+    <section class="section services-section" style="padding: 45px 45px 45px 45px;">
         <div class="container">
             <div class="row d-flex">
                 <div
@@ -159,9 +159,9 @@
                                 style="color: white"><i class="fa-regular fa-2x fa-address-card"></i></div>
                             <div class="media-body">
                                 <h3 class="heading mb-3">Contact</h3>
-                                <div>Nom : {{ contact.prenomEmploye }} {{ contact.nomEmploye }}</div>
-                                <div>Téléphone : </div>
-                                <div>Email : {{ contact.emailEmploye }}</div>
+                                <div>Nom : {{ contact.firstname }} {{ contact.name }}</div>
+                                <div>Téléphone : {{ contact.phone }}</div>
+                                <div>Email : {{ contact.email }}</div>
                             </div>
                         </div>
                     </div>
@@ -183,7 +183,7 @@
     </section>
 
     <!-- Carousel proposition autres formations -->
-    <section class="section testimony-section bg-light">
+    <section class="section testimony-section bg-light" style="padding: 45px 45px 45px 45px;">
         <div class="overlay" style="background-image: url(assets/images/bg_2.jpg);"></div>
         <div class="container">
             <div class="row pb-4">
@@ -207,7 +207,7 @@
                                 *ngFor="let elt of formationsMemeDomaine;let index = index;let isFirst = first"
                                 [ngClass]="{active:isFirst}">
                                 <a href="/formations/{{ elt.id }}">
-                                    <img src="/assets/images/bg_4.jpg" class="col-xl-4 col-sm-6 p-4" [alt]="">
+                                    <img id="imgCarousel" src="{{ elt.urlImage }}" class="col-xl-4 col-sm-6 p-4" [alt]="">
                                     <div class="carousel-caption offset-xl-2 col-xl-7 offset-sm-4 col-sm-6">
                                         <h4 style="font-weight: bold; color: white">{{ elt.intitule }}</h4>
                                         <p style="color: black;">{{ elt.descriptionBreve }}</p>
@@ -229,4 +229,3 @@
 
 
 
-</ng-container>

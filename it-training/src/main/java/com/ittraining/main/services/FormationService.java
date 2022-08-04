@@ -57,8 +57,8 @@ public class FormationService implements IFormationService {
 	}
 
 	@Override
-	public List<Formation> findAllByEmployeId(Integer idEmploye) {
-		return formationRepository.findAllByEmployeId(idEmploye);
+	public List<Formation> findAllByUserId(Integer idUser) {
+		return formationRepository.findAllByUserId(idUser);
 	}
 
 	@Override

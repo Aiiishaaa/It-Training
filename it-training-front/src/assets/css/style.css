@@ -11710,7 +11710,9 @@
      -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
      box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
      z-index: 0;
-     top: -650px;
+     width: 450px;
+     margin-top: 130px;
+     margin-bottom: 80px;
  }
  
  @media (max-width: 767.98px) {

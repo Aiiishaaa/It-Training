@@ -14,7 +14,7 @@ public interface IFormationService {
 	Optional<Formation> findById(Integer idFormation);
 	List<Formation> findAllByThemeId(Integer idTheme);
 	List<Formation> findAllByDomaineId(Integer idDomaine);
-	List<Formation> findAllByEmployeId(Integer idEmploye);
+	List<Formation> findAllByUserId(Integer idUser);
 	Formation add(Formation formation);
 	Formation update(Formation formation);
 	void removeById(Integer id);

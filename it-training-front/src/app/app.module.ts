@@ -37,7 +37,6 @@ import { CompteComponent } from './composants/compte/compte.component';
     TableauDeBordComponent,
     UserComponent,
     CompteComponent
-
   ],
   imports: [
     BrowserModule,

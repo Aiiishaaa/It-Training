@@ -18,4 +18,5 @@ export interface Formation {
     sessions?: Session[];
     intitule?: string;
     nbHeures?: number;
+    urlImage?: string;
 }

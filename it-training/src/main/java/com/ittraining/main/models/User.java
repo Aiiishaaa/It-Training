@@ -19,6 +19,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    private String firstname;
     private String username;
     @NaturalId
     @Size(max = 50)
@@ -27,6 +28,7 @@ public class User {
     @Size(min = 6, max = 100)
     @JsonIgnore
     private String password;
+    private String phone;
     @Transient
     private Collection<? extends GrantedAuthority> authorities;
 
@@ -37,6 +39,10 @@ public class User {
     @JsonIgnore
 	@ManyToMany(mappedBy = "users")
 	private List<Session> sessions = new ArrayList<Session>();
+    
+    @JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Formation> formations = new ArrayList<Formation>();
 
     public User() {
     }
@@ -50,12 +56,14 @@ public class User {
 
     }
 
-    public User(String name, String username, String email, String password, Collection<? extends GrantedAuthority> authorities) {
+    public User(String name, String firstname, String username, String email, String password, Collection<? extends GrantedAuthority> authorities, String phone) {
         this.name = name;
+        this.firstname = firstname;
         this.username = username;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
+        this.phone = phone;
     }
 
     public User(@NotBlank @Size(min = 3, max = 50) String username,
@@ -66,17 +74,27 @@ public class User {
         this.authorities = authorities;
     }
 
-
-
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public String getFirstname() {
+		return firstname;
+	}
 
-    public String getUsername() {
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getUsername() {
         return username;
     }
 
@@ -123,4 +141,29 @@ public class User {
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
+    
+	public List<Session> getSessions() {
+		return sessions;
+	}
+
+	public void setSessions(List<Session> sessions) {
+		this.sessions = sessions;
+	}
+
+	public List<Formation> getFormations() {
+		return formations;
+	}
+
+	public void setFormations(List<Formation> formations) {
+		this.formations = formations;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", firstname=" + firstname + ", username=" + username + ", email="
+				+ email + ", password=" + password + ", phone=" + phone + ", authorities=" + authorities + ", roles="
+				+ roles + ", sessions=" + sessions + ", formations=" + formations + "]";
+	}
+    
+    
 }
