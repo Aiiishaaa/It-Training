@@ -21,7 +21,7 @@ export class SessionService {
     return this.http.get<Session>(this.url1 + "/" + id);
   }
 
-  getAllSessionsByUser(idUser: number) {
+  getAllSessionsByUser() {
     return this.http.get<Session[]>(this.url3 + "/sessions");
   }
 }

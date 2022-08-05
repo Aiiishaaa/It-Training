@@ -58,7 +58,7 @@ export class FormationComponent implements OnInit {
       this.recupThemeParFormation(this.id);
       this.recupDomaineParFormation(this.id);
       this.recupFormationsMemeDomaine(this.id);
-      this.recupInscriptionsClient(this.id);
+      this.recupInscriptionsClient();
       this.userName = this.token.getUsername();
     });
   }
@@ -130,8 +130,8 @@ export class FormationComponent implements OnInit {
     }
   }
 
-  recupInscriptionsClient(id: number) {
-    this.sessionServ.getAllSessionsByUser(id).subscribe( res => {
+  recupInscriptionsClient() {
+    this.sessionServ.getAllSessionsByUser().subscribe( res => {
       this.inscriptions = res;
     })
   }

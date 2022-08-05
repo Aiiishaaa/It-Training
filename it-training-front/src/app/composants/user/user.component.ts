@@ -14,8 +14,8 @@ export class UserComponent implements OnInit {
   board: string = "";
   errorMessage: string = "";
   inscriptions: Session[] = [];
-  // userName: string = "";
-  // user: User = {};
+  userName: string = "";
+  user: User = {};
   // userId: number = 0;
 
   constructor(private userService: UserService,
@@ -24,30 +24,34 @@ export class UserComponent implements OnInit {
  
   ngOnInit() {
 
-    // this.userName = this.token.getUsername();
-    // this.userService.getOneUserByUsername(this.userName).subscribe( res => {
-    //   this.user = res;
-    //   this.userId = this.user.id ?? 0;
-    //   this.recupInscriptionsClient(this.userId);
-    // });
-    
+      // this.userName = this.token.getUsername();
+      this.recupInscriptionsClient();
+    //   this.getUserByUsername(this.userName);
+    // console.log(this.user);
 
-    this.userService.getUserBoard().subscribe(
-      data => {
-        this.board = data;
-      },
-      error => {
-        this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
-      }
-    );
+    // this.userService.getUserBoard().subscribe(
+    //   data => {
+    //     this.board = data;
+    //   },
+    //   error => {
+    //     this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
+    //   }
+    // );
   }
 
-  recupInscriptionsClient(id: number) {
-    this.sessionServ.getAllSessionsByUser(id).subscribe( res => {
+  recupInscriptionsClient() {
+    this.sessionServ.getAllSessionsByUser().subscribe( res => {
       this.inscriptions = res;
     })
   }
   
+  getUserByUsername(username: string) {
+        this.userService.getOneUserByUsername(username).subscribe(
+          (user: User) => {
+            this.user = user;
+          }
+        );
+  }
 }
 
 // import { Component, OnInit, Type } from '@angular/core';
