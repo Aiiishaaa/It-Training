@@ -10,6 +10,7 @@ export class UserService {
 
   private url1: string = "http://localhost:8080/users";
   private url2: string = "http://localhost:8080/formations";
+  private url3: string = "http://localhost:8080/currentUser";
   private userUrl = 'http://localhost:8080/api/test/user';
   private pmUrl = 'http://localhost:8080/api/test/pm';
   private adminUrl = 'http://localhost:8080/api/test/admin';
@@ -38,5 +39,13 @@ export class UserService {
  
   getAdminBoard(): Observable<string> {
     return this.http.get(this.adminUrl, { responseType: 'text' });
+  }
+
+  // getOneUserByUsername(username: string) {
+  //   return this.http.get<User>(this.url1 + '/' + username);
+  // }
+
+  getOneUserByUsername(username: string) {
+    return this.http.get<User>(this.url3);
   }
 }

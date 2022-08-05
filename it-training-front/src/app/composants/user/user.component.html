@@ -1,1 +1,137 @@
-<p>user works!</p>
+<div class="compte">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Renseignements facultatives :</h5>
+                <form id="addUser" action="">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="phone" placeholder="Numero de téléphone">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="address" placeholder="Addresse">
+                    </div>
+
+                    <button class="btn btn-primary form-control" type="submit">Enregistrer</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <h4>Données personnelles</h4>
+                <table id="userTable" class="table table-striped">
+                    <tr>
+                        <th>Nom </th>
+                        <th>Prénom </th>
+                        <th>Adresse email </th>
+                        <th>Numéro de Téléphone </th>
+                        <th>Address</th>
+                    </tr>
+                    <tr>
+                        <!-- <td>{{user.name}}</td>
+                        <td>{{user.firstname}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td> -->
+                        <!-- <td>{{user.address}}</td> -->
+                    <tr>
+                </table>
+
+
+                <a routerLink="" class="btn btn-sm btn-primary offset-lg-10">Modifier</a>
+                <a routerLink="" class="btn btn-sm btn-primary offset-lg-10" onclick="deleteUser()">Suprimer le
+                    compte</a>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Mettre à jour</h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<section class="section testimony-section bg-light" style="padding: 45px 45px 45px 45px;">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Intitulé</th>
+                    <th style="text-align: center;">Début</th>
+                    <th style="text-align: center;">Fin</th>
+                    <th style="text-align: center;">Lieu</th>
+                    <th style="text-align: center;">Formateur</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let elt of inscriptions">
+                    <td>{{ elt?.formation?.intitule }}</td>
+                    <td style="text-align: center;">{{ elt.dateDebut | date:"dd MMM y" }}</td>
+                    <td style="text-align: center;">{{ elt.dateFin | date:"dd MMM y" }}</td>
+                    <td style="text-align: center;">{{ elt?.adresse?.codePostal }} {{ elt?.adresse?.ville }}</td>
+                    <td style="text-align: center;">{{ elt?.formateur?.prenomFormateur }} {{ elt?.formateur?.nomFormateur }}</td>
+                    <td style="text-align: center;"><button type="button"
+                            class="btn btn-outline-secondary">Annuler</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div class="alert alert-warning" *ngIf="sessions.length == 0">
+            Il n'y a pas encore de session programmée pour l'instant.
+        </div> -->
+    </div>
+</section>
+
+<!-- <div class="container compte2">
+    <div class="wrapper">
+        <ul class="steps">
+            <li class="is-active">Domaines</li>
+            <li>Thémes</li>
+            <li>Formations</li>
+        </ul>
+        <form class="form-wrapper">
+            <fieldset class="section is-active">
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="text" name="email" id="email" placeholder="Email">
+                <div class="button btn btn-sm btn-primary mr-1">Suivant</div>
+            </fieldset>
+            <fieldset class="section">
+                <div class="row cf">
+                    <div class="four col">
+                        <input type="radio" name="r1" id="r1" checked>
+                        <label for="r1">
+                            <h4> --------------</h4>
+                        </label>
+                    </div>
+                    <div class="four col">
+                        <input type="radio" name="r1" id="r2"><label for="r2">
+                            <h4>----------</h4>
+                        </label>
+                    </div>
+                    <div class="four col">
+                        <input type="radio" name="r1" id="r3"><label for="r3">
+                            <h4>--------------</h4>
+                        </label>
+                    </div>
+                </div>
+                <div class="button btn btn-sm btn-primary mr-1">Suivant</div>
+            </fieldset>
+            <fieldset class="section">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password2" id="password2" placeholder="Re-enter Password">
+                <input class="submit button btn btn-sm btn-primary mt-5mr-1" type="submit" value="Rechercher">
+            </fieldset>
+            <fieldset class="section">
+                <p>Votre recherche est enregistrée !</p>
+                <div class="button btn btn-sm btn-primary mt-5mr-1">Afficher</div>
+            </fieldset>
+        </form>
+    </div>
+</div> -->
