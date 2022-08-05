@@ -32,12 +32,14 @@ export class NavbarComponent implements OnInit {
         if (role === 'ROLE_ADMIN') {
           this.authority = 'admin';
           return false;
-        } else if (role === 'ROLE_PM') {
-          this.authority = 'pm';
+        } else if (role === 'ROLE_CLIENT') {
+          this.authority = 'client';
           return false;
-        }
-        this.authority = 'user';
-        return true;
+        } else if (role === 'ROLE_EMPLOYE') {
+          this.authority = 'employe';
+          return false;}
+        else{this.authority = 'user';
+        return true;}
       });
     }
   }

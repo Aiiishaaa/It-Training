@@ -139,7 +139,7 @@ public class RunnerConfig implements CommandLineRunner {
 		Set<Role> roles1 = new HashSet<Role>();
 		Set<Role> roles2 = new HashSet<Role>();
 		Set<Role> roles3 = new HashSet<Role>();
-		roles1.add(r1);
+//		roles1.add(r1);
 		roles1.add(r2);
 		roles2.add(r1);
 		roles3.add(r3);

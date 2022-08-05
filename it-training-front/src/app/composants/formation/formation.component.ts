@@ -37,7 +37,7 @@ export class FormationComponent implements OnInit {
   lieux: string[] = [];
   formateurs: string[] = [];
   userName: string = "";
-
+  message: string = "";
   inscriptions: Session[] = [];
 
   constructor(
@@ -131,12 +131,14 @@ export class FormationComponent implements OnInit {
   }
 
   recupInscriptionsClient() {
-    this.sessionServ.getAllSessionsByUser().subscribe( res => {
+    this.sessionServ.getAllSessionsByUser().subscribe(res => {
       this.inscriptions = res;
     })
   }
 
-  sInscrire() {
-    
+  sInscrire(s: Session) {
+    this.userServ.updateOneUserSession(s).subscribe(res => {
+      this.message = "Vous êtes pré-inscrit pour cette session";
+    })
   }
 }

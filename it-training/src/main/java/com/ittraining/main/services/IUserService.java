@@ -23,5 +23,5 @@ public interface IUserService {
 	
 	Optional<User> findByFormationsId(Integer idFormation);
 	
-	//User updateUserSessions(Integer id, Session session);
+	User updateUserSessions(Integer id, Session session);
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
+import { Session } from '../interfaces/session';
  
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,9 @@ export class UserService {
 
   getOneUserByUsername(username: string) {
     return this.http.get<User>(this.url3);
+  }
+
+  updateOneUserSession(session: Session) {
+    return this.http.put<User>(this.url3, session);
   }
 }

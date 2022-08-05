@@ -74,7 +74,7 @@
                         <td style="text-align: center;">{{ elt.dateFin | date:"dd MMM y" }}</td>
                         <td style="text-align: center;">{{ lieux[i] }}</td>
                         <td style="text-align: center;">{{ formateurs[i] }}</td>
-                        <td style="text-align: center;"><button (click)="sInscrire()" [disabled]="userName == ''" type="button"
+                        <td style="text-align: center;"><button (click)="sInscrire(elt)" [disabled]="userName == ''" type="button"
                                 class="btn btn-outline-secondary">M'inscrire</button></td>
                     </tr>
                 </tbody>

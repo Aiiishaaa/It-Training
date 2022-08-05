@@ -3,6 +3,7 @@ package com.ittraining.main.dao;
 import java.util.List;
 import java.util.Optional;
 
+import com.ittraining.main.models.Session;
 import com.ittraining.main.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,7 +17,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
 	Optional<User> findByFormationsId(Integer idFormation);
 	
-//	@Query(value = "UPDATE FROM USERS WHERE ID = ?0", nativeQuery = true)
-//	User updateUserSessions(Integer id, Session session);
+	@Query("UPDATE User SET sessions = :session where id = :id")
+	User updateUserSessions(Integer id, Session session);
 
 }
